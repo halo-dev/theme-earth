@@ -1,7 +1,7 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: default
+  name: theme-default
 spec:
   displayName: Default
   author:
@@ -13,4 +13,3 @@ spec:
   repo: https://github.com/halo-sigs/theme-default.git
   version: 1.0.0
   require: 2.0.0
-  plugins: ["PluginLinks", "PluginJournals", "PluginPhotos"]
