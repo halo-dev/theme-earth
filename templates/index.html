@@ -1,19 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halo</title>
-    <link
-      rel="stylesheet"
-      th:href="@{/assets/dist/style.css}"
-      href="./assets/dist/style.css"
-    />
-  </head>
-  <body>
-    <span class="flex items-center justify-center font-serif text-red-600">
-      Halo
-    </span>
-  </body>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="modules/layout :: html(~{::content})"
+>
+  <th:block th:fragment="content">
+    <div
+      id="filters"
+      class="flex gap-x-2 overflow-x-auto overflow-y-hidden scroll-smooth"
+    >
+      <div
+        class="flex cursor-pointer items-center rounded bg-gray-100 px-2 py-1 font-semibold text-gray-900 transition-all hover:shadow-sm"
+      >
+        <div class="flex flex-1 items-center truncate">
+          <span class="truncate text-base"> 全部 </span>
+        </div>
+      </div>
+      <th:block th:with="categories = ${categoryFinder.listAll()}">
+        <div
+          th:each="category : ${categories}"
+          class="flex cursor-pointer items-center rounded px-2 py-1 font-semibold text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
+        >
+          <div class="flex flex-1 items-center truncate">
+            <span class="truncate text-base">
+              <a
+                th:href="${category.status.permalink}"
+                th:text="${category.spec.displayName}"
+              ></a>
+            </span>
+          </div>
+        </div>
+      </th:block>
+    </div>
+
+    <div
+      id="post-list"
+      th:with="postItems=${posts.items}"
+      class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+    >
+      <th:block th:each="post : ${postItems}">
+        <th:block th:replace="modules/post-card :: post-card(${post},true)" />
+      </th:block>
+    </div>
+
+    <div class="mt-6 flex items-center justify-between">
+      <button
+        class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
+      >
+        <span
+          data-icon="tabler:arrow-left"
+          class="iconify text-lg transition-all group-hover:-translate-x-1"
+        ></span>
+        <span>上一页</span>
+      </button>
+      <span class="text-sm text-gray-900">1 / 20</span>
+      <button
+        class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
+      >
+        <span>下一页</span>
+        <span
+          data-icon="tabler:arrow-right"
+          class="iconify text-lg transition-all group-hover:translate-x-1"
+        ></span>
+      </button>
+    </div>
+  </th:block>
 </html>

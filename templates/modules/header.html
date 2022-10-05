@@ -1,0 +1,59 @@
+<header>
+  <div class="h-96 bg-gradient-to-r from-cyan-500 to-blue-500">
+    <div id="header-menu" class="flex h-14 py-3 transition-all">
+      <div class="container mx-auto flex justify-between">
+        <div class="flex items-center gap-6">
+          <div>
+            <img
+              src="https://halo.run/upload/2022/03/logo.svg"
+              class="h-14 w-14"
+            />
+          </div>
+          <ul class="flex items-center gap-6 text-white">
+            <li
+              class="cursor-pointer opacity-100 transition-all hover:opacity-100"
+            >
+              <RouterLink :to="{ name: 'Home' }">首页</RouterLink>
+            </li>
+            <li
+              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
+            >
+              默认分类
+            </li>
+            <li
+              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
+            >
+              Halo
+            </li>
+            <li
+              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
+            >
+              <RouterLink :to="{ name: 'Links' }">链接</RouterLink>
+            </li>
+            <li
+              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
+            >
+              关于
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center">
+          <ul class="flex items-center gap-4">
+            <li>
+              <span
+                data-icon="tabler:brightness-2"
+                class="iconify text-lg text-white"
+              ></span>
+            </li>
+            <li>
+              <span
+                data-icon="tabler:search"
+                class="iconify text-lg text-white"
+              ></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,49 @@
+<div
+  th:fragment="post-card(post,cover)"
+  class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:ring-2"
+>
+  <div th:if="${cover}" class="aspect-w-16 aspect-h-9">
+    <img
+      th:src="${post.spec.cover}"
+      th:alt="${post.spec.title}"
+      class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
+    />
+  </div>
+  <div class="relative flex flex-col p-4">
+    <div class="flex flex-wrap items-center gap-2">
+      <a
+        th:if="${#lists.size(post.categories)} gt 0"
+        th:href="${post.categories[0].status.permalink}"
+        th:title="${post.categories[0].spec.displayName}"
+        th:text="${post.categories[0].spec.displayName}"
+        class="mr-1 text-sm font-medium text-gray-800 hover:text-gray-900"
+      >
+      </a>
+      <a
+        th:each="tag : ${post.tags}"
+        th:href="${tag.status.permalink}"
+        th:title="${tag.spec.displayName}"
+        th:text="'#'+${tag.spec.displayName}"
+        class="cursor-pointer text-sm italic text-gray-600 hover:text-gray-900"
+      >
+      </a>
+    </div>
+    <h1
+      class="mt-2 cursor-pointer text-2xl font-medium transition-all hover:text-gray-500 hover:underline"
+    >
+      <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+    </h1>
+    <p class="font-sm mt-2 font-light" th:text="${post.status.excerpt}"></p>
+    <div class="mt-2 flex flex-1 items-center justify-start gap-2">
+      <img
+        src="https://ryanc.cc/avatar"
+        class="h-8 w-8 rounded-full border drop-shadow-sm"
+      />
+      <span
+        class="text-sm tabular-nums text-gray-600"
+        th:text="${'发布于 '+#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+      >
+      </span>
+    </div>
+  </div>
+</div>
