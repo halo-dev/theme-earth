@@ -11,5 +11,7 @@ spec:
   logo: https://halo.run/logo
   website: https://github.com/halo-sigs/theme-default
   repo: https://github.com/halo-sigs/theme-default.git
+  settingName: "theme-default-setting"
+  configMapName: "theme-default-configMap"
   version: 1.0.0
   require: 2.0.0

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (content)">
+<html lang="en" th:fragment="html (content,head,footer)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,6 +14,9 @@
       href="./assets/dist/style.css"
     />
     <script th:src="@{/assets/dist/main.iife.js}"></script>
+    <th:block th:if="${head != null}">
+      <th:block th:replace="${head}" />
+    </th:block>
   </head>
   <body>
     <th:block th:replace="modules/header" />
@@ -25,5 +28,8 @@
       <th:block th:replace="modules/sidebar" />
     </section>
     <th:block th:replace="modules/footer" />
+    <th:block th:if="${footer != null}">
+      <th:block th:replace="${footer}" />
+    </th:block>
   </body>
 </html>
