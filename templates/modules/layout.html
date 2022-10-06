@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (content,head,footer)">
+<html lang="en" th:fragment="html (content,head,footer,contentClass)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,7 +21,10 @@
   <body>
     <th:block th:replace="modules/header" />
     <section class="container mx-auto"></section>
-    <section class="container mx-auto mt-6 grid grid-cols-4 gap-6">
+    <section
+      class="container mx-auto mt-6 grid grid-cols-4 gap-6"
+      th:classappend="${contentClass}"
+    >
       <div class="col-span-4 sm:col-span-3">
         <th:block th:replace="${content}" />
       </div>

@@ -1,20 +1,18 @@
 <div
-  th:fragment="post-card(post,cover,animation)"
-  class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg hover:ring-2"
-  th:classappend="${animation} ? 'hover:-translate-y-2'"
+  th:fragment="featured-post-card(post)"
+  class="group grid cursor-pointer grid-cols-1 overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg hover:ring-2 sm:grid-cols-5"
 >
   <div
-    th:if="${cover} and ${not #strings.isEmpty(post.spec.cover)}"
-    class="aspect-w-16 aspect-h-9"
+    th:if="${not #strings.isEmpty(post.spec.cover)}"
+    class="aspect-w-16 aspect-h-9 col-span-3"
   >
     <img
       th:src="${post.spec.cover}"
       th:alt="${post.spec.title}"
       class="h-full w-full object-cover transition-all duration-500"
-      th:classappend="${animation} ? 'group-hover:scale-110'"
     />
   </div>
-  <div class="relative flex flex-col gap-2 p-4">
+  <div class="relative col-span-2 flex flex-col gap-2 p-4">
     <div
       th:if="${not #lists.isEmpty(post.categories)} or ${not #lists.isEmpty(post.tags)}"
       class="flex flex-wrap items-center gap-2"

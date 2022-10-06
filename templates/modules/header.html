@@ -1,6 +1,6 @@
 <header>
   <div
-    class="h-96 bg-gradient-to-r from-cyan-500 to-blue-500"
+    class="bg-gradient-to-r from-cyan-500 to-blue-500"
     th:with="menu = ${menuFinder.getDefault()}"
   >
     <div id="header-menu" class="flex h-14 py-3 transition-all">
@@ -46,6 +46,14 @@
           </ul>
         </div>
       </div>
+    </div>
+    <div
+      class="container mx-auto py-6"
+      th:with="posts = ${postFinder.getByName('5152aea5-c2e8-4717-8bba-2263d46e19d5')}"
+    >
+      <th:block
+        th:replace="modules/featured-post-card :: featured-post-card(post=${posts})"
+      />
     </div>
   </div>
 </header>

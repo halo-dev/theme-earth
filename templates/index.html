@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="modules/layout :: html(content = ~{::content}, head = null, footer = null)"
+  th:replace="modules/layout :: html(content = ~{::content}, head = null, footer = null, contentClass = null)"
 >
   <th:block th:fragment="content">
     <th:block th:replace="modules/category-filter" />
@@ -12,7 +12,9 @@
       class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
     >
       <th:block th:each="post : ${postItems}">
-        <th:block th:replace="modules/post-card :: post-card(${post},true)" />
+        <th:block
+          th:replace="modules/post-card :: post-card(${post},true,true)"
+        />
       </th:block>
     </div>
 
