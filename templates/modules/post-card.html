@@ -12,8 +12,11 @@
       class="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
     />
   </div>
-  <div class="relative flex flex-col p-4">
-    <div class="flex flex-wrap items-center gap-2">
+  <div class="relative flex flex-col gap-2 p-4">
+    <div
+      th:if="${not #lists.isEmpty(post.categories)} or ${not #lists.isEmpty(post.tags)}"
+      class="flex flex-wrap items-center gap-2"
+    >
       <a
         th:if="${#lists.size(post.categories)} gt 0"
         th:href="${post.categories[0].status.permalink}"
@@ -32,12 +35,12 @@
       </a>
     </div>
     <h1
-      class="mt-2 cursor-pointer text-2xl font-medium transition-all hover:text-gray-500 hover:underline"
+      class="cursor-pointer text-2xl font-medium transition-all hover:text-gray-500 hover:underline"
     >
       <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
     </h1>
-    <p class="font-sm mt-2 font-light" th:text="${post.status.excerpt}"></p>
-    <div class="mt-2 flex flex-1 items-center justify-start gap-2">
+    <p class="font-sm font-light" th:text="${post.status.excerpt}"></p>
+    <div class="flex flex-1 items-center justify-start gap-2">
       <img
         src="https://ryanc.cc/avatar"
         class="h-8 w-8 rounded-full border drop-shadow-sm"

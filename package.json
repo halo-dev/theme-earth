@@ -2,16 +2,39 @@
   "name": "@halo-dev/theme-default",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Default theme for Halo 2.0",
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc && vite build",
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
     "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "halo",
+    "halo-theme",
+    "halo-template"
+  ],
+  "homepage": "https://github.com/halo-sigs/theme-default#readme",
+  "bugs": {
+    "url": "https://github.com/halo-sigs/theme-default/issues"
+  },
+  "author": {
+    "name": "Halo OSS Organization",
+    "url": "https://github.com/halo-dev",
+    "email": "hi@halo.run"
+  },
+  "maintainers": [
+    {
+      "name": "Ryan Wang",
+      "url": "https://github.com/ruibaby",
+      "email": "i@ryanc.cc"
+    }
+  ],
+  "license": "GPL-3.0",
+  "repository": {
+    "url": "https://github.com/halo-sigs/theme-default",
+    "type": "git"
+  },
   "devDependencies": {
     "@iconify/json": "^2.1.118",
     "@tailwindcss/aspect-ratio": "^0.4.2",

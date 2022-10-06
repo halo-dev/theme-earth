@@ -19,7 +19,10 @@
       th:classappend="${category} and ${category.metadata.name == categoryItem.metadata.name} ? '!text-gray-900 !bg-gray-100'"
     >
       <div class="flex flex-1 items-center truncate">
-        <span class="truncate text-base" th:text="${categoryItem.spec.displayName}">
+        <span
+          class="truncate text-base"
+          th:text="${categoryItem.spec.displayName}"
+        >
         </span>
       </div>
     </a>
