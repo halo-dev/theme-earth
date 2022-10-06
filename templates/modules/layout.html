@@ -13,12 +13,12 @@
       th:href="@{/assets/dist/style.css}"
       href="./assets/dist/style.css"
     />
-    <script th:src="@{/assets/dist/main.iife.js}"></script>
+    <script th:src="@{/assets/dist/main.iife.js}" defer></script>
     <th:block th:if="${head != null}">
       <th:block th:replace="${head}" />
     </th:block>
   </head>
-  <body>
+  <body x-data="{ overlayMenu: false }">
     <th:block th:replace="modules/header" />
     <section class="container mx-auto"></section>
     <section
@@ -34,5 +34,6 @@
     <th:block th:if="${footer != null}">
       <th:block th:replace="${footer}" />
     </th:block>
+    <th:block th:replace="modules/overlay-menu" />
   </body>
 </html>

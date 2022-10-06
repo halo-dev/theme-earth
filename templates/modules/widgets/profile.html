@@ -3,7 +3,11 @@
 >
   <div class="flex flex-col items-center justify-center gap-4">
     <div class="relative h-24 w-24">
-      <img src="https://halo.run/logo" class="h-full w-full rounded-full" />
+      <img
+        th:src="${site.logo}"
+        th:alt="${site.title}"
+        class="h-full w-full rounded-full"
+      />
       <span
         class="absolute right-0 bottom-0 flex h-7 w-7 items-center justify-center rounded-full border bg-white p-0.5"
       >
@@ -11,7 +15,7 @@
       </span>
     </div>
     <div><h1 class="text-2xl font-medium" th:text="${site.title}"></h1></div>
-    <div>
+    <div th:if="${not #strings.isEmpty(site.subtitle)}">
       <p
         class="text-center text-sm text-gray-700"
         th:text="${site.subtitle}"

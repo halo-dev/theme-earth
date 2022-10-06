@@ -1,0 +1,177 @@
+<div class="relative z-10" role="dialog" aria-modal="true" x-show="overlayMenu">
+  <div
+    x-show="overlayMenu"
+    x-on:click="overlayMenu = false"
+    class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    x-transition:enter="ease-in-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="ease-in-out duration-300"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+  ></div>
+
+  <div class="fixed inset-0 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div
+        class="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-20"
+      >
+        <div
+          x-show="overlayMenu"
+          class="pointer-events-auto w-screen max-w-md"
+          x-transition:enter="transform transition ease-in-out duration-300"
+          x-transition:enter-start="-translate-x-full"
+          x-transition:enter-end="translate-x-0"
+          x-transition:leave="transform transition ease-in-out duration-300"
+          x-transition:leave-start="translate-x-0"
+          x-transition:leave-end="-translate-x-full"
+        >
+          <div
+            class="flex h-full flex-col overflow-y-auto bg-white py-6 shadow-xl"
+          >
+            <div class="flex items-center justify-end px-4 sm:px-6">
+              <button
+                x-on:click="overlayMenu = false"
+                type="button"
+                class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
+              >
+                <span data-icon="tabler:x" class="iconify text-lg"></span>
+              </button>
+            </div>
+            <div class="relative mt-6 flex-1 px-4 sm:px-6">
+              <div class="absolute inset-0 px-4 sm:px-6">
+                <div class="flex h-full flex-col items-center gap-4">
+                  <div class="relative h-24 w-24">
+                    <img
+                      th:src="${site.logo}"
+                      th:alt="${site.title}"
+                      class="h-full w-full rounded-full"
+                    />
+                    <span
+                      class="absolute right-0 bottom-0 flex h-7 w-7 items-center justify-center rounded-full border bg-white p-0.5"
+                    >
+                      🌚
+                    </span>
+                  </div>
+                  <div>
+                    <h1
+                      class="text-2xl font-medium"
+                      th:text="${site.title}"
+                    ></h1>
+                  </div>
+                  <div th:if="${not #strings.isEmpty(site.subtitle)}">
+                    <p
+                      class="text-center text-sm text-gray-700"
+                      th:text="${site.subtitle}"
+                    ></p>
+                  </div>
+                  <div class="grid grid-cols-4 gap-5">
+                    <div class="inline-flex flex-col items-center">
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900"
+                        >97</span
+                      ><span class="text-xs font-light text-gray-600"
+                        >文章数</span
+                      >
+                    </div>
+                    <div class="inline-flex flex-col items-center">
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900"
+                        >18</span
+                      ><span class="text-xs font-light text-gray-600"
+                        >分类数</span
+                      >
+                    </div>
+                    <div class="inline-flex flex-col items-center">
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900"
+                        >117</span
+                      ><span class="text-xs font-light text-gray-600"
+                        >评论数</span
+                      >
+                    </div>
+                    <div class="inline-flex flex-col items-center">
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900"
+                        >92392</span
+                      ><span class="text-xs font-light text-gray-600"
+                        >访问量</span
+                      >
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-6 items-center gap-5">
+                    <div
+                      class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
+                    >
+                      <span
+                        data-icon="simple-icons:wechat"
+                        class="iconify text-[#07C160]"
+                      ></span>
+                    </div>
+                    <div
+                      class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
+                    >
+                      <span
+                        data-icon="simple-icons:bilibili"
+                        class="iconify text-[#00A1D6]"
+                      ></span>
+                    </div>
+                    <div
+                      class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
+                    >
+                      <span
+                        data-icon="simple-icons:github"
+                        class="iconify text-[#181717]"
+                      ></span>
+                    </div>
+                    <div
+                      class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
+                    >
+                      <span
+                        data-icon="simple-icons:twitter"
+                        class="iconify text-[#1DA1F2]"
+                      ></span>
+                    </div>
+                    <div
+                      class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
+                    >
+                      <span
+                        data-icon="simple-icons:telegram"
+                        class="iconify text-[#26A5E4]"
+                      ></span>
+                    </div>
+                    <div
+                      class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
+                    >
+                      <span
+                        data-icon="simple-icons:feedly"
+                        class="iconify text-[#2BB24C]"
+                      ></span>
+                    </div>
+                  </div>
+                  <div
+                    class="w-full"
+                    th:with="menu = ${menuFinder.getDefault()}"
+                  >
+                    <ul
+                      th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
+                      class="flex w-full flex-col gap-1"
+                    >
+                      <li th:each="menuItem : ${menu.menuItems}" class="w-full">
+                        <a
+                          th:href="${menuItem.status.href}"
+                          th:text="${menuItem.status.displayName}"
+                          class="flex h-full w-full rounded px-3 py-2 text-sm text-gray-900 hover:bg-gray-100"
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

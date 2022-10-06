@@ -2,6 +2,12 @@ import "./styles/tailwind.css";
 import "./styles/main.css";
 import "@purge-icons/generated";
 
+import Alpine from "alpinejs";
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
 const onScroll = () => {
   const headerMenu = document.getElementById("header-menu");
   if (window.scrollY > 0) {

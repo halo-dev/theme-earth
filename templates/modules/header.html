@@ -16,7 +16,7 @@
           </div>
           <ul
             th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
-            class="flex items-center gap-6 text-white"
+            class="hidden items-center gap-6 text-white sm:flex"
           >
             <li
               th:each="menuItem : ${menu.menuItems}"
@@ -31,6 +31,12 @@
         </div>
         <div class="flex items-center">
           <ul class="flex items-center gap-4">
+            <li class="sm:hidden" x-on:click="overlayMenu = true">
+              <span
+                data-icon="tabler:menu-2"
+                class="iconify text-lg text-white"
+              ></span>
+            </li>
             <li>
               <span
                 data-icon="tabler:brightness-2"

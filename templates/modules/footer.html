@@ -1,12 +1,14 @@
 <footer class="mt-10 bg-white py-8">
   <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
     <a
-      href="https://halo.run/"
+      href="/"
       class="mb-4 flex items-center justify-center sm:mb-0 sm:justify-start"
     >
-      <img src="https://halo.run/logo" class="mr-3 h-8" alt="Halo Logo" />
-      <span class="self-center whitespace-nowrap text-2xl font-semibold">
-        Halo
+      <img th:src="${site.logo}" class="mr-3 h-8" th:alt="${site.title}" />
+      <span
+        class="self-center whitespace-nowrap text-2xl font-semibold"
+        th:text="${site.title}"
+      >
       </span>
     </a>
     <ul
@@ -29,7 +31,8 @@
   <hr class="my-6 border-gray-100 sm:mx-auto lg:my-8" />
   <span class="container mx-auto block text-center text-sm text-gray-500">
     © 2022
-    <a href="https://halo.run" class="hover:underline">Halo</a>. All Rights
-    Reserved.
+    <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights
+    Reserved. Powered by
+    <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
   </span>
 </footer>

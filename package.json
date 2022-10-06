@@ -39,6 +39,7 @@
     "@iconify/json": "^2.1.118",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
+    "@types/alpinejs": "^3.7.0",
     "@types/node": "16",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
@@ -55,6 +56,7 @@
     "vite-plugin-purge-icons": "^0.9.1"
   },
   "dependencies": {
-    "@iconify/iconify": "^3.0.0"
+    "@iconify/iconify": "^3.0.0",
+    "alpinejs": "^3.10.3"
   }
 }
