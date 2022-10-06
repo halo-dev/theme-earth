@@ -4,20 +4,19 @@
   >
     <div class="flex flex-col items-center justify-center gap-4">
       <div class="relative h-24 w-24">
-        <img
-          src="https://halo.run/logo"
-          class="h-full w-full rounded-full"
-        /><span
+        <img src="https://halo.run/logo" class="h-full w-full rounded-full" />
+        <span
           class="absolute right-0 bottom-0 flex h-7 w-7 items-center justify-center rounded-full border bg-white p-0.5"
         >
           🌚
         </span>
       </div>
-      <div><h1 class="text-2xl font-medium">Halo</h1></div>
+      <div><h1 class="text-2xl font-medium" th:text="${site.title}"></h1></div>
       <div>
-        <p class="text-center text-sm text-gray-700">
-          Natus eveniet et cum eum.
-        </p>
+        <p
+          class="text-center text-sm text-gray-700"
+          th:text="${site.subtitle}"
+        ></p>
       </div>
       <div class="grid grid-cols-4 gap-5">
         <div class="inline-flex flex-col items-center">
@@ -101,64 +100,30 @@
       热门文章
     </h2>
     <div>
-      <ul role="list" class="divide-y divide-gray-100">
-        <li class="py-3">
+      <ul
+        role="list"
+        class="divide-y divide-gray-100"
+        th:with="posts = ${postFinder.list(1,10)}"
+      >
+        <li class="py-3" th:each="post : ${posts}">
           <div class="flex items-center justify-between">
             <div class="flex flex-col gap-1">
-              <h3 class="text-sm font-medium">non omnis id</h3>
-              <p class="text-xs text-gray-500">2022-10-01 发布</p>
+              <h3
+                class="text-sm font-medium hover:text-gray-500 hover:underline"
+              >
+                <a
+                  th:text="${post.spec.title}"
+                  th:href="${post.status.permalink}"
+                ></a>
+              </h3>
+              <p
+                class="text-xs tabular-nums text-gray-500"
+                th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')+' 发布'}"
+              ></p>
             </div>
             <div class="inline-flex items-center gap-1 text-xs text-gray-600">
               <span data-icon="tabler:eye" class="iconify"></span>
-              <span>5243</span>
-            </div>
-          </div>
-        </li>
-        <li class="py-3">
-          <div class="flex items-center justify-between">
-            <div class="flex flex-col gap-1">
-              <h3 class="text-sm font-medium">unde velit necessitatibus</h3>
-              <p class="text-xs text-gray-500">2022-10-01 发布</p>
-            </div>
-            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-              <span data-icon="tabler:eye" class="iconify"></span>
-              <span>5243</span>
-            </div>
-          </div>
-        </li>
-        <li class="py-3">
-          <div class="flex items-center justify-between">
-            <div class="flex flex-col gap-1">
-              <h3 class="text-sm font-medium">eos voluptatum velit</h3>
-              <p class="text-xs text-gray-500">2022-10-01 发布</p>
-            </div>
-            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-              <span data-icon="tabler:eye" class="iconify"></span>
-              <span>5243</span>
-            </div>
-          </div>
-        </li>
-        <li class="py-3">
-          <div class="flex items-center justify-between">
-            <div class="flex flex-col gap-1">
-              <h3 class="text-sm font-medium">culpa nam exercitationem</h3>
-              <p class="text-xs text-gray-500">2022-10-01 发布</p>
-            </div>
-            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-              <span data-icon="tabler:eye" class="iconify"></span>
-              <span>5243</span>
-            </div>
-          </div>
-        </li>
-        <li class="py-3">
-          <div class="flex items-center justify-between">
-            <div class="flex flex-col gap-1">
-              <h3 class="text-sm font-medium">est optio facere</h3>
-              <p class="text-xs text-gray-500">2022-10-01 发布</p>
-            </div>
-            <div class="inline-flex items-center gap-1 text-xs text-gray-600">
-              <span data-icon="tabler:eye" class="iconify"></span>
-              <span>5243</span>
+              <span th:text="${post.stats.visit}" class="tabular-nums"> </span>
             </div>
           </div>
         </li>
@@ -274,113 +239,11 @@
       <span data-icon="tabler:category" class="iconify text-lg"></span>
       分类目录
     </h2>
-    <div class="mt-2">
+    <div class="mt-2" th:with="categories = ${categoryFinder.listAsTree()}">
       <ul class="space-y-1">
-        <li>
-          <a
-            href="#"
-            class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-            ><span class="text-sm opacity-80">Halo</span
-            ><span
-              class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-            >
-              20
-            </span></a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-            ><span class="text-sm opacity-80">MeterSphere</span
-            ><span
-              class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-            >
-              21
-            </span></a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-            ><span class="text-sm opacity-80">DataEase</span
-            ><span
-              class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-            >
-              22
-            </span></a
-          >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-            ><span class="text-sm opacity-80">assumenda</span
-            ><span
-              class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-            >
-              20
-            </span></a
-          >
-          <ul class="my-3 ml-3 space-y-1 border-l pl-2">
-            <li>
-              <a
-                href="#"
-                class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-                ><span class="text-sm opacity-80">minima</span
-                ><span
-                  class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-                  >14</span
-                ></a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-                ><span class="text-sm opacity-80">minima</span
-                ><span
-                  class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-                  >18</span
-                ></a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-                ><span class="text-sm opacity-80">hic</span
-                ><span
-                  class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-                  >9</span
-                ></a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-                ><span class="text-sm opacity-80">mollitia</span
-                ><span
-                  class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-                  >14</span
-                ></a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
-                ><span class="text-sm opacity-80">facere</span
-                ><span
-                  class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-                  >7</span
-                ></a
-              >
-            </li>
-          </ul>
-        </li>
+        <li
+          th:replace="modules/category-tree :: single(categories=${categories})"
+        />
       </ul>
     </div>
   </div>

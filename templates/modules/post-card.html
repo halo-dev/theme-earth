@@ -2,7 +2,10 @@
   th:fragment="post-card(post,cover)"
   class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:ring-2"
 >
-  <div th:if="${cover}" class="aspect-w-16 aspect-h-9">
+  <div
+    th:if="${cover} and ${not #strings.isEmpty(post.spec.cover)}"
+    class="aspect-w-16 aspect-h-9"
+  >
     <img
       th:src="${post.spec.cover}"
       th:alt="${post.spec.title}"
