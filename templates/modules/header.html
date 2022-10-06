@@ -1,5 +1,8 @@
 <header>
-  <div class="h-96 bg-gradient-to-r from-cyan-500 to-blue-500">
+  <div
+    class="h-96 bg-gradient-to-r from-cyan-500 to-blue-500"
+    th:with="menu = ${menuFinder.getDefault()}"
+  >
     <div id="header-menu" class="flex h-14 py-3 transition-all">
       <div class="container mx-auto flex justify-between">
         <div class="flex items-center gap-6">
@@ -11,31 +14,18 @@
               />
             </a>
           </div>
-          <ul class="flex items-center gap-6 text-white">
+          <ul
+            th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
+            class="flex items-center gap-6 text-white"
+          >
             <li
+              th:each="menuItem : ${menu.menuItems}"
               class="cursor-pointer opacity-100 transition-all hover:opacity-100"
             >
-              <RouterLink :to="{ name: 'Home' }">首页</RouterLink>
-            </li>
-            <li
-              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
-            >
-              默认分类
-            </li>
-            <li
-              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
-            >
-              Halo
-            </li>
-            <li
-              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
-            >
-              <RouterLink :to="{ name: 'Links' }">链接</RouterLink>
-            </li>
-            <li
-              class="cursor-pointer opacity-80 transition-all hover:opacity-100"
-            >
-              关于
+              <a
+                th:href="${menuItem.status.href}"
+                th:text="${menuItem.status.displayName}"
+              ></a>
             </li>
           </ul>
         </div>
