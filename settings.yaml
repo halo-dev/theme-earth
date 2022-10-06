@@ -4,6 +4,14 @@ metadata:
   name: theme-default-setting
 spec:
   forms:
+    - group: sidebar
+      label: 侧边栏
+      formSchema:
+        - $formkit: textarea
+          name: widgets
+          label: 小部件
+          value: "profile,popular-posts,latest-comments,categories,tags"
+          help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
     - group: content
       label: 内容设置
       formSchema:

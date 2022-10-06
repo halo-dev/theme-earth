@@ -1,0 +1,23 @@
+<div
+  class="w-full cursor-pointer overflow-hidden rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md"
+>
+  <h2 class="inline-flex items-center gap-2 text-base">
+    <span data-icon="tabler:tags" class="iconify text-lg"></span>
+    标签
+  </h2>
+  <div
+    class="mt-2 flex flex-wrap gap-2"
+    th:with="tags = ${tagFinder.listAll()}"
+  >
+    <a
+      th:each="tag : ${tags}"
+      th:href="${tag.status.permalink}"
+      th:title="${tag.spec.displayName}"
+      class="rounded bg-gray-100 px-1 py-0.5 text-sm text-gray-900 hover:bg-gray-200"
+      href="#"
+    >
+      <th:block th:text="'#'+${tag.spec.displayName}" />
+      <sup th:text="${tag.status.postCount}"></sup>
+    </a>
+  </div>
+</div>
