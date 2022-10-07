@@ -77,7 +77,7 @@
           >
             <div class="col-span-1 sm:col-span-3">
               <th:block
-                th:replace="modules/post-card :: post-card(post=${posts.items[0]},cover=true,animation=false,border=false)"
+                th:replace="modules/post-card :: post-card(post=${posts.items[0]},cover=true,animation=false,border=false,direction='row')"
               />
             </div>
             <div
@@ -86,7 +86,7 @@
               <th:block th:each="post,postStat : ${posts.items}">
                 <th:block th:if="${postStat.index != 0}">
                   <th:block
-                    th:replace="modules/post-card :: post-card(post=${post},cover=false,animation=false,border=false)"
+                    th:replace="modules/post-card :: post-card(post=${post},cover=false,animation=false,border=false,direction='row')"
                   />
                 </th:block>
               </th:block>

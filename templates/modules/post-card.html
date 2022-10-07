@@ -1,20 +1,24 @@
 <div
-  th:fragment="post-card(post,cover,animation,border)"
+  th:fragment="post-card(post,cover,animation,border,direction)"
   class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg"
-  th:classappend="${animation  ? 'hover:-translate-y-2' : ''} + ' ' + ${border ? 'hover:ring-2' : ''}"
+  th:classappend="${animation  ? 'hover:-translate-y-1' : ''} + ' ' + ${border ? 'hover:ring-2' : ''} + ' ' + ${direction == 'column' ? '!grid grid-cols-1 sm:grid-cols-5' : ''}"
 >
   <div
     th:if="${cover} and ${not #strings.isEmpty(post.spec.cover)}"
     class="aspect-w-16 aspect-h-9"
+    th:classappend="${direction == 'column' ? 'col-span-2' : ''}"
   >
     <img
       th:src="${post.spec.cover}"
       th:alt="${post.spec.title}"
       class="h-full w-full object-cover transition-all duration-500"
-      th:classappend="${animation} ? 'group-hover:scale-110'"
+      th:classappend="${animation} ? 'group-hover:scale-105'"
     />
   </div>
-  <div class="relative flex flex-col gap-2 p-4">
+  <div
+    class="relative flex flex-col gap-2 p-4"
+    th:classappend="${direction == 'column' ? 'col-span-3' : ''}"
+  >
     <div
       th:if="${not #lists.isEmpty(post.categories)} or ${not #lists.isEmpty(post.tags)}"
       class="flex flex-wrap items-center gap-2"

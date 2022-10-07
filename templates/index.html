@@ -9,12 +9,13 @@
     <div
       id="post-list"
       th:if="${posts.total gt 0}"
-      th:with="postItems=${posts.items}"
-      class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+      th:with="postItems=${posts.items},list_layout=${theme.config.layout.post_list_layout}"
+      class="mt-6 grid grid-cols-1 gap-6"
+      th:classappend="${list_layout == 'grid_3' ? 'md:grid-cols-2 xl:grid-cols-3' : ''} + ' ' + ${list_layout == 'grid_2' ? 'md:grid-cols-2' : ''}"
     >
       <th:block th:each="post : ${postItems}">
         <th:block
-          th:replace="modules/post-card :: post-card(${post},true,true,true)"
+          th:replace="modules/post-card :: post-card(${post},true,true,true,${list_layout == 'single' ? 'column' : 'row'})"
         />
       </th:block>
     </div>
