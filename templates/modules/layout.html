@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (content,head,footer,contentClass)">
+<html lang="en" th:fragment="html (header,content,head,footer,contentClass)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +19,12 @@
     </th:block>
   </head>
   <body x-data="{ overlayMenu: false }">
-    <th:block th:replace="modules/header" />
+    <th:block th:if="${header != null}">
+      <th:block th:replace="${header}" />
+    </th:block>
+    <th:block th:if="${header == null}">
+      <th:block th:replace="modules/header :: header(isHome = true)" />
+    </th:block>
     <section class="container mx-auto"></section>
     <section
       class="container mx-auto mt-6 grid grid-cols-4 gap-6"

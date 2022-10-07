@@ -1,6 +1,6 @@
 <header>
   <div
-    class="bg-gradient-to-r from-cyan-500 to-blue-500"
+    th:fragment="header (isHome, cover, title)"
     th:with="menu = ${menuFinder.getDefault()}"
   >
     <div
@@ -51,12 +51,41 @@
       </div>
     </div>
     <div
-      class="container mx-auto py-6"
-      th:with="posts = ${postFinder.getByName('5152aea5-c2e8-4717-8bba-2263d46e19d5')}"
+      th:if="${theme.config.layout.header_widget != 'none'} and ${isHome}"
+      class="bg-cover bg-center bg-no-repeat"
+      th:styleappend="${theme.config.layout.header_background_type == 'image' ? 'background-image: url(' + theme.config.layout.header_background_image + ');' : 'background: ' + theme.config.layout.header_background + ';'}"
+      th:classappend="${theme.config.layout.header_widget == 'site_title' ? 'h-96' : ''}"
     >
-      <th:block
-        th:replace="modules/featured-post-card :: featured-post-card(post=${posts})"
-      />
+      <div
+        th:if="${theme.config.layout.header_widget == 'latest_post'}"
+        class="container mx-auto py-6"
+        th:with="posts = ${postFinder.getByName('5152aea5-c2e8-4717-8bba-2263d46e19d5')}"
+      >
+        <th:block
+          th:replace="modules/featured-post-card :: featured-post-card(post=${posts})"
+        />
+      </div>
+      <div
+        th:if="${theme.config.layout.header_widget == 'site_title'}"
+        class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6"
+      >
+        <span class="text-5xl text-white" th:text="${site.title}"></span>
+        <span
+          class="text-sm font-light text-white opacity-50"
+          th:text="${site.subtitle}"
+        ></span>
+      </div>
+    </div>
+    <div
+      th:if="${theme.config.layout.content_header} and ${not #strings.isEmpty(cover)}"
+      class="h-96 bg-cover bg-center bg-no-repeat"
+      th:style="'background-image: url('+${cover}+')'"
+    >
+      <div
+        class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6"
+      >
+        <span class="text-5xl text-white" th:text="${title}"></span>
+      </div>
     </div>
   </div>
 </header>
