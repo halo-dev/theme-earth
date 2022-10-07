@@ -4,7 +4,7 @@
 >
   <a
     href="/"
-    class="flex cursor-pointer items-center rounded px-2 py-1 font-semibold text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
+    class="flex cursor-pointer items-center rounded px-2 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
     th:classappend="${category == null} ? '!text-gray-900 !bg-gray-100'"
   >
     <div class="flex flex-1 items-center truncate">
@@ -15,7 +15,7 @@
     <a
       th:each="categoryItem : ${categories}"
       th:href="${categoryItem.status.permalink}"
-      class="flex cursor-pointer items-center rounded px-2 py-1 font-semibold text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
+      class="flex cursor-pointer items-center rounded px-2 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
       th:classappend="${category} and ${category.metadata.name == categoryItem.metadata.name} ? '!text-gray-900 !bg-gray-100'"
     >
       <div class="flex flex-1 items-center truncate">
