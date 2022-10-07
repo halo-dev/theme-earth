@@ -3,10 +3,13 @@
     class="bg-gradient-to-r from-cyan-500 to-blue-500"
     th:with="menu = ${menuFinder.getDefault()}"
   >
-    <div id="header-menu" class="flex h-14 py-3 transition-all">
+    <div
+      id="header-menu"
+      class="flex h-14 bg-white py-3 shadow-sm transition-all"
+    >
       <div class="container mx-auto flex justify-between">
         <div class="flex items-center gap-6">
-          <div>
+          <div class="mr-2">
             <a href="/">
               <img
                 src="https://halo.run/upload/2022/03/logo.svg"
@@ -16,11 +19,11 @@
           </div>
           <ul
             th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
-            class="hidden items-center gap-6 text-white sm:flex"
+            class="hidden items-center gap-8 sm:flex"
           >
             <li
               th:each="menuItem : ${menu.menuItems}"
-              class="cursor-pointer opacity-100 transition-all hover:opacity-100"
+              class="cursor-pointer text-sm font-medium text-gray-600 transition-all hover:text-blue-600"
             >
               <a
                 th:href="${menuItem.status.href}"
@@ -31,23 +34,17 @@
         </div>
         <div class="flex items-center">
           <ul class="flex items-center gap-4">
-            <li class="sm:hidden" x-on:click="overlayMenu = true">
-              <span
-                data-icon="tabler:menu-2"
-                class="iconify text-lg text-white"
-              ></span>
+            <li class="text-gray-900 sm:hidden" x-on:click="overlayMenu = true">
+              <span data-icon="tabler:menu-2" class="iconify text-lg"></span>
             </li>
-            <li>
+            <li class="text-gray-900">
               <span
                 data-icon="tabler:brightness-2"
-                class="iconify text-lg text-white"
+                class="iconify text-lg"
               ></span>
             </li>
-            <li>
-              <span
-                data-icon="tabler:search"
-                class="iconify text-lg text-white"
-              ></span>
+            <li class="text-gray-900">
+              <span data-icon="tabler:search" class="iconify text-lg"></span>
             </li>
           </ul>
         </div>
