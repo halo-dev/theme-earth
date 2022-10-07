@@ -14,7 +14,7 @@
     >
       <th:block th:each="post : ${postItems}">
         <th:block
-          th:replace="modules/post-card :: post-card(${post},true,true)"
+          th:replace="modules/post-card :: post-card(${post},true,true,true)"
         />
       </th:block>
     </div>

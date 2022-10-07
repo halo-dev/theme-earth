@@ -1,6 +1,6 @@
 <div
   th:fragment="featured-post-card(post)"
-  class="group grid cursor-pointer grid-cols-1 overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg hover:ring-2 sm:grid-cols-5"
+  class="group grid cursor-pointer grid-cols-1 overflow-hidden rounded-xl bg-white shadow-md transition-all duration-500 hover:shadow-lg sm:grid-cols-5"
 >
   <div
     th:if="${not #strings.isEmpty(post.spec.cover)}"

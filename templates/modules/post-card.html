@@ -1,7 +1,7 @@
 <div
-  th:fragment="post-card(post,cover,animation)"
-  class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg hover:ring-2"
-  th:classappend="${animation} ? 'hover:-translate-y-2'"
+  th:fragment="post-card(post,cover,animation,border)"
+  class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg"
+  th:classappend="${animation  ? 'hover:-translate-y-2' : ''} + ' ' + ${border ? 'hover:ring-2' : ''}"
 >
   <div
     th:if="${cover} and ${not #strings.isEmpty(post.spec.cover)}"
