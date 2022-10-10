@@ -2,26 +2,16 @@
   class="w-full cursor-pointer overflow-hidden rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md"
 >
   <h2 class="inline-flex items-center gap-2 text-base">
-    <span
-      data-icon="tabler:stairs-up"
-      class="iconify text-lg text-red-600"
-    ></span>
+    <span data-icon="tabler:stairs-up" class="iconify text-lg text-red-600"></span>
     热门文章
   </h2>
   <div>
-    <ul
-      role="list"
-      class="divide-y divide-gray-100"
-      th:with="posts = ${postFinder.list(1,10)}"
-    >
+    <ul role="list" class="divide-y divide-gray-100" th:with="posts = ${postFinder.list(1,10)}">
       <li class="py-3" th:each="post : ${posts}">
         <div class="flex items-center justify-between">
           <div class="flex flex-col gap-1">
             <h3 class="text-sm font-medium hover:text-gray-500 hover:underline">
-              <a
-                th:text="${post.spec.title}"
-                th:href="${post.status.permalink}"
-              ></a>
+              <a th:text="${post.spec.title}" th:href="${post.status.permalink}"></a>
             </h3>
             <p
               class="text-xs tabular-nums text-gray-500"

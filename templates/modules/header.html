@@ -1,20 +1,11 @@
 <header>
-  <div
-    th:fragment="header (isHome, cover, title)"
-    th:with="menu = ${menuFinder.getDefault()}"
-  >
-    <div
-      id="header-menu"
-      class="flex h-14 bg-white py-3 shadow-sm transition-all"
-    >
-      <div class="container mx-auto flex justify-between">
-        <div class="flex items-center gap-6">
-          <div class="mr-2">
-            <a href="/">
-              <img
-                src="https://halo.run/upload/2022/03/logo.svg"
-                class="h-14 w-14"
-              />
+  <div th:fragment="header (isHome, cover, title)" th:with="menu = ${menuFinder.getDefault()}">
+    <div id="header-menu" class="flex h-14 bg-white py-3 shadow-sm transition-all">
+      <div class="container mx-auto flex h-full justify-between">
+        <div class="flex h-full items-center gap-6">
+          <div class="mr-2 h-full">
+            <a href="/" class="h-full">
+              <img th:src="${site.logo}" th:alt="Logo" class="h-full w-full" />
             </a>
           </div>
           <ul
@@ -25,10 +16,7 @@
               th:each="menuItem : ${menu.menuItems}"
               class="cursor-pointer text-sm font-medium text-gray-600 transition-all hover:text-blue-600"
             >
-              <a
-                th:href="${menuItem.status.href}"
-                th:text="${menuItem.status.displayName}"
-              ></a>
+              <a th:href="${menuItem.status.href}" th:text="${menuItem.status.displayName}"></a>
             </li>
           </ul>
         </div>
@@ -38,10 +26,7 @@
               <span data-icon="tabler:menu-2" class="iconify text-lg"></span>
             </li>
             <li class="text-gray-900">
-              <span
-                data-icon="tabler:brightness-2"
-                class="iconify text-lg"
-              ></span>
+              <span data-icon="tabler:brightness-2" class="iconify text-lg"></span>
             </li>
             <li class="text-gray-900">
               <span data-icon="tabler:search" class="iconify text-lg"></span>
@@ -57,32 +42,19 @@
       th:classappend="${theme.config.layout.header_widget == 'site_title' ? 'h-96' : ''}"
     >
       <th:block th:switch="${theme.config.layout.header_widget}">
-        <th:block
-          th:case="latest_post"
-          th:with="posts = ${postFinder.list(1,1)}"
-        >
+        <th:block th:case="latest_post" th:with="posts = ${postFinder.list(1,1)}">
           <div class="container mx-auto py-6" th:if="${posts.total gt 0}">
-            <th:block
-              th:replace="modules/featured-post-card :: featured-post-card(post=${posts.items[0]})"
-            />
+            <th:block th:replace="modules/featured-post-card :: featured-post-card(post=${posts.items[0]})" />
           </div>
         </th:block>
-        <th:block
-          th:case="latest_post_grid"
-          th:with="posts = ${postFinder.list(1,5)}"
-        >
-          <div
-            class="container mx-auto grid grid-cols-1 gap-3 py-6 sm:grid-cols-5"
-            th:if="${posts.total gt 0}"
-          >
+        <th:block th:case="latest_post_grid" th:with="posts = ${postFinder.list(1,5)}">
+          <div class="container mx-auto grid grid-cols-1 gap-3 py-6 sm:grid-cols-5" th:if="${posts.total gt 0}">
             <div class="col-span-1 sm:col-span-3">
               <th:block
                 th:replace="modules/post-card :: post-card(post=${posts.items[0]},cover=true,animation=false,border=false,direction='row')"
               />
             </div>
-            <div
-              class="col-span-1 grid grid-cols-1 gap-3 sm:col-span-2 sm:grid-cols-2"
-            >
+            <div class="col-span-1 grid grid-cols-1 gap-3 sm:col-span-2 sm:grid-cols-2">
               <th:block th:each="post,postStat : ${posts.items}">
                 <th:block th:if="${postStat.index != 0}">
                   <th:block
@@ -94,14 +66,9 @@
           </div>
         </th:block>
         <th:block th:case="site_title">
-          <div
-            class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6"
-          >
+          <div class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6">
             <span class="text-5xl text-white" th:text="${site.title}"></span>
-            <span
-              class="text-sm font-light text-white opacity-50"
-              th:text="${site.subtitle}"
-            ></span>
+            <span class="text-sm font-light text-white opacity-50" th:text="${site.subtitle}"></span>
           </div>
         </th:block>
       </th:block>
@@ -111,9 +78,7 @@
       class="h-96 bg-cover bg-center bg-no-repeat"
       th:style="'background-image: url('+${cover}+')'"
     >
-      <div
-        class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6"
-      >
+      <div class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6">
         <span class="text-5xl text-white" th:text="${title}"></span>
       </div>
     </div>

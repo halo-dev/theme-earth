@@ -2,10 +2,7 @@
   th:fragment="featured-post-card(post)"
   class="group grid cursor-pointer grid-cols-1 overflow-hidden rounded-xl bg-white shadow-md transition-all duration-500 hover:shadow-lg sm:grid-cols-5"
 >
-  <div
-    th:if="${not #strings.isEmpty(post.spec.cover)}"
-    class="aspect-w-16 aspect-h-9 col-span-3"
-  >
+  <div th:if="${not #strings.isEmpty(post.spec.cover)}" class="aspect-w-16 aspect-h-9 col-span-3">
     <img
       th:src="${post.spec.cover}"
       th:alt="${post.spec.title}"
@@ -34,16 +31,11 @@
       >
       </a>
     </div>
-    <h1
-      class="cursor-pointer text-2xl font-medium transition-all hover:text-gray-500 hover:underline"
-    >
+    <h1 class="cursor-pointer text-2xl font-medium transition-all hover:text-gray-500 hover:underline">
       <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
     </h1>
     <p class="font-sm font-light" th:text="${post.status.excerpt}"></p>
-    <div
-      class="flex flex-1 items-center justify-start gap-2"
-      th:with="contributor = ${post.contributors[0]}"
-    >
+    <div class="flex flex-1 items-center justify-start gap-2" th:with="contributor = ${post.contributors[0]}">
       <img
         th:src="${contributor.avatar}"
         th:title="${contributor.displayName}"

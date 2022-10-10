@@ -22,22 +22,12 @@
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4">
       <div class="flex items-center justify-between">
-        <div
-          class="inline-flex items-center justify-start gap-2"
-          th:with="contributor = ${post.contributors[0]}"
-        >
-          <img th:src="${contributor.avatar}" class="h-10 w-10 rounded-full" />
+        <div class="inline-flex items-center justify-start gap-2" th:with="contributor = ${post.contributors[0]}">
+          <img th:src="${contributor.avatar}" class="h-10 w-10 rounded-full" th:alt="${contributor.displayName}" />
           <div class="flex flex-col gap-0.5">
-            <span
-              class="text-sm font-semibold text-gray-900"
-              th:text="${contributor.displayName}"
-            ></span>
-            <div
-              class="flex items-center gap-2 text-xs font-light text-gray-600"
-            >
-              <span
-                th:text="${'发布于 '+#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-              ></span>
+            <span class="text-sm font-semibold text-gray-900" th:text="${contributor.displayName}"></span>
+            <div class="flex items-center gap-2 text-xs font-light text-gray-600">
+              <span th:text="${'发布于 '+#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span>
               <span class="text-gray-300">/</span>
               <span th:text="${post.stats.visit}+' 阅读'"></span>
               <span class="text-gray-300">/</span>
@@ -49,25 +39,13 @@
         </div>
         <div class="inline-flex flex-row gap-1">
           <div class="cursor-pointer rounded-lg p-1 hover:bg-gray-100">
-            <span
-              data-icon="tabler:heart"
-              class="iconify text-lg text-gray-600 hover:text-red-600"
-            ></span>
+            <span data-icon="tabler:heart" class="iconify text-lg text-gray-600 hover:text-red-600"></span>
           </div>
-          <a
-            href="#comment"
-            class="cursor-pointer rounded-lg p-1 hover:bg-gray-100"
-          >
-            <span
-              data-icon="tabler:message-circle"
-              class="iconify text-lg text-gray-600 hover:text-gray-900"
-            ></span>
+          <a href="#comment" class="cursor-pointer rounded-lg p-1 hover:bg-gray-100">
+            <span data-icon="tabler:message-circle" class="iconify text-lg text-gray-600 hover:text-gray-900"></span>
           </a>
           <div class="cursor-pointer rounded-lg p-1 hover:bg-gray-100">
-            <span
-              data-icon="tabler:share"
-              class="iconify text-lg text-gray-600 hover:text-blue-600"
-            ></span>
+            <span data-icon="tabler:share" class="iconify text-lg text-gray-600 hover:text-blue-600"></span>
           </div>
         </div>
       </div>
@@ -82,18 +60,10 @@
         >
         </a>
       </div>
-      <article
-        id="content"
-        class="prose prose-base mt-4 !max-w-none"
-        th:utext="${post.content.content}"
-      ></article>
+      <article id="content" class="prose prose-base mt-4 !max-w-none" th:utext="${post.content.content}"></article>
       <hr class="my-10" />
       <h2 class="mb-2 text-base font-medium text-gray-900">评论</h2>
-      <halo:comment
-        group="content.halo.run"
-        kind="Post"
-        th:attr="name=${post.metadata.name}"
-      />
+      <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
     </div>
   </th:block>
 </html>

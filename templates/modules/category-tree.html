@@ -5,8 +5,7 @@
       th:title="${category.spec.displayName}"
       class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
     >
-      <span class="text-sm opacity-80" th:text="${category.spec.displayName}">
-      </span>
+      <span class="text-sm opacity-80" th:text="${category.spec.displayName}"> </span>
       <span
         class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
         th:text="${category.status.postCount}"
@@ -14,9 +13,7 @@
       </span>
     </a>
     <th:block th:if="${not #lists.isEmpty(category.children)}">
-      <th:block
-        th:replace="modules/category-tree :: next (categories=${category.children})"
-      ></th:block>
+      <th:block th:replace="modules/category-tree :: next (categories=${category.children})"></th:block>
     </th:block>
   </li>
 </ul>

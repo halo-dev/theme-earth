@@ -3,11 +3,7 @@
 >
   <div class="flex flex-col items-center justify-center gap-4">
     <div class="relative h-24 w-24">
-      <img
-        th:src="${site.logo}"
-        th:alt="${site.title}"
-        class="h-full w-full rounded-full"
-      />
+      <img th:src="${site.logo}" th:alt="${site.title}" class="h-full w-full rounded-full" />
       <span
         class="absolute right-0 bottom-0 flex h-7 w-7 items-center justify-center rounded-full border bg-white p-0.5"
       >
@@ -16,10 +12,7 @@
     </div>
     <div><h1 class="text-2xl font-medium" th:text="${site.title}"></h1></div>
     <div th:if="${not #strings.isEmpty(site.subtitle)}">
-      <p
-        class="text-center text-sm text-gray-700"
-        th:text="${site.subtitle}"
-      ></p>
+      <p class="text-center text-sm text-gray-700" th:text="${site.subtitle}"></p>
     </div>
     <div class="grid grid-cols-4 gap-5">
       <div class="inline-flex flex-col items-center">
@@ -40,53 +33,23 @@
       </div>
     </div>
     <div class="grid grid-cols-6 items-center gap-5">
-      <div
-        class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
-      >
-        <span
-          data-icon="simple-icons:wechat"
-          class="iconify text-[#07C160]"
-        ></span>
+      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
+        <span data-icon="simple-icons:wechat" class="iconify text-[#07C160]"></span>
       </div>
-      <div
-        class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
-      >
-        <span
-          data-icon="simple-icons:bilibili"
-          class="iconify text-[#00A1D6]"
-        ></span>
+      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
+        <span data-icon="simple-icons:bilibili" class="iconify text-[#00A1D6]"></span>
       </div>
-      <div
-        class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
-      >
-        <span
-          data-icon="simple-icons:github"
-          class="iconify text-[#181717]"
-        ></span>
+      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
+        <span data-icon="simple-icons:github" class="iconify text-[#181717]"></span>
       </div>
-      <div
-        class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
-      >
-        <span
-          data-icon="simple-icons:twitter"
-          class="iconify text-[#1DA1F2]"
-        ></span>
+      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
+        <span data-icon="simple-icons:twitter" class="iconify text-[#1DA1F2]"></span>
       </div>
-      <div
-        class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
-      >
-        <span
-          data-icon="simple-icons:telegram"
-          class="iconify text-[#26A5E4]"
-        ></span>
+      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
+        <span data-icon="simple-icons:telegram" class="iconify text-[#26A5E4]"></span>
       </div>
-      <div
-        class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100"
-      >
-        <span
-          data-icon="simple-icons:feedly"
-          class="iconify text-[#2BB24C]"
-        ></span>
+      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
+        <span data-icon="simple-icons:feedly" class="iconify text-[#2BB24C]"></span>
       </div>
     </div>
   </div>

@@ -1,7 +1,5 @@
 <aside class="col-span-1 hidden h-full flex-col gap-6 sm:flex">
-  <th:block
-    th:with="widgets = ${#strings.listSplit(theme.config.sidebar.widgets,',')} "
-  >
+  <th:block th:with="widgets = ${#strings.listSplit(theme.config.sidebar.widgets,',')} ">
     <th:block th:each="widget : ${widgets}">
       <th:block th:replace="'modules/widgets/'+${widget}" />
     </th:block>
