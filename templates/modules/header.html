@@ -14,22 +14,71 @@
           >
             <li
               th:each="menuItem : ${menu.menuItems}"
-              class="cursor-pointer text-sm font-medium text-gray-600 transition-all hover:text-blue-600"
+              class="relative cursor-pointer text-sm font-medium transition-all"
+              x-data="{
+                show: false,
+                timer: undefined,
+                open: function() {
+                  if(this.timer) {
+                    clearTimeout(this.timer);
+                  }
+                  this.show = true
+                },
+                close: function() {
+                  this.timer = setTimeout(() => this.show = false, 300);
+                }
+              }"
+              @mouseenter="open()"
+              @mouseleave="close()"
             >
-              <a th:href="${menuItem.status.href}" th:text="${menuItem.status.displayName}"></a>
+              <a
+                class="text-gray-600 hover:text-blue-600"
+                th:href="${menuItem.status.href}"
+                th:text="${menuItem.status.displayName}"
+              ></a>
+              <ul
+                th:if="${not #lists.isEmpty(menuItem.children)}"
+                @mouseenter="open()"
+                @mouseleave="close()"
+                x-show="show"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="menu-dropdown absolute left-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow"
+              >
+                <li
+                  th:each="childMenuItem : ${menuItem.children}"
+                  class="flex w-full items-center text-left text-sm hover:bg-gray-50"
+                >
+                  <a
+                    class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600"
+                    th:href="${childMenuItem.status.href}"
+                    th:text="${childMenuItem.status.displayName}"
+                  ></a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
         <div class="flex items-center">
           <ul class="flex items-center gap-4">
-            <li class="text-gray-900 sm:hidden" x-on:click="overlayMenu = true">
-              <span data-icon="tabler:menu-2" class="iconify text-lg"></span>
+            <li class="sm:hidden" x-on:click="overlayMenu = true">
+              <a href="#" class="text-gray-600 hover:text-blue-600">
+                <span data-icon="tabler:menu-2" class="iconify text-lg"> </span>
+              </a>
             </li>
-            <li class="text-gray-900">
-              <span data-icon="tabler:brightness-2" class="iconify text-lg"></span>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-blue-600">
+                <span data-icon="tabler:brightness-2" class="iconify text-lg"></span>
+              </a>
             </li>
-            <li class="text-gray-900">
-              <span data-icon="tabler:search" class="iconify text-lg"></span>
+            <li>
+              <a href="#" class="text-gray-600 hover:text-blue-600">
+                <span data-icon="tabler:search" class="iconify text-lg"></span>
+              </a>
             </li>
           </ul>
         </div>
