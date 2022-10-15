@@ -38,3 +38,7 @@ body {
 .menu-sticky .menu-dropdown li a {
   @apply text-gray-600 hover:text-blue-600;
 }
+
+.toc-list-item > .toc-list {
+  @apply my-3 ml-3 space-y-1 border-l pl-2;
+}

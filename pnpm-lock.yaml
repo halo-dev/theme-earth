@@ -18,6 +18,7 @@ specifiers:
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
   tailwindcss: ^3.1.8
+  tocbot: ^4.18.2
   typescript: ^4.6.4
   vite: ^3.1.4
   vite-plugin-purge-icons: ^0.9.1
@@ -25,6 +26,7 @@ specifiers:
 dependencies:
   '@iconify/iconify': 3.0.0
   alpinejs: 3.10.3
+  tocbot: 4.18.2
 
 devDependencies:
   '@iconify/json': 2.1.118
@@ -1715,6 +1717,10 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
+
+  /tocbot/4.18.2:
+    resolution: {integrity: sha512-bWUfEYQZ4oFgT+qZYvzlTgbsTmA645ApHbo1iRaOBUeFfy5IpctgAQQjCXbPZy+4RDZ1JJYlIBgoApZMzMaYog==}
+    dev: false
 
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}

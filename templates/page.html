@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="modules/layout :: html(header = ~{::header}, content = ~{::content}, head = null, footer = ~{::footer}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(singlePage.spec.cover)} ? '!-mt-20' : '')"
+  th:replace="modules/layout :: html(header = ~{::header}, content = ~{::content}, head = null, footer = ~{::footer}, sidebar = null, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(singlePage.spec.cover)} ? '!-mt-20' : '')"
 >
   <th:block th:fragment="header">
     <th:block

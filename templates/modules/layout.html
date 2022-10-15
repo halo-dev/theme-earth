@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (header,content,head,footer,contentClass)">
+<html lang="en" th:fragment="html (header,content,head,footer,sidebar,contentClass)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,7 +24,12 @@
       <div class="col-span-4 sm:col-span-3">
         <th:block th:replace="${content}" />
       </div>
-      <th:block th:replace="modules/sidebar" />
+      <th:block th:if="${sidebar != null}">
+        <th:block th:replace="${sidebar}" />
+      </th:block>
+      <th:block th:if="${sidebar == null}">
+        <th:block th:replace="modules/sidebar :: sidebar(prepend = null)" />
+      </th:block>
     </section>
     <th:block th:replace="modules/footer" />
     <th:block th:if="${footer != null}">

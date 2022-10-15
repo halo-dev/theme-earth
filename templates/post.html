@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="modules/layout :: html(header = ~{::header}, content = ~{::content}, head = null, footer = ~{::footer}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')"
+  th:replace="modules/layout :: html(header = ~{::header}, content = ~{::content}, head = null, footer = ~{::footer}, sidebar = ~{::sidebar}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')"
 >
   <th:block th:fragment="header">
     <th:block
@@ -18,6 +18,25 @@
       <th:block th:include="modules/libs/lightgallery :: import"></th:block>
       <th:block th:include="modules/libs/lightgallery :: script"></th:block>
     </th:block>
+
+    <script>
+      console.log(main.generateToc());
+      main.generateToc();
+    </script>
+  </th:block>
+  <th:block th:fragment="sidebar_prepend">
+    <div
+      class="w-full cursor-pointer overflow-hidden rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md"
+    >
+      <h2 class="inline-flex items-center gap-2 text-base">
+        <span data-icon="tabler:list" class="iconify text-lg"></span>
+        目录
+      </h2>
+      <div class="toc mt-2"></div>
+    </div>
+  </th:block>
+  <th:block th:fragment="sidebar">
+    <th:block th:replace="modules/sidebar :: sidebar(prepend = ~{::sidebar_prepend})"></th:block>
   </th:block>
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4">
