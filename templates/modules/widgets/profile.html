@@ -1,5 +1,6 @@
 <div
   class="w-full cursor-pointer overflow-hidden rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md"
+  th:with="stats = ${siteStatsFinder.getStats()}"
 >
   <div class="flex flex-col items-center justify-center gap-4">
     <div class="relative h-24 w-24">
@@ -16,19 +17,19 @@
     </div>
     <div class="grid grid-cols-4 gap-5">
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900">97</span
-        ><span class="text-xs font-light text-gray-600">文章数</span>
+        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.post}"></span>
+        <span class="text-xs font-light text-gray-600">文章数</span>
       </div>
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900">18</span
-        ><span class="text-xs font-light text-gray-600">分类数</span>
+        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.category}"></span>
+        <span class="text-xs font-light text-gray-600">分类数</span>
       </div>
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900">117</span
-        ><span class="text-xs font-light text-gray-600">评论数</span>
+        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.comment}"></span>
+        <span class="text-xs font-light text-gray-600">评论数</span>
       </div>
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900">92392</span
+        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.visit}"></span
         ><span class="text-xs font-light text-gray-600">访问量</span>
       </div>
     </div>
