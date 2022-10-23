@@ -9,16 +9,6 @@
     />
   </th:block>
   <th:block th:fragment="footer">
-    <th:block th:if="${theme.config.content.enable_code_highlight}">
-      <th:block th:include="modules/libs/code-highlight :: import"></th:block>
-      <th:block th:include="modules/libs/code-highlight :: script"></th:block>
-    </th:block>
-
-    <th:block th:if="${theme.config.content.enable_lightgallery}">
-      <th:block th:include="modules/libs/lightgallery :: import"></th:block>
-      <th:block th:include="modules/libs/lightgallery :: script"></th:block>
-    </th:block>
-
     <script>
       console.log(main.generateToc());
       main.generateToc();

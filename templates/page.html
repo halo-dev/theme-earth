@@ -8,17 +8,6 @@
       th:replace="modules/header :: header(isHome = false, cover = ${singlePage.spec.cover}, title = ${singlePage.spec.title})"
     />
   </th:block>
-  <th:block th:fragment="footer">
-    <th:block th:if="${theme.config.content.enable_code_highlight}">
-      <th:block th:include="modules/libs/code-highlight :: import"></th:block>
-      <th:block th:include="modules/libs/code-highlight :: script"></th:block>
-    </th:block>
-
-    <th:block th:if="${theme.config.content.enable_lightgallery}">
-      <th:block th:include="modules/libs/lightgallery :: import"></th:block>
-      <th:block th:include="modules/libs/lightgallery :: script"></th:block>
-    </th:block>
-  </th:block>
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4">
       <div class="flex items-center justify-between">
