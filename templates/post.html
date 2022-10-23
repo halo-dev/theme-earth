@@ -69,7 +69,7 @@
         >
         </a>
       </div>
-      <article id="content" class="prose prose-base mt-4 !max-w-none" th:utext="${post.content.content}"></article>
+      <article id="content" class="prose prose-base mt-4 !max-w-none prose-pre:p-0" th:utext="${post.content.content}"></article>
       <hr class="my-10" />
       <h2 class="mb-2 text-base font-medium text-gray-900">评论</h2>
       <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
