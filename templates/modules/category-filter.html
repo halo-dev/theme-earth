@@ -11,7 +11,7 @@
   <th:block th:with="categories = ${categoryFinder.listAll()}">
     <a
       th:each="categoryItem : ${categories}"
-      th:href="${categoryItem.status.permalink}"
+      th:href="@{${categoryItem.status.permalink}}"
       class="flex cursor-pointer items-center rounded px-2 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
       th:classappend="${category} and ${category.metadata.name == categoryItem.metadata.name} ? '!text-gray-900 !bg-gray-100'"
     >

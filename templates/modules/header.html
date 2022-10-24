@@ -33,7 +33,7 @@
             >
               <a
                 class="text-gray-600 hover:text-blue-600"
-                th:href="${menuItem.status.href}"
+                th:href="@{${menuItem.status.href}}"
                 th:text="${menuItem.status.displayName}"
               ></a>
               <ul
@@ -55,7 +55,7 @@
                 >
                   <a
                     class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600"
-                    th:href="${childMenuItem.status.href}"
+                    th:href="@{${childMenuItem.status.href}}"
                     th:text="${childMenuItem.status.displayName}"
                   ></a>
                 </li>

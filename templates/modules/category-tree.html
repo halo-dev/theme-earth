@@ -1,7 +1,7 @@
 <ul th:fragment="next (categories)" class="my-3 ml-3 space-y-1 border-l pl-2">
   <li th:fragment="single (categories)" th:each="category : ${categories}">
     <a
-      th:href="${category.status.permalink}"
+      th:href="@{${category.status.permalink}}"
       th:title="${category.spec.displayName}"
       class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
     >

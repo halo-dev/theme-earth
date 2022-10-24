@@ -28,7 +28,7 @@
 
     <div class="mt-6 flex items-center justify-between" th:if="${posts.hasPrevious() || posts.hasNext()}">
       <a
-        th:href="${posts.prevUrl}"
+        th:href="@{${posts.prevUrl}}"
         class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
       >
         <span data-icon="tabler:arrow-left" class="iconify text-lg transition-all group-hover:-translate-x-1"></span>
@@ -36,7 +36,7 @@
       </a>
       <span class="text-sm text-gray-900" th:text="${posts.page} +' / '+ ${posts.total}"></span>
       <a
-        th:href="${posts.nextUrl}"
+        th:href="@{${posts.nextUrl}}"
         class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none"
       >
         <span>下一页</span>

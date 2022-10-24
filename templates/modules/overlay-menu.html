@@ -96,7 +96,7 @@
                     >
                       <li th:each="menuItem : ${menu.menuItems}" class="w-full">
                         <a
-                          th:href="${menuItem.status.href}"
+                          th:href="@{${menuItem.status.href}}"
                           th:text="${menuItem.status.displayName}"
                           class="flex h-full w-full rounded px-3 py-2 text-sm text-gray-900 hover:bg-gray-100"
                         ></a>
