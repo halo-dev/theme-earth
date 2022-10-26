@@ -1,5 +1,5 @@
 {
-  "name": "@halo-dev/theme-default",
+  "name": "@halo-dev/theme-earth",
   "private": true,
   "version": "1.0.0",
   "description": "Default theme for Halo 2.0",
@@ -14,9 +14,9 @@
     "halo-theme",
     "halo-template"
   ],
-  "homepage": "https://github.com/halo-sigs/theme-default#readme",
+  "homepage": "https://github.com/halo-sigs/theme-earth#readme",
   "bugs": {
-    "url": "https://github.com/halo-sigs/theme-default/issues"
+    "url": "https://github.com/halo-sigs/theme-earth/issues"
   },
   "author": {
     "name": "Halo OSS Organization",
@@ -32,7 +32,7 @@
   ],
   "license": "GPL-3.0",
   "repository": {
-    "url": "https://github.com/halo-sigs/theme-default",
+    "url": "https://github.com/halo-sigs/theme-earth",
     "type": "git"
   },
   "devDependencies": {
