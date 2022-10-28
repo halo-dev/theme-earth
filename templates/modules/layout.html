@@ -17,7 +17,7 @@
       <th:block th:replace="${header}" />
     </th:block>
     <th:block th:if="${header == null}">
-      <th:block th:replace="modules/header :: header(isHome = true)" />
+      <th:block th:replace="~{modules/header :: header(isHome = true)}" />
     </th:block>
     <section class="container mx-auto"></section>
     <section class="container mx-auto mt-6 grid grid-cols-4 gap-6" th:classappend="${contentClass}">
@@ -28,13 +28,13 @@
         <th:block th:replace="${sidebar}" />
       </th:block>
       <th:block th:if="${sidebar == null}">
-        <th:block th:replace="modules/sidebar :: sidebar(prepend = null)" />
+        <th:block th:replace="~{modules/sidebar :: sidebar(prepend = null)}" />
       </th:block>
     </section>
-    <th:block th:replace="modules/footer" />
+    <th:block th:replace="~{modules/footer}" />
     <th:block th:if="${footer != null}">
       <th:block th:replace="${footer}" />
     </th:block>
-    <th:block th:replace="modules/overlay-menu" />
+    <th:block th:replace="~{modules/overlay-menu}" />
   </body>
 </html>

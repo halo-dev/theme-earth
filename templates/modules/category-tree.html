@@ -13,7 +13,7 @@
       </span>
     </a>
     <th:block th:if="${not #lists.isEmpty(category.children)}">
-      <th:block th:replace="modules/category-tree :: next (categories=${category.children})"></th:block>
+      <th:block th:replace="~{modules/category-tree :: next (categories=${category.children})}"></th:block>
     </th:block>
   </li>
 </ul>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="modules/layout :: html(header = ~{::header}, content = ~{::content}, head = null, footer = ~{::footer}, sidebar = ~{::sidebar}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')"
+  th:replace="~{modules/layout :: html(header = ~{::header}, content = ~{::content}, head = null, footer = ~{::footer}, sidebar = ~{::sidebar}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')}"
 >
   <th:block th:fragment="header">
     <th:block
-      th:replace="modules/header :: header(isHome = false, cover = ${post.spec.cover}, title = ${post.spec.title})"
+      th:replace="~{modules/header :: header(isHome = false, cover = ${post.spec.cover}, title = ${post.spec.title})}"
     />
   </th:block>
   <th:block th:fragment="footer">
@@ -26,7 +26,7 @@
     </div>
   </th:block>
   <th:block th:fragment="sidebar">
-    <th:block th:replace="modules/sidebar :: sidebar(prepend = ~{::sidebar_prepend})"></th:block>
+    <th:block th:replace="~{modules/sidebar :: sidebar(prepend = ~{::sidebar_prepend})}"></th:block>
   </th:block>
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4">
