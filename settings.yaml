@@ -22,7 +22,7 @@ spec:
         - $formkit: select
           name: header_widget
           label: 首页顶部模块
-          value: none
+          value: latest_post
           options:
             - label: 无
               value: none
@@ -36,6 +36,8 @@ spec:
               value: site_title
         - $formkit: select
           name: header_background_type
+          id: header_background_type
+          key: header_background_type
           label: 首页顶部背景
           value: manual
           options:
@@ -44,10 +46,16 @@ spec:
             - label: 图片
               value: image
         - $formkit: text
+          if: "$get(header_background_type).value === manual"
           name: header_background
+          id: header_background
+          key: header_background
           label: 首页顶部背景
         - $formkit: text
+          if: "$get(header_background_type).value === image"
           name: header_background_image
+          id: header_background_image
+          key: header_background_image
           label: 首页顶部背景图片
         - $formkit: radio
           name: content_header
@@ -67,7 +75,14 @@ spec:
           label: 小部件
           value: "profile,popular-posts,latest-comments,categories,tags"
           help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, latest-comments（最新评论）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
-    
+
+    - group: footer
+      label: 页脚
+      formSchema:
+        - $formkit: menuRadio
+          name: menu
+          label: 页脚菜单
+
     - group: beian
       label: 备案设置
       formSchema:
@@ -78,4 +93,3 @@ spec:
           name: icp_link
           label: ICP备案跳转链接
           value: https://beian.miit.gov.cn/
-        

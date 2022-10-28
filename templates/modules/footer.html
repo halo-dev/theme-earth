@@ -4,24 +4,31 @@
       <img th:src="${site.logo}" class="mr-3 h-8 w-8" th:alt="${site.title}" />
       <span class="self-center whitespace-nowrap text-2xl font-semibold" th:text="${site.title}"> </span>
     </a>
-    <ul class="mb-6 flex flex-wrap items-center justify-center text-sm text-gray-500 sm:mb-0 sm:justify-start">
-      <li>
-        <a href="#" class="mr-4 hover:underline md:mr-6">首页</a>
-      </li>
-      <li>
-        <a href="#" class="mr-4 hover:underline md:mr-6">关于</a>
-      </li>
-      <li>
-        <a href="#" class="mr-4 hover:underline md:mr-6">订阅</a>
-      </li>
-      <li>
-        <a href="#" class="hover:underline">联系</a>
-      </li>
-    </ul>
+    <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}">
+      <ul
+        th:with="menu = ${menuFinder.getByName(theme.config.footer.menu)}"
+        class="mb-6 flex flex-wrap items-center justify-center text-sm text-gray-500 sm:mb-0 sm:justify-start"
+      >
+        <li th:each="menuItem : ${menu.menuItems}">
+          <a
+            th:href="@{${menuItem.status.href}}"
+            class="mr-4 hover:underline md:mr-6"
+            th:text="${menuItem.status.displayName}"
+            >首页</a
+          >
+        </li>
+      </ul>
+    </th:block>
   </div>
   <hr class="my-6 border-gray-100 sm:mx-auto lg:my-8" />
   <span class="container mx-auto block text-center text-sm text-gray-500">
-    <a href="https://beian.miit.gov.cn/" class="hover:underline" target="_blank" th:href="${theme.config.beian.icp_link}" th:text="${theme.config.beian.icp_text}"></a>
+    <a
+      href="https://beian.miit.gov.cn/"
+      class="hover:underline"
+      target="_blank"
+      th:href="${theme.config.beian.icp_link}"
+      th:text="${theme.config.beian.icp_text}"
+    ></a>
   </span>
   <span class="container mx-auto block text-center text-sm text-gray-500">
     © 2022
