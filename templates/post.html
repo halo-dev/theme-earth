@@ -74,6 +74,41 @@
         class="prose prose-base mt-4 !max-w-none prose-pre:p-0"
         th:utext="${post.content.content}"
       ></article>
+      <div
+        class="mt-10 flex flex-col sm:flex-row sm:justify-between"
+        th:with="postCursor = ${postFinder.cursor(post.metadata.name)}"
+      >
+        <div class="flex justify-start">
+          <a
+            th:if="${postCursor.hasPrevious()}"
+            role="navigation"
+            class="group inline-flex items-center gap-2 truncate text-sm text-gray-600 hover:text-gray-900"
+            th:href="@{${postCursor.previous.status.permalink}}"
+            th:title="${postCursor.previous.spec.title}"
+          >
+            <span
+              data-icon="tabler:chevron-left"
+              class="iconify translate-x-1 text-lg transition-all group-hover:-translate-x-0"
+            ></span>
+            <span th:text="${postCursor.previous.spec.title}"></span>
+          </a>
+        </div>
+        <div class="flex justify-end">
+          <a
+            th:if="${postCursor.hasNext()}"
+            role="navigation"
+            class="group inline-flex items-center gap-2 truncate text-sm text-gray-600 hover:text-gray-900"
+            th:href="@{${postCursor.next.status.permalink}}"
+            th:title="${postCursor.next.spec.title}"
+          >
+            <span th:text="${postCursor.next.spec.title}"></span>
+            <span
+              data-icon="tabler:chevron-right"
+              class="iconify -translate-x-1 text-lg transition-all group-hover:translate-x-0"
+            ></span>
+          </a>
+        </div>
+      </div>
       <hr class="my-10" />
       <h2 class="mb-2 text-base font-medium text-gray-900">评论</h2>
       <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
