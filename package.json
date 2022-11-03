@@ -36,28 +36,28 @@
     "type": "git"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.118",
+    "@iconify/json": "^2.1.132",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
-    "@types/alpinejs": "^3.7.0",
-    "@types/node": "16",
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
-    "autoprefixer": "^10.4.12",
-    "eslint": "^8.24.0",
+    "@types/alpinejs": "^3.7.1",
+    "@types/node": "16.18.3",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "postcss": "^8.4.17",
+    "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "tailwindcss": "^3.1.8",
-    "typescript": "^4.6.4",
-    "vite": "^3.1.4",
+    "tailwindcss": "^3.2.1",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.2",
     "vite-plugin-purge-icons": "^0.9.1"
   },
   "dependencies": {
     "@iconify/iconify": "^3.0.0",
-    "alpinejs": "^3.10.3",
+    "alpinejs": "^3.10.5",
     "tocbot": "^4.18.2"
   }
 }
