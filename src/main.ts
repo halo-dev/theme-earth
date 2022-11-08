@@ -34,3 +34,11 @@ export function generateToc() {
     scrollSmoothOffset: -100,
   });
 }
+
+// 此主题的搜索依赖 https://github.com/halo-sigs/plugin-search-widget 插件，在 Halo 支持主题依赖插件之前，使用 alert 以提示使用者。
+export function openSearch() {
+  if(!window.SearchWidget) {
+    alert("未安装或启用搜索插件，无法使用搜索功能。https://github.com/halo-sigs/plugin-search-widget");
+  }
+  window.SearchWidget.open()
+}
