@@ -94,7 +94,7 @@
               data-icon="tabler:chevron-left"
               class="iconify translate-x-1 text-lg transition-all group-hover:-translate-x-0"
             ></span>
-            <span th:text="${postCursor.previous.spec.title}"></span>
+            <span th:text="${#strings.abbreviate(postCursor.previous.spec.title,20)}"></span>
           </a>
         </div>
         <div class="flex justify-end">
@@ -105,7 +105,7 @@
             th:href="@{${postCursor.next.status.permalink}}"
             th:title="${postCursor.next.spec.title}"
           >
-            <span th:text="${postCursor.next.spec.title}"></span>
+            <span th:text="${#strings.abbreviate(postCursor.next.spec.title,20)}"></span>
             <span
               data-icon="tabler:chevron-right"
               class="iconify -translate-x-1 text-lg transition-all group-hover:translate-x-0"
