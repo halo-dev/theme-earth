@@ -86,6 +86,7 @@ spec:
           id: style
           key: style
           label: 页脚风格
+          value: style_1
           options:
             - label: 风格一
               value: style_1
