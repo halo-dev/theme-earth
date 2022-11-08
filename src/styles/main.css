@@ -39,6 +39,10 @@ body {
   @apply text-gray-600 hover:text-blue-600;
 }
 
+.menu-sticky #site-title {
+  @apply text-white;
+}
+
 .toc-list-item > .toc-list {
   @apply my-3 ml-3 space-y-1 border-l pl-2;
 }

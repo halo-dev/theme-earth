@@ -43,11 +43,17 @@
     <p class="font-sm font-light" th:text="${post.status.excerpt}"></p>
     <div class="flex flex-1 items-center justify-start gap-2" th:with="contributor = ${post.contributors[0]}">
       <img
+        th:if="${not #strings.isEmpty(contributor.avatar)}"
         th:src="${contributor.avatar}"
         th:title="${contributor.displayName}"
         th:alt="${contributor.displayName}"
         class="h-8 w-8 rounded-full border drop-shadow-sm"
       />
+      <span
+        class="text-sm font-medium text-gray-900"
+        th:if="${#strings.isEmpty(contributor.avatar)}"
+        th:text="${contributor.displayName}"
+      ></span>
       <span
         class="text-sm tabular-nums text-gray-600"
         th:text="${'发布于 '+#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
