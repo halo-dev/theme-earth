@@ -54,7 +54,7 @@
       th:text="${post.status.excerpt}"
       th:classappend="${list_layout == 'grid_3' ? ' sm:line-clamp-8' : ''}"
     ></p>
-    <div class="flex flex-1 items-center justify-start gap-2" th:with="contributor = ${post.contributors[0]}">
+    <div class="flex flex-1 items-center justify-start gap-2 mt-4" th:with="contributor = ${post.contributors[0]}">
       <img
         th:if="${not #strings.isEmpty(contributor.avatar)}"
         th:src="${contributor.avatar}"

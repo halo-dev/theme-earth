@@ -37,7 +37,7 @@
       <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
     </h1>
     <p class="font-sm font-light line-clamp-6" th:text="${post.status.excerpt}"></p>
-    <div class="flex flex-1 items-center justify-start gap-2" th:with="contributor = ${post.contributors[0]}">
+    <div class="flex flex-1 items-center justify-start gap-2 mt-4" th:with="contributor = ${post.contributors[0]}">
       <img
         th:if="${not #strings.isEmpty(contributor.avatar)}"
         th:src="${contributor.avatar}"
