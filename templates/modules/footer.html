@@ -1,7 +1,12 @@
-<footer class="mt-10 bg-white py-8">
+<footer th:if="${theme.config.footer.style == 'style_1'}" class="mt-10 bg-white py-8">
   <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
     <a href="/" class="mb-4 flex items-center justify-center sm:mb-0 sm:justify-start">
-      <img th:src="${site.logo}" class="mr-3 h-8 w-8" th:alt="${site.title}" />
+      <img
+        th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
+        th:src="${theme.config.footer.logo ?: site.title}"
+        class="mr-3 h-8 w-8"
+        th:alt="${site.title}"
+      />
       <span class="self-center whitespace-nowrap text-2xl font-semibold" th:text="${site.title}"> </span>
     </a>
     <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}">
@@ -12,10 +17,9 @@
         <li th:each="menuItem : ${menu.menuItems}">
           <a
             th:href="@{${menuItem.status.href}}"
-            class="mr-4 hover:underline md:mr-6"
+            class="mr-4 transition-all hover:text-gray-900 hover:underline md:mr-6"
             th:text="${menuItem.status.displayName}"
-            >首页</a
-          >
+          ></a>
         </li>
       </ul>
     </th:block>
@@ -31,8 +35,57 @@
     ></a>
   </span>
   <span class="container mx-auto block text-center text-sm text-gray-500">
-    © 2022
+    © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
     <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
     <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
   </span>
+</footer>
+
+<footer th:if="${theme.config.footer.style == 'style_2'}" class="mt-10 bg-white py-8">
+  <div class="container mx-auto md:flex md:justify-between md:gap-10">
+    <div class="mb-6 max-w-full md:mb-0 md:max-w-md">
+      <a href="/" class="mb-6 flex items-center">
+        <img
+          th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
+          th:src="${theme.config.footer.logo ?: site.title}"
+          class="mr-3 h-8"
+          th:alt="${site.title}"
+        />
+        <span class="self-center whitespace-nowrap text-2xl font-semibold" th:text="${site.title}"></span>
+      </a>
+      <span
+        th:if="${not #strings.isEmpty(theme.config.footer.slogan)}"
+        class="text-sm font-light text-gray-600"
+        th:text="${theme.config.footer.slogan}"
+      >
+      </span>
+    </div>
+    <div
+      th:if="${not #lists.isEmpty(theme.config.footer.menus)}"
+      class="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12"
+    >
+      <th:block th:each="menuName : ${theme.config.footer.menus}">
+        <div th:with="menu = ${menuFinder.getByName(menuName)}">
+          <h2 class="mb-6 text-sm font-semibold text-gray-900" th:text="${menu.spec.displayName}"></h2>
+          <ul th:with="menuItems = ${menu.menuItems}" class="text-sm text-gray-500">
+            <li th:each="menuItem : ${menuItems}" class="mb-4">
+              <a
+                th:href="@{${menuItem.status.href}}"
+                class="transition-all hover:text-gray-900 hover:underline"
+                th:text="${menuItem.spec.displayName}"
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </th:block>
+    </div>
+  </div>
+  <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+  <div class="container mx-auto sm:flex sm:items-center">
+    <span class="text-sm text-gray-500 sm:text-center">
+      © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+      <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
+      <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
+    </span>
+  </div>
 </footer>

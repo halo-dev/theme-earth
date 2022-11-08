@@ -81,9 +81,48 @@ spec:
     - group: footer
       label: 页脚
       formSchema:
+        - $formkit: select
+          name: style
+          id: style
+          key: style
+          label: 页脚风格
+          options:
+            - label: 风格一
+              value: style_1
+            - label: 风格二
+              value: style_2
+
+        - $formkit: attachment
+          name: logo
+          label: Logo
+          help: 如果不设置，将使用站点设置的 Logo
+
+        - $formkit: text
+          name: title
+          label: 标题
+          help: 如果不设置，将使用站点设置的标题
+
+        - $formkit: textarea
+          rows: 3
+          name: slogan
+          id: slogan
+          key: slogan
+          if: "$get(style).value === style_2"
+          label: 标语
+
         - $formkit: menuRadio
+          if: "$get(style).value === style_1"
           name: menu
-          label: 页脚菜单
+          id: menu
+          key: menu
+          label: 右侧菜单
+
+        - $formkit: menuCheckbox
+          if: "$get(style).value === style_2"
+          name: menus
+          id: menus
+          key: menus
+          label: 菜单组
 
     - group: beian
       label: 备案设置
