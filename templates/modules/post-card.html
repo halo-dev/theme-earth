@@ -8,12 +8,14 @@
     class="aspect-w-16 aspect-h-9"
     th:classappend="${direction == 'column' ? 'col-span-2' : ''}"
   >
-    <img
-      th:src="${post.spec.cover}"
-      th:alt="${post.spec.title}"
-      class="h-full w-full object-cover transition-all duration-500"
-      th:classappend="${animation} ? 'group-hover:scale-105'"
-    />
+    <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
+      <img
+        th:src="${post.spec.cover}"
+        th:alt="${post.spec.title}"
+        class="h-full w-full object-cover transition-all duration-500"
+        th:classappend="${animation} ? 'group-hover:scale-105'"
+      />
+    </a>
   </div>
   <div
     class="relative flex flex-col gap-2 p-4"
