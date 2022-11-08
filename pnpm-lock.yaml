@@ -4,6 +4,7 @@ specifiers:
   '@iconify/iconify': ^3.0.0
   '@iconify/json': ^2.1.132
   '@tailwindcss/aspect-ratio': ^0.4.2
+  '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.7
   '@types/alpinejs': ^3.7.1
   '@types/node': 16.18.3
@@ -32,6 +33,7 @@ dependencies:
 devDependencies:
   '@iconify/json': 2.1.132
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.1
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.1
   '@tailwindcss/typography': 0.5.7_tailwindcss@3.2.1
   '@types/alpinejs': 3.7.1
   '@types/node': 16.18.3
@@ -350,6 +352,14 @@ packages:
 
   /@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.2.1:
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.2.1_postcss@8.4.18
+    dev: true
+
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.1:
+    resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:

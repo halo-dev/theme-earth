@@ -25,7 +25,8 @@ export function generateToc() {
     contentSelector: "#content",
     headingSelector: "h1, h2, h3, h4",
     extraListClasses: "space-y-1",
-    extraLinkClasses: 'group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100 text-sm opacity-80',
+    extraLinkClasses:
+      "group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100 text-sm opacity-80",
     activeLinkClass: "is-active-link bg-gray-100",
     collapseDepth: 6,
     headingsOffset: 100,

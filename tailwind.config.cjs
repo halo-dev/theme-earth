@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./templates/**/*.html","./src/main.ts"],
   theme: {
-    extend: {},
+    extend: {
+      lineClamp: {
+        7: '7',
+        8: '8',
+      }
+    },
     container: {
       padding: {
         DEFAULT: "1rem",
@@ -16,5 +21,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
+    require('@tailwindcss/line-clamp'),
   ],
 }

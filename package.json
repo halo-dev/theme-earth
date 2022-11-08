@@ -39,6 +39,7 @@
   "devDependencies": {
     "@iconify/json": "^2.1.132",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
     "@types/alpinejs": "^3.7.1",
     "@types/node": "16.18.3",
