@@ -1,5 +1,5 @@
 <header>
-  <div th:fragment="header (isHome, cover, title)" th:with="menu = ${menuFinder.getDefault()}">
+  <div th:fragment="header (isHome, cover, title)" th:with="menu = ${menuFinder.getPrimary()}">
     <div id="header-menu" class="flex h-14 bg-white py-3 shadow-sm transition-all">
       <div class="container mx-auto flex h-full justify-between">
         <div class="flex h-full items-center gap-6">

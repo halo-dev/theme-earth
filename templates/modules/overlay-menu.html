@@ -89,7 +89,7 @@
                       <span data-icon="simple-icons:feedly" class="iconify text-[#2BB24C]"></span>
                     </div>
                   </div>
-                  <div class="w-full" th:with="menu = ${menuFinder.getDefault()}">
+                  <div class="w-full" th:with="menu = ${menuFinder.getPrimary()}">
                     <ul
                       th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
                       class="flex w-full flex-col gap-1"
