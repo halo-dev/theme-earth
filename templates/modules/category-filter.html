@@ -1,8 +1,8 @@
 <div id="filters" class="flex gap-x-2 overflow-x-auto overflow-y-hidden scroll-smooth">
   <a
     href="/"
-    class="flex cursor-pointer items-center rounded px-2 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
-    th:classappend="${category == null} ? '!text-gray-900 !bg-gray-100'"
+    class="flex cursor-pointer items-center rounded px-2 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
+    th:classappend="${category == null} ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
   >
     <div class="flex flex-1 items-center truncate">
       <span class="truncate text-base"> 全部 </span>
@@ -12,8 +12,8 @@
     <a
       th:each="categoryItem : ${categories}"
       th:href="@{${categoryItem.status.permalink}}"
-      class="flex cursor-pointer items-center rounded px-2 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm"
-      th:classappend="${category} and ${category.metadata.name == categoryItem.metadata.name} ? '!text-gray-900 !bg-gray-100'"
+      class="flex cursor-pointer items-center rounded px-2 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
+      th:classappend="${category} and ${category.metadata.name == categoryItem.metadata.name} ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
     >
       <div class="flex flex-1 items-center truncate">
         <span class="truncate text-base" th:text="${categoryItem.spec.displayName}"> </span>

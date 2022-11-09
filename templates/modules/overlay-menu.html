@@ -24,12 +24,12 @@
           x-transition:leave-start="translate-x-0"
           x-transition:leave-end="-translate-x-full"
         >
-          <div class="flex h-full flex-col overflow-y-auto bg-white py-6 shadow-xl">
+          <div class="flex h-full flex-col overflow-y-auto bg-white py-6 shadow-xl dark:bg-slate-800">
             <div class="flex items-center justify-end px-4 sm:px-6">
               <button
                 x-on:click="overlayMenu = false"
                 type="button"
-                class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
+                class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none dark:bg-slate-700 dark:text-slate-300"
               >
                 <span data-icon="tabler:x" class="iconify text-lg"></span>
               </button>
@@ -46,27 +46,40 @@
                     </span>
                   </div>
                   <div>
-                    <h1 class="text-2xl font-medium" th:text="${site.title}"></h1>
+                    <h1 class="text-2xl font-medium dark:text-slate-50" th:text="${site.title}"></h1>
                   </div>
                   <div th:if="${not #strings.isEmpty(site.subtitle)}">
                     <p class="text-center text-sm text-gray-700" th:text="${site.subtitle}"></p>
                   </div>
                   <div class="grid grid-cols-4 gap-5">
                     <div class="inline-flex flex-col items-center">
-                      <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.post}"></span>
-                      <span class="text-xs font-light text-gray-600">文章数</span>
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
+                        th:text="${stats.post}"
+                      ></span>
+                      <span class="text-xs font-light text-gray-600 dark:text-slate-300">文章数</span>
                     </div>
                     <div class="inline-flex flex-col items-center">
-                      <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.category}"></span>
-                      <span class="text-xs font-light text-gray-600">分类数</span>
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
+                        th:text="${stats.category}"
+                      ></span>
+                      <span class="text-xs font-light text-gray-600 dark:text-slate-300">分类数</span>
                     </div>
                     <div class="inline-flex flex-col items-center">
-                      <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.comment}"></span>
-                      <span class="text-xs font-light text-gray-600">评论数</span>
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
+                        th:text="${stats.comment}"
+                      ></span>
+                      <span class="text-xs font-light text-gray-600 dark:text-slate-300">评论数</span>
                     </div>
                     <div class="inline-flex flex-col items-center">
-                      <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.visit}"> </span>
-                      <span class="text-xs font-light text-gray-600">访问量</span>
+                      <span
+                        class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
+                        th:text="${stats.visit}"
+                      >
+                      </span>
+                      <span class="text-xs font-light text-gray-600 dark:text-slate-300">访问量</span>
                     </div>
                   </div>
                   <div class="grid grid-cols-6 items-center gap-5">
@@ -98,7 +111,7 @@
                         <a
                           th:href="@{${menuItem.status.href}}"
                           th:text="${menuItem.status.displayName}"
-                          class="flex h-full w-full rounded px-3 py-2 text-sm text-gray-900 hover:bg-gray-100"
+                          class="flex h-full w-full rounded px-3 py-2 text-sm text-gray-900 hover:bg-gray-100 dark:text-slate-50 dark:hover:bg-slate-700"
                         ></a>
                       </li>
                     </ul>

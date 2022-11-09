@@ -4,7 +4,7 @@
   th:replace="~{modules/layout :: html(header = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
 >
   <th:block th:fragment="content">
-    <div class="flex text-gray-900">
+    <div class="flex text-gray-900 dark:text-slate-50">
       标签<span class="font-medium">「<th:block th:text="${tag.spec.displayName}" />」</span>下的文章：
     </div>
 
@@ -23,7 +23,7 @@
     </div>
 
     <div th:if="${posts.total == 0}" class="mt-6 flex items-center justify-center">
-      <span class="text-sm font-light text-gray-600">此标签下没有文章</span>
+      <span class="text-sm font-light text-gray-600 dark:text-slate-200">此标签下没有文章</span>
     </div>
 
     <div class="mt-6 flex items-center justify-between" th:if="${posts.hasPrevious() || posts.hasNext()}">

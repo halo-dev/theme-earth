@@ -1,5 +1,5 @@
 <div
-  class="w-full cursor-pointer overflow-hidden rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md"
+  class="w-full cursor-pointer overflow-hidden rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md dark:bg-slate-800"
   th:with="stats = ${siteStatsFinder.getStats()}"
 >
   <div class="flex flex-col items-center justify-center gap-4">
@@ -11,26 +11,32 @@
         🌚
       </span>
     </div>
-    <div><h1 class="text-2xl font-medium" th:text="${site.title}"></h1></div>
+    <div><h1 class="text-2xl font-medium dark:text-slate-50" th:text="${site.title}"></h1></div>
     <div th:if="${not #strings.isEmpty(site.subtitle)}">
-      <p class="text-center text-sm text-gray-700" th:text="${site.subtitle}"></p>
+      <p class="text-center text-sm text-gray-700 dark:text-slate-300" th:text="${site.subtitle}"></p>
     </div>
     <div class="grid grid-cols-4 gap-5">
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.post}"></span>
-        <span class="text-xs font-light text-gray-600">文章数</span>
+        <span class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100" th:text="${stats.post}"></span>
+        <span class="text-xs font-light text-gray-600 dark:text-slate-300">文章数</span>
       </div>
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.category}"></span>
-        <span class="text-xs font-light text-gray-600">分类数</span>
+        <span
+          class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
+          th:text="${stats.category}"
+        ></span>
+        <span class="text-xs font-light text-gray-600 dark:text-slate-300">分类数</span>
       </div>
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.comment}"></span>
-        <span class="text-xs font-light text-gray-600">评论数</span>
+        <span
+          class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
+          th:text="${stats.comment}"
+        ></span>
+        <span class="text-xs font-light text-gray-600 dark:text-slate-300">评论数</span>
       </div>
       <div class="inline-flex flex-col items-center">
-        <span class="text-xl font-medium tabular-nums text-gray-900" th:text="${stats.visit}"></span
-        ><span class="text-xs font-light text-gray-600">访问量</span>
+        <span class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100" th:text="${stats.visit}"></span
+        ><span class="text-xs font-light text-gray-600 dark:text-slate-300">访问量</span>
       </div>
     </div>
     <div class="grid grid-cols-6 items-center gap-5">

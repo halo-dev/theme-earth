@@ -9,7 +9,7 @@
     />
   </th:block>
   <th:block th:fragment="content">
-    <div class="rounded-xl bg-white p-4">
+    <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
       <div class="flex items-center justify-between">
         <div class="inline-flex items-center justify-start gap-2" th:with="contributor = ${singlePage.contributors[0]}">
           <img th:src="${contributor.avatar}" th:alt="${contributor.displayName}" class="h-10 w-10 rounded-full" />
@@ -39,7 +39,10 @@
         </div>
       </div>
       <h1 class="my-3 text-2xl font-medium" th:text="${singlePage.spec.title}"></h1>
-      <article class="prose-base prose mt-4 !max-w-none" th:utext="${singlePage.content.content}"></article>
+      <article
+        class="prose-base prose mt-4 !max-w-none dark:prose-invert"
+        th:utext="${singlePage.content.content}"
+      ></article>
       <hr class="my-10" />
       <h2 class="mb-2 text-base font-medium text-gray-900">评论</h2>
       <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${singlePage.metadata.name}" />

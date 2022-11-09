@@ -3,12 +3,12 @@
     <a
       th:href="@{${category.status.permalink}}"
       th:title="${category.spec.displayName}"
-      class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100"
+      class="group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100 dark:hover:bg-slate-700"
     >
-      <span class="text-sm opacity-80" th:text="${category.spec.displayName}"> </span>
+      <span class="text-sm opacity-80 dark:text-slate-50" th:text="${category.spec.displayName}"> </span>
       <span
-        class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white"
-      th:text="${category.status.visiblePostCount}"
+        class="rounded bg-gray-100 py-0.5 px-1 text-xs opacity-70 group-hover:bg-white dark:bg-slate-600 dark:group-hover:bg-slate-500 dark:text-slate-50 tabular-nums"
+        th:text="${category.status.visiblePostCount}"
       >
       </span>
     </a>

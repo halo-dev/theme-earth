@@ -21,7 +21,7 @@
     </div>
 
     <div th:if="${posts.total == 0}" class="mt-6 flex items-center justify-center">
-      <span class="text-sm font-light text-gray-600">此分类下没有文章</span>
+      <span class="text-sm font-light text-gray-600 dark:text-slate-200">此分类下没有文章</span>
     </div>
 
     <div class="mt-6 flex items-center justify-between" th:if="${posts.hasPrevious() || posts.hasNext()}">
