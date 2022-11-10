@@ -56,8 +56,7 @@
     ></p>
     <div class="mt-4 flex flex-1 items-center justify-start gap-2" th:with="contributor = ${post.contributors[0]}">
       <img
-        th:if="${not #strings.isEmpty(contributor.avatar)}"
-        th:src="${contributor.avatar}"
+        th:src="${contributor.avatar ?: #theme.assets('/images/default-avatar.svg')}"
         th:title="${contributor.displayName}"
         th:alt="${contributor.displayName}"
         class="h-8 w-8 rounded-full border drop-shadow-sm dark:border-slate-700"

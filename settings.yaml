@@ -22,7 +22,7 @@ spec:
         - $formkit: select
           name: header_widget
           label: 首页顶部模块
-          value: latest_post
+          value: site_title
           options:
             - label: 无
               value: none
@@ -39,7 +39,7 @@ spec:
           id: header_background_type
           key: header_background_type
           label: 首页顶部背景
-          value: manual
+          value: image
           options:
             - label: 手动设置
               value: manual
@@ -57,6 +57,7 @@ spec:
           id: header_background_image
           key: header_background_image
           label: 首页顶部背景图片
+          value: /themes/theme-earth/assets/iamges/default-background.jpeg
         - $formkit: radio
           name: content_header
           label: 文章页顶部
