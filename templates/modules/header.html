@@ -26,19 +26,7 @@
             <li
               th:each="menuItem : ${menu.menuItems}"
               class="relative cursor-pointer text-sm font-medium transition-all"
-              x-data="{
-                show: false,
-                timer: undefined,
-                open: function() {
-                  if(this.timer) {
-                    clearTimeout(this.timer);
-                  }
-                  this.show = true
-                },
-                close: function() {
-                  this.timer = setTimeout(() => this.show = false, 300);
-                }
-              }"
+              x-data="dropdown"
               @mouseenter="open()"
               @mouseleave="close()"
             >
@@ -83,19 +71,7 @@
             </li>
             <li
               th:if="${theme.config.style.enable_change_color_scheme}"
-              x-data="{
-                show: false,
-                timer: undefined,
-                open: function() {
-                  if(this.timer) {
-                    clearTimeout(this.timer);
-                  }
-                  this.show = true
-                },
-                close: function() {
-                  this.timer = setTimeout(() => this.show = false, 300);
-                }
-              }"
+              x-data="dropdown"
               class="relative cursor-pointer transition-all"
               @mouseenter="open()"
               @mouseleave="close()"
