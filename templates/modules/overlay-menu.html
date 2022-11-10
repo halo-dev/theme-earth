@@ -37,13 +37,12 @@
             <div class="relative mt-6 flex-1 px-4 sm:px-6">
               <div class="absolute inset-0 px-4 sm:px-6">
                 <div class="flex h-full flex-col items-center gap-4" th:with="stats = ${siteStatsFinder.getStats()}">
-                  <div class="relative h-24 w-24">
-                    <img th:src="${site.logo}" th:alt="${site.title}" class="h-full w-full rounded-full" />
-                    <span
-                      class="absolute right-0 bottom-0 flex h-7 w-7 items-center justify-center rounded-full border bg-white p-0.5"
-                    >
-                      🌚
-                    </span>
+                  <div th:if="${not #strings.isEmpty(theme.config.sidebar.profile.logo)}" class="relative h-24 w-24">
+                    <img
+                      th:src="${theme.config.sidebar.profile.logo}"
+                      th:alt="${site.title}"
+                      class="h-full w-full rounded-full"
+                    />
                   </div>
                   <div>
                     <h1 class="text-2xl font-medium dark:text-slate-50" th:text="${site.title}"></h1>
