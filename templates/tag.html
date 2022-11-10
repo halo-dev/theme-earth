@@ -4,8 +4,8 @@
   th:replace="~{modules/layout :: html(header = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
 >
   <th:block th:fragment="content">
-    <div class="flex text-gray-900 dark:text-slate-50">
-      标签<span class="font-medium">「<th:block th:text="${tag.spec.displayName}" />」</span>下的文章：
+    <div class="rounded-xl bg-white p-4 shadow transition-all duration-500 hover:shadow-md dark:bg-slate-800">
+      <th:block th:replace="~{modules/tag-filter}" />
     </div>
 
     <div
