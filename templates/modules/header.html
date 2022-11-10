@@ -114,31 +114,18 @@
                 x-transition:leave-start="transform opacity-100 scale-100"
                 x-transition:leave-end="transform opacity-0 scale-95"
                 class="absolute right-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:divide-slate-600 dark:bg-slate-700"
+                x-data="{ colorSchemes: [{ label: '暗色', value: 'dark' }, { label: '亮色', value: 'light' }, { label: '跟随系统', value: 'system' }] }"
               >
-                <li class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600">
-                  <a
-                    href="javascript:main.setColorScheme('dark',true)"
-                    class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                  >
-                    暗色
-                  </a>
-                </li>
-                <li class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600">
-                  <a
-                    href="javascript:main.setColorScheme('light',true)"
-                    class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                  >
-                    亮色
-                  </a>
-                </li>
-                <li class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600">
-                  <a
-                    href="javascript:main.setColorScheme('system',true)"
-                    class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                  >
-                    跟随系统
-                  </a>
-                </li>
+                <template x-for="colorScheme in colorSchemes" :key="colorScheme.value">
+                  <li class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600">
+                    <span
+                      @click="main.setColorScheme(colorScheme.value,true)"
+                      class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                      x-text="colorScheme.label"
+                    >
+                    </span>
+                  </li>
+                </template>
               </ul>
             </li>
             <li>
