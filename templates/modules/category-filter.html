@@ -40,7 +40,7 @@
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="absolute left-0 z-10 mt-2 w-60 overflow-hidden rounded bg-white p-2 shadow dark:bg-slate-700"
+        class="absolute left-0 z-10 mt-2 w-60 overflow-hidden rounded bg-white p-2 shadow dark:bg-slate-800"
       >
         <li th:replace="~{modules/category-tree :: single(categories=${categoryItem.children})}" />
       </ul>
