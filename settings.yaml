@@ -95,8 +95,17 @@ spec:
           height: 200px
           name: widgets
           label: 小部件
-          value: "profile,popular-posts,categories,tags"
+          value: "popular-posts,categories,tags"
           help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
+
+        - $formkit: group
+          name: profile
+          value:
+            logo:
+          children:
+            - $formkit: attachment
+              name: logo
+              label: 站点资料 Logo
 
     - group: footer
       label: 页脚
