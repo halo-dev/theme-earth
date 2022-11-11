@@ -52,12 +52,17 @@
       </div>
       <h1 class="my-3 text-2xl font-medium dark:text-slate-50" th:text="${singlePage.spec.title}"></h1>
       <article
-        class="prose-base prose mt-4 !max-w-none dark:prose-invert"
+        class="prose prose-base mt-4 !max-w-none dark:prose-invert"
         th:utext="${singlePage.content.content}"
       ></article>
       <hr class="my-10 dark:border-slate-700" />
       <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50">评论</h2>
-      <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${singlePage.metadata.name}" />
+      <halo:comment
+        group="content.halo.run"
+        kind="SinglePage"
+        th:attr="name=${singlePage.metadata.name}"
+        colorScheme="window.main.currentColorScheme"
+      />
     </div>
   </th:block>
 </html>
