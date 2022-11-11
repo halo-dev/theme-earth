@@ -3,10 +3,12 @@ import "./styles/main.css";
 import Alpine from "alpinejs";
 import * as tocbot from "tocbot";
 import dropdown from "./alpine-data/dropdown";
+import user from "./alpine-data/user";
 
 window.Alpine = Alpine;
 
 Alpine.data("dropdown", dropdown);
+Alpine.data("user", user);
 
 Alpine.start();
 
