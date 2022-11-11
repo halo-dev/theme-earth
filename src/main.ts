@@ -1,6 +1,5 @@
 import "./styles/tailwind.css";
 import "./styles/main.css";
-import "@purge-icons/generated";
 import Alpine from "alpinejs";
 import * as tocbot from "tocbot";
 import dropdown from "./alpine-data/dropdown";

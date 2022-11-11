@@ -65,8 +65,8 @@
         <div class="flex items-center">
           <ul class="flex items-center gap-4">
             <li class="sm:hidden" x-on:click="overlayMenu = true">
-              <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                <span data-icon="tabler:menu-2" class="iconify text-lg"> </span>
+              <a href="javascript:void(0)" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
+                <div class="i-tabler-menu-2 text-lg"></div>
               </a>
             </li>
             <li
@@ -77,7 +77,7 @@
               @mouseleave="close()"
             >
               <a href="javascript:void(0)" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                <span data-icon="gg:dark-mode" class="iconify text-lg"></span>
+                <div class="i-gg-dark-mode text-lg"></div>
               </a>
               <ul
                 @mouseenter="open()"
@@ -107,7 +107,7 @@
             <!-- https://github.com/halo-sigs/plugin-search-widget -->
             <li th:if="${pluginFinder.available('PluginSearchWidget')}">
               <a href="javascript:SearchWidget.open()" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                <span data-icon="tabler:search" class="iconify text-lg"></span>
+                <div class="i-tabler-search text-lg"></div>
               </a>
             </li>
           </ul>

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { Icons } = require("tailwindcss-plugin-icons");
 module.exports = {
   content: ["./templates/**/*.html", "./src/main.ts"],
   darkMode: "class",
@@ -23,5 +24,16 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
+    Icons(() => ({
+      gg: {
+        includeAll: true,
+      },
+      tabler: {
+        includeAll: true,
+      },
+      simpleIcons: {
+        includeAll: true,
+      },
+    })),
   ],
 };

@@ -31,7 +31,7 @@
         th:href="@{${posts.prevUrl}}"
         class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
       >
-        <span data-icon="tabler:arrow-left" class="iconify text-lg transition-all group-hover:-translate-x-1"></span>
+        <span class="i-tabler-arrow-left text-lg transition-all group-hover:-translate-x-1"></span>
         <span>上一页</span>
       </a>
       <span class="text-sm text-gray-900 dark:text-slate-50" th:text="${posts.page} +' / '+ ${posts.totalPages}"></span>
@@ -40,7 +40,7 @@
         class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
       >
         <span>下一页</span>
-        <span data-icon="tabler:arrow-right" class="iconify text-lg transition-all group-hover:translate-x-1"></span>
+        <span class="i-tabler-arrow-right text-lg transition-all group-hover:translate-x-1"></span>
       </a>
     </div>
   </th:block>

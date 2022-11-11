@@ -3,7 +3,7 @@
 >
   <div class="flex items-center justify-between">
     <h2 class="inline-flex items-center gap-2 text-base dark:text-slate-50">
-      <span data-icon="tabler:tags" class="iconify text-lg"></span>
+      <span class="i-tabler-tags text-lg"></span>
       标签
     </h2>
     <a
@@ -11,10 +11,7 @@
       th:href="@{/tags}"
     >
       <span>更多</span>
-      <span
-        data-icon="tabler:chevron-right"
-        class="iconify -translate-x-1 text-lg transition-all group-hover:translate-x-0"
-      ></span>
+      <span class="i-tabler-chevron-right -translate-x-1 text-lg transition-all group-hover:translate-x-0"></span>
     </a>
   </div>
   <div class="mt-2 flex flex-wrap gap-2" th:with="tags = ${tagFinder.list(1,50)}">
