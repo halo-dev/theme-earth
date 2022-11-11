@@ -126,13 +126,16 @@
         </div>
       </div>
       <hr class="my-10 dark:border-slate-700" />
-      <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50">评论</h2>
-      <halo:comment
-        group="content.halo.run"
-        kind="Post"
-        th:attr="name=${post.metadata.name}"
-        colorScheme="window.main.currentColorScheme"
-      />
+      <!-- https://github.com/halo-sigs/plugin-comment-widget -->
+      <div th:if="${pluginFinder.available('PluginCommentWidget')}">
+        <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50">评论</h2>
+        <halo:comment
+          group="content.halo.run"
+          kind="Post"
+          th:attr="name=${post.metadata.name}"
+          colorScheme="window.main.currentColorScheme"
+        />
+      </div>
     </div>
   </th:block>
 </html>

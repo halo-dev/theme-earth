@@ -104,8 +104,9 @@
                 </template>
               </ul>
             </li>
-            <li>
-              <a href="javascript:main.openSearch()" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
+            <!-- https://github.com/halo-sigs/plugin-search-widget -->
+            <li th:if="${pluginFinder.available('PluginSearchWidget')}">
+              <a href="javascript:SearchWidget.open()" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
                 <span data-icon="tabler:search" class="iconify text-lg"></span>
               </a>
             </li>
