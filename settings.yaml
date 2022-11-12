@@ -57,7 +57,7 @@ spec:
           id: header_background_image
           key: header_background_image
           label: 首页顶部背景图片
-          value: /themes/theme-earth/assets/iamges/default-background.jpeg
+          value: /themes/theme-earth/assets/images/default-background.png
         - $formkit: radio
           name: content_header
           label: 文章页顶部
