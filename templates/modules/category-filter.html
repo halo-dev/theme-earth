@@ -23,6 +23,7 @@
       >
         <span class="truncate text-base" th:text="${categoryItem.spec.displayName}"> </span>
         <span
+          th:if="${not #lists.isEmpty(categoryItem.children)}"
           class="i-tabler-chevron-right text-lg transition-all duration-300"
           x-bind:class="show ? 'rotate-90' : ''"
         ></span>
