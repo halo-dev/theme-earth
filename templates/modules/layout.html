@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
     <title th:text="${site.title}"></title>
     <meta name="description" content="TODO" />
-    <link rel="stylesheet" th:href="@{/assets/dist/style.css}" href="./assets/dist/style.css" />
-    <script th:src="@{/assets/dist/main.iife.js}"></script>
+    <link rel="stylesheet" th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}" />
+    <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
     <th:block th:if="${head != null}">
       <th:block th:replace="${head}" />
     </th:block>
