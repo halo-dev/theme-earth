@@ -34,6 +34,9 @@ module.exports = {
       simpleIcons: {
         includeAll: true,
       },
+      bx: {
+        includeAll: true,
+      },
     })),
   ],
 };

@@ -16,6 +16,9 @@
         th:classappend="${animation} ? 'group-hover:scale-105'"
       />
     </a>
+    <div th:if="${post.spec.pinned}" class="absolute !top-1.5 !left-2" title="置顶">
+      <div class="i-bx-arrow-to-top !h-5 !w-5 text-sky-600"></div>
+    </div>
   </div>
   <div
     class="relative flex flex-col gap-2 p-4"
