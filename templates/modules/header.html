@@ -65,9 +65,7 @@
         <div class="flex items-center">
           <ul class="flex items-center gap-4">
             <li class="sm:hidden" x-on:click="overlayMenu = true">
-              <a href="javascript:void(0)" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                <div class="i-tabler-menu-2 text-lg"></div>
-              </a>
+              <div class="i-tabler-menu-2 text-lg text-gray-600 hover:text-blue-600 dark:text-slate-100"></div>
             </li>
             <li
               th:if="${theme.config.style.enable_change_color_scheme}"
@@ -76,9 +74,7 @@
               @mouseenter="open()"
               @mouseleave="close()"
             >
-              <a href="javascript:void(0)" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                <div class="i-gg-dark-mode text-lg"></div>
-              </a>
+              <div class="i-gg-dark-mode text-lg text-gray-600 hover:text-blue-600 dark:text-slate-100"></div>
               <ul
                 @mouseenter="open()"
                 @mouseleave="close()"
@@ -106,7 +102,11 @@
             </li>
             <!-- https://github.com/halo-sigs/plugin-search-widget -->
             <li th:if="${pluginFinder.available('PluginSearchWidget')}">
-              <a href="javascript:SearchWidget.open()" class="text-gray-600 hover:text-blue-600 dark:text-slate-100">
+              <a
+                href="javascript:SearchWidget.open()"
+                title="搜索"
+                class="text-gray-600 hover:text-blue-600 dark:text-slate-100"
+              >
                 <div class="i-tabler-search text-lg"></div>
               </a>
             </li>
@@ -117,9 +117,9 @@
               @mouseleave="close()"
             >
               <div x-data="user">
-                <a href="javascript:void(0)" class="h-5 w-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                  <img class="h-5 w-5 rounded-full" x-bind:src="avatar" />
-                </a>
+                <div class="h-5 w-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
+                  <img class="h-5 w-5 rounded-full" x-bind:src="avatar" x-bind:alt="displayName" />
+                </div>
                 <ul
                   @mouseenter="open()"
                   @mouseleave="close()"
