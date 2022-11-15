@@ -9,8 +9,8 @@ spec:
     website: https://halo.run
   description: Default theme for Halo 2.0
   logo: https://halo.run/logo
-  website: https://github.com/halo-sigs/theme-earth
-  repo: https://github.com/halo-sigs/theme-earth.git
+  website: https://github.com/halo-dev/theme-earth
+  repo: https://github.com/halo-dev/theme-earth.git
   settingName: "theme-earth-setting"
   configMapName: "theme-earth-configMap"
   version: 1.0.0

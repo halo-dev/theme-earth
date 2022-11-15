@@ -15,9 +15,9 @@
     "halo-theme",
     "halo-template"
   ],
-  "homepage": "https://github.com/halo-sigs/theme-earth#readme",
+  "homepage": "https://github.com/halo-dev/theme-earth#readme",
   "bugs": {
-    "url": "https://github.com/halo-sigs/theme-earth/issues"
+    "url": "https://github.com/halo-dev/theme-earth/issues"
   },
   "author": {
     "name": "Halo OSS Organization",
@@ -33,7 +33,7 @@
   ],
   "license": "GPL-3.0",
   "repository": {
-    "url": "https://github.com/halo-sigs/theme-earth",
+    "url": "https://github.com/halo-dev/theme-earth",
     "type": "git"
   },
   "devDependencies": {
