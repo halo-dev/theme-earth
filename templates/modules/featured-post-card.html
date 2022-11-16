@@ -39,17 +39,17 @@
       <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
     </h1>
     <p class="font-sm font-light line-clamp-6 dark:text-slate-200" th:text="${post.status.excerpt}"></p>
-    <div class="mt-4 flex flex-1 items-center justify-start gap-2" th:with="contributor = ${post.contributors[0]}">
+    <div class="mt-4 flex flex-1 items-center justify-start gap-2">
       <img
-        th:src="${contributor.avatar ?: #theme.assets('/images/default-avatar.svg')}"
-        th:title="${contributor.displayName}"
-        th:alt="${contributor.displayName}"
+        th:src="${post.owner.avatar ?: #theme.assets('/images/default-avatar.svg')}"
+        th:title="${post.owner.displayName}"
+        th:alt="${post.owner.displayName}"
         class="h-8 w-8 rounded-full border drop-shadow-sm dark:border-slate-700"
       />
       <span
         class="text-sm font-medium text-gray-900 dark:text-slate-100"
-        th:if="${#strings.isEmpty(contributor.avatar)}"
-        th:text="${contributor.displayName}"
+        th:if="${#strings.isEmpty(post.owner.avatar)}"
+        th:text="${post.owner.displayName}"
       ></span>
       <span
         class="text-sm tabular-nums text-gray-600 dark:text-slate-300"

@@ -11,17 +11,17 @@
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
       <div class="flex items-center justify-between">
-        <div class="inline-flex items-center justify-start gap-2" th:with="contributor = ${singlePage.contributors[0]}">
+        <div class="inline-flex items-center justify-start gap-2">
           <img
-            th:if="${not #strings.isEmpty(contributor.avatar)}"
-            th:src="${contributor.avatar}"
-            th:alt="${contributor.displayName}"
+            th:if="${not #strings.isEmpty(singlePage.owner.avatar)}"
+            th:src="${singlePage.owner.avatar}"
+            th:alt="${singlePage.owner.displayName}"
             class="h-10 w-10 rounded-full"
           />
           <div class="flex flex-col gap-0.5">
             <span
               class="text-sm font-semibold text-gray-900 dark:text-slate-100"
-              th:text="${contributor.displayName}"
+              th:text="${singlePage.owner.displayName}"
             ></span>
             <div class="flex items-center gap-2 text-xs font-light text-gray-600 dark:text-slate-100">
               <span th:text="${'发布于 '+#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}"></span>
