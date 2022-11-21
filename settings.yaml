@@ -91,13 +91,26 @@ spec:
     - group: sidebar
       label: 侧边栏
       formSchema:
-        - $formkit: code
-          language: javascript
-          height: 200px
+        - $formkit: repeater
           name: widgets
           label: 小部件
-          value: "popular-posts,categories,tags"
-          help: "目前提供的小部件有：profile（站点资料）, popular-posts（热门文章）, categories（文章分类）, tags（文章标签）。你可以随意组合或排序，以逗号隔开。"
+          value:
+            - value: popular-posts
+            - value: categories
+            - value: tags
+          children:
+            - $formkit: select
+              name: value
+              label: 部件
+              options:
+                - label: 站点资料
+                  value: profile
+                - label: 热门文章
+                  value: popular-posts
+                - label: 文章分类
+                  value: categories
+                - label: 文章标签
+                  value: tags
 
         - $formkit: group
           name: profile
@@ -107,6 +120,71 @@ spec:
             - $formkit: attachment
               name: logo
               label: 站点资料 Logo
+
+        - $formkit: repeater
+          name: social_media
+          label: 社交媒体
+          value: []
+          children:
+            - $formkit: select
+              name: icon
+              label: 图标
+              options:
+                - label: 电子邮箱
+                  value: i-tabler-mail
+                - label: 微信
+                  value: i-simple-icons-wechat
+                - label: 腾讯 QQ
+                  value: i-simple-icons-tencentqq
+                - label: 新浪微博
+                  value: i-simple-icons-sinaweibo
+                - label: 知乎
+                  value: i-simple-icons-zhihu
+                - label: 豆瓣
+                  value: i-simple-icons-douban
+                - label: 哔哩哔哩
+                  value: i-simple-icons-bilibili
+                - label: 抖音 / TikTok
+                  value: i-simple-icons-tiktok
+                - label: Telegram
+                  value: i-simple-icons-telegram
+                - label: Facebook
+                  value: i-simple-icons-facebook
+                - label: Instagram
+                  value: i-simple-icons-instagram
+                - label: LinkedIn
+                  value: i-simple-icons-linkedin
+                - label: Twitter
+                  value: i-simple-icons-twitter
+                - label: Slack
+                  value: i-simple-icons-slack
+                - label: Discord
+                  value: i-simple-icons-discord
+                - label: YouTube
+                  value: i-simple-icons-youtube
+                - label: Steam
+                  value: i-simple-icons-steam
+                - label: GitHub
+                  value: i-simple-icons-github
+                - label: GitLab
+                  value: i-simple-icons-gitlab
+            - $formkit: text
+              name: name
+              label: 名称
+            - $formkit: text
+              name: url
+              label: 链接
+              validation: "required"
+            - $formkit: radio
+              name: url_type
+              label: 链接类型
+              value: normal
+              help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
+              options:
+                - label: 跳转链接
+                  value: normal
+                - label: 图片
+                  value: image
 
     - group: footer
       label: 页脚
@@ -154,6 +232,71 @@ spec:
           id: menus
           key: menus
           label: 菜单组
+
+        - $formkit: repeater
+          name: social_media
+          label: 社交媒体
+          value: []
+          children:
+            - $formkit: select
+              name: icon
+              label: 图标
+              options:
+                - label: 电子邮箱
+                  value: i-tabler-mail
+                - label: 微信
+                  value: i-simple-icons-wechat
+                - label: 腾讯 QQ
+                  value: i-simple-icons-tencentqq
+                - label: 新浪微博
+                  value: i-simple-icons-sinaweibo
+                - label: 知乎
+                  value: i-simple-icons-zhihu
+                - label: 豆瓣
+                  value: i-simple-icons-douban
+                - label: 哔哩哔哩
+                  value: i-simple-icons-bilibili
+                - label: 抖音 / TikTok
+                  value: i-simple-icons-tiktok
+                - label: Telegram
+                  value: i-simple-icons-telegram
+                - label: Facebook
+                  value: i-simple-icons-facebook
+                - label: Instagram
+                  value: i-simple-icons-instagram
+                - label: LinkedIn
+                  value: i-simple-icons-linkedin
+                - label: Twitter
+                  value: i-simple-icons-twitter
+                - label: Slack
+                  value: i-simple-icons-slack
+                - label: Discord
+                  value: i-simple-icons-discord
+                - label: YouTube
+                  value: i-simple-icons-youtube
+                - label: Steam
+                  value: i-simple-icons-steam
+                - label: GitHub
+                  value: i-simple-icons-github
+                - label: GitLab
+                  value: i-simple-icons-gitlab
+            - $formkit: text
+              name: name
+              label: 名称
+            - $formkit: text
+              name: url
+              label: 链接
+              validation: "required"
+            - $formkit: radio
+              name: url_type
+              label: 链接类型
+              value: normal
+              help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
+              options:
+                - label: 跳转链接
+                  value: normal
+                - label: 图片
+                  value: image
 
     - group: beian
       label: 备案设置

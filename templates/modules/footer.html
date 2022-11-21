@@ -89,12 +89,25 @@
     </div>
   </div>
   <hr class="my-6 border-gray-200 dark:border-slate-700 sm:mx-auto lg:my-8" />
-  <div class="container mx-auto sm:flex sm:items-center">
+  <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
     <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
       ©
       <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
       <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
       <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
     </span>
+    <div
+      th:with="social_medias = ${theme.config.footer.social_media}"
+      class="mt-4 flex space-x-6 sm:mt-0 sm:justify-center"
+    >
+      <a
+        th:each="social_media : ${social_medias}"
+        th:href="${social_media.url}"
+        class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+        th:title="${social_media.name}"
+      >
+        <div th:classappend="${social_media.icon}" class="h-5 w-5"></div>
+      </a>
+    </div>
   </div>
 </footer>

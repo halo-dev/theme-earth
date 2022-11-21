@@ -27,19 +27,7 @@ body {
 }
 
 .menu-sticky {
-  @apply fixed top-0 left-0 right-0 z-10 bg-black/80 drop-shadow-md backdrop-blur-lg;
-}
-
-.menu-sticky li a {
-  @apply text-white hover:text-gray-300;
-}
-
-.menu-sticky .menu-dropdown li a {
-  @apply text-gray-600 hover:text-blue-600;
-}
-
-.menu-sticky #site-title {
-  @apply text-white;
+  @apply fixed top-0 left-0 right-0 z-10 drop-shadow-md backdrop-blur-lg;
 }
 
 .toc-list-item > .toc-list {

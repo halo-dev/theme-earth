@@ -34,25 +34,15 @@
         ><span class="text-xs font-light text-gray-600 dark:text-slate-300">访问量</span>
       </div>
     </div>
-    <div class="grid grid-cols-6 items-center gap-5">
-      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
-        <span class="i-simple-icons-wechat text-[#07C160]"></span>
-      </div>
-      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
-        <span class="i-simple-icons-bilibili text-[#00A1D6]"></span>
-      </div>
-      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
-        <span class="i-simple-icons-github text-[#181717]"></span>
-      </div>
-      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
-        <span class="i-simple-icons-twitter text-[#1DA1F2]"></span>
-      </div>
-      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
-        <span class="i-simple-icons-telegram text-[#26A5E4]"></span>
-      </div>
-      <div class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100">
-        <span class="i-simple-icons-feedly text-[#2BB24C]"></span>
-      </div>
+    <div th:with="social_medias = ${theme.config.sidebar.social_media}" class="grid grid-cols-6 items-center gap-5">
+      <a
+        th:each="social_media : ${social_medias}"
+        class="flex cursor-pointer items-center justify-center rounded p-1 hover:bg-gray-100 dark:hover:bg-slate-700"
+        th:href="${social_media.url}"
+        target="_blank"
+      >
+        <span class="text-gray-600 dark:text-slate-400" th:classappend="${social_media.icon}"></span>
+      </a>
     </div>
   </div>
 </div>
