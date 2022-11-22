@@ -113,12 +113,17 @@
             <li
               x-data="dropdown"
               class="relative cursor-pointer transition-all"
+              th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
               @mouseenter="open()"
               @mouseleave="close()"
             >
-              <div x-data="user">
+              <div>
                 <div class="h-5 w-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                  <img class="h-5 w-5 rounded-full" x-bind:src="avatar" x-bind:alt="displayName" />
+                  <img
+                    class="h-5 w-5 rounded-full"
+                    th:src="${currentUser.avatar ?: #theme.assets('/images/default-avatar.svg')}"
+                    th:alt="${currentUser.displayName}"
+                  />
                 </div>
                 <ul
                   @mouseenter="open()"
@@ -133,7 +138,7 @@
                   class="absolute right-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:divide-slate-600 dark:bg-slate-700"
                 >
                   <li
-                    x-show="displayName"
+                    sec:authorize="isAuthenticated()"
                     class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
                   >
                     <a
@@ -145,7 +150,7 @@
                     </a>
                   </li>
                   <li
-                    x-show="displayName"
+                    sec:authorize="isAuthenticated()"
                     class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
                   >
                     <a
@@ -156,7 +161,7 @@
                     </a>
                   </li>
                   <li
-                    x-show="!displayName"
+                    sec:authorize="isAnonymous()"
                     class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
                   >
                     <a
