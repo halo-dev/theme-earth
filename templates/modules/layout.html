@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (header,content,head,footer,sidebar,contentClass)">
+<html lang="en" th:fragment="html (title,header,content,head,footer,sidebar,contentClass)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
-    <title th:text="${site.title}"></title>
+    <title th:text="${title}"></title>
     <meta name="description" content="TODO" />
     <link rel="stylesheet" th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}" />
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
