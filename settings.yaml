@@ -226,12 +226,18 @@ spec:
           key: menu
           label: 右侧菜单
 
-        - $formkit: menuCheckbox
+        - $formkit: repeater
           if: "$get(style).value === style_2"
           name: menus
           id: menus
           key: menus
           label: 菜单组
+          value: []
+          children:
+            - $formkit: menuRadio
+              name: name
+              label: 菜单
+              validation: "required"
 
         - $formkit: repeater
           name: social_media
