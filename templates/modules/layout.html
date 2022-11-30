@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
     <title th:text="${title}"></title>
-    <meta name="description" content="TODO" />
     <link rel="stylesheet" th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}" />
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
     <th:block th:if="${head != null}">
