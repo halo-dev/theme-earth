@@ -2,7 +2,7 @@
 
 Halo 2.0 的默认主题。
 
-主题开发文档可查阅：<https://docs.halo.run/2.0.0-SNAPSHOT/developer-guide/theme/prepare>
+![Earth](./screenshot.jpg)
 
 ## 开发
 
@@ -21,6 +21,8 @@ pnpm install
 ```bash
 pnpm dev
 ```
+
+主题开发文档可查阅：<https://docs.halo.run/2.0.0-SNAPSHOT/developer-guide/theme/prepare>
 
 ## 构建
 
