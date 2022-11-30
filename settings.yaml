@@ -30,8 +30,6 @@ spec:
               value: latest_post
             - label: 文章网格（最新五篇文章）
               value: latest_post_grid
-            - label: 轮播图
-              value: carousel
             - label: 站点标题
               value: site_title
         - $formkit: select
