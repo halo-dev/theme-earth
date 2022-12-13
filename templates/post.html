@@ -31,17 +31,21 @@
     <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
       <div class="flex items-center justify-between">
         <div class="inline-flex items-center justify-start gap-2">
-          <img
-            th:if="${not #strings.isEmpty(post.owner.avatar)}"
-            th:src="${post.owner.avatar}"
-            class="h-10 w-10 rounded-full"
-            th:alt="${post.owner.displayName}"
-          />
+          <a th:href="@{${post.owner.permalink}}" th:title="${post.owner.displayName}">
+            <img
+              th:if="${not #strings.isEmpty(post.owner.avatar)}"
+              th:src="${post.owner.avatar}"
+              class="h-10 w-10 rounded-full"
+              th:alt="${post.owner.displayName}"
+            />
+          </a>
           <div class="flex flex-col gap-0.5">
-            <span
-              class="text-sm font-semibold text-gray-900 dark:text-slate-100"
+            <a
+              th:href="@{${post.owner.permalink}}"
+              th:title="${post.owner.displayName}"
+              class="text-sm font-semibold text-gray-900 hover:text-gray-600 dark:text-slate-100 dark:hover:text-slate-200"
               th:text="${post.owner.displayName}"
-            ></span>
+            ></a>
             <div class="flex items-center gap-2 text-xs font-light text-gray-600 dark:text-slate-100">
               <span th:text="|发布于 ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}|"></span>
               <span class="text-gray-300 dark:text-slate-200">/</span>
