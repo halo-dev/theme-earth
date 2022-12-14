@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html
-  xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = '页面找不到 - ' + ${site.title}, header = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
->
-  <th:block th:fragment="content">
-    <th:block th:replace="~{error/exception :: exception}" />
-  </th:block>
-</html>
