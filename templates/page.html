@@ -12,19 +12,23 @@
     <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
       <div class="flex items-center justify-between">
         <div class="inline-flex items-center justify-start gap-2">
-          <img
-            th:if="${not #strings.isEmpty(singlePage.owner.avatar)}"
-            th:src="${singlePage.owner.avatar}"
-            th:alt="${singlePage.owner.displayName}"
-            class="h-10 w-10 rounded-full"
-          />
+          <a th:href="@{${singlePage.owner.permalink}}" th:title="${singlePage.owner.displayName}">
+            <img
+              th:if="${not #strings.isEmpty(singlePage.owner.avatar)}"
+              th:src="${singlePage.owner.avatar}"
+              th:alt="${singlePage.owner.displayName}"
+              class="h-10 w-10 rounded-full"
+            />
+          </a>
           <div class="flex flex-col gap-0.5">
-            <span
-              class="text-sm font-semibold text-gray-900 dark:text-slate-100"
+            <a
+              th:href="@{${singlePage.owner.permalink}}"
+              class="text-sm font-semibold text-gray-900 hover:text-gray-600 dark:text-slate-100 dark:hover:text-slate-200"
               th:text="${singlePage.owner.displayName}"
-            ></span>
+              th:title="${singlePage.owner.displayName}"
+            ></a>
             <div class="flex items-center gap-2 text-xs font-light text-gray-600 dark:text-slate-100">
-              <span th:text="${'发布于 '+#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}"></span>
+              <span th:text="|发布于 ${#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}|"></span>
               <span class="text-gray-300 dark:text-slate-200">/</span>
               <span th:text="|${singlePage.stats?.visit ?:0} 阅读|"></span>
               <span class="text-gray-300 dark:text-slate-200">/</span>
