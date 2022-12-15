@@ -3,7 +3,7 @@
     <a href="/" class="mb-4 flex items-center justify-center sm:mb-0 sm:justify-start">
       <img
         th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
-        th:src="${theme.config.footer.logo ?: site.title}"
+        th:src="${theme.config.footer.logo ?: site.logo}"
         class="mr-3 h-8 w-8"
         th:alt="${site.title}"
       />
