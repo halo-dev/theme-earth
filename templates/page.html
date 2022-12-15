@@ -28,7 +28,7 @@
               th:title="${singlePage.owner.displayName}"
             ></a>
             <div class="flex items-center gap-2 text-xs font-light text-gray-600 dark:text-slate-100">
-              <span th:text="${'发布于 '+#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}"></span>
+              <span th:text="|发布于 ${#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}|"></span>
               <span class="text-gray-300 dark:text-slate-200">/</span>
               <span th:text="|${singlePage.stats?.visit ?:0} 阅读|"></span>
               <span class="text-gray-300 dark:text-slate-200">/</span>

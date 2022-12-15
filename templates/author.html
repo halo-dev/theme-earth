@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = '作者：' + ${author.spec.displayName} + ' - ' + ${site.title}, header = ~{::header}, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
+  th:replace="~{modules/layout :: html(title = |作者：${author.spec.displayName} - ${site.title}|, header = ~{::header}, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
 >
   <th:block th:fragment="header">
     <th:block
-      th:replace="~{modules/header :: header(isHome = false, cover = ${theme.config.layout.header_background_image}, title = '作者：'+${author.spec.displayName})}"
+      th:replace="~{modules/header :: header(isHome = false, cover = ${theme.config.layout.header_background_image}, title = |作者：${author.spec.displayName}|)}"
     />
   </th:block>
   <th:block th:fragment="content">
