@@ -14,7 +14,7 @@
       main.initColorScheme("[[${theme.config.style.color_scheme}]]",[[${theme.config.style.enable_change_color_scheme}]])
     </script>
   </head>
-  <body class="bg-slate-50 dark:bg-slate-900" x-data="{ overlayMenu: false }">
+  <body class="bg-slate-50 dark:bg-slate-900">
     <th:block th:if="${header != null}">
       <th:block th:replace="${header}" />
     </th:block>
@@ -37,6 +37,5 @@
     <th:block th:if="${footer != null}">
       <th:block th:replace="${footer}" />
     </th:block>
-    <th:block th:replace="~{modules/overlay-menu}" />
   </body>
 </html>
