@@ -27,7 +27,7 @@ body {
 }
 
 .menu-sticky {
-  @apply fixed top-0 left-0 right-0 z-10 drop-shadow-md backdrop-blur-lg;
+  @apply drop-shadow-md backdrop-blur-lg;
 }
 
 .toc-list-item > .toc-list {
