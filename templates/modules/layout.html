@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (title,header,content,head,footer,sidebar,contentClass)">
+<html lang="en" th:fragment="html (title,hero,content,head,footer,sidebar,contentClass)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,13 +15,13 @@
     </script>
   </head>
   <body class="bg-slate-50 dark:bg-slate-900">
-    <th:block th:if="${header != null}">
-      <th:block th:replace="${header}" />
+    <th:block th:replace="~{modules/header}" />
+    <th:block th:if="${hero != null}">
+      <th:block th:replace="${hero}" />
     </th:block>
-    <th:block th:if="${header == null}">
-      <th:block th:replace="~{modules/header :: header(isHome = true)}" />
+    <th:block th:unless="${hero != null}">
+      <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
     </th:block>
-    <section class="container mx-auto"></section>
     <section class="container mx-auto mt-6 grid grid-cols-4 gap-6" th:classappend="${contentClass}">
       <div class="col-span-4 sm:col-span-3">
         <th:block th:replace="${content}" />
