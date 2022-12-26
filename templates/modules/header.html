@@ -1,210 +1,156 @@
-<header x-data="{ open : false }" th:with="menu = ${menuFinder.getPrimary()}">
-  <div th:fragment="header (isHome, cover, title)">
-    <div id="header-menu" class="flex h-14 bg-white py-3 shadow-sm transition-all dark:bg-gray-800">
-      <div class="container mx-auto flex h-full justify-between">
-        <div class="flex h-full items-center gap-6">
-          <div class="mr-2 h-full">
-            <a href="/" class="inline-flex h-full items-center">
-              <img
-                th:if="${not #strings.isEmpty(site.logo)}"
-                th:src="${site.logo}"
-                th:alt="Logo"
-                class="h-full w-full"
-              />
-              <span
-                th:if="${#strings.isEmpty(site.logo)}"
-                id="site-title"
-                class="text-lg font-medium text-gray-900 dark:text-slate-100"
-                th:text="${site.title}"
-              ></span>
-            </a>
-          </div>
+<header
+  id="header-menu"
+  class="sticky top-0 z-10 flex h-14 bg-white py-3 shadow-sm transition-all dark:bg-gray-800"
+  x-data="{ open : false }"
+  th:with="menu = ${menuFinder.getPrimary()}"
+>
+  <div class="container mx-auto flex h-full justify-between">
+    <div class="flex h-full items-center gap-6">
+      <div class="mr-2 h-full">
+        <a href="/" class="inline-flex h-full items-center">
+          <img th:if="${not #strings.isEmpty(site.logo)}" th:src="${site.logo}" th:alt="Logo" class="h-full w-full" />
+          <span
+            th:if="${#strings.isEmpty(site.logo)}"
+            id="site-title"
+            class="text-lg font-medium text-gray-900 dark:text-slate-100"
+            th:text="${site.title}"
+          ></span>
+        </a>
+      </div>
+      <ul th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}" class="hidden items-center gap-8 sm:flex">
+        <li
+          th:each="menuItem : ${menu.menuItems}"
+          class="relative cursor-pointer text-sm font-medium transition-all"
+          x-data="dropdown"
+          @mouseenter="open()"
+          @mouseleave="close()"
+        >
+          <a
+            class="text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+            th:href="@{${menuItem.status.href}}"
+            th:text="${menuItem.status.displayName}"
+          ></a>
           <ul
-            th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
-            class="hidden items-center gap-8 sm:flex"
+            th:if="${not #lists.isEmpty(menuItem.children)}"
+            @mouseenter="open()"
+            @mouseleave="close()"
+            x-show="show"
+            x-transition:enter="transition ease-out duration-100"
+            x-transition:enter-start="transform opacity-0 scale-95"
+            x-transition:enter-end="transform opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave-start="transform opacity-100 scale-100"
+            x-transition:leave-end="transform opacity-0 scale-95"
+            class="menu-dropdown absolute left-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:bg-slate-700"
           >
             <li
-              th:each="menuItem : ${menu.menuItems}"
-              class="relative cursor-pointer text-sm font-medium transition-all"
-              x-data="dropdown"
-              @mouseenter="open()"
-              @mouseleave="close()"
+              th:each="childMenuItem : ${menuItem.children}"
+              class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
             >
               <a
-                class="text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                th:href="@{${menuItem.status.href}}"
-                th:text="${menuItem.status.displayName}"
+                class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                th:href="@{${childMenuItem.status.href}}"
+                th:text="${childMenuItem.status.displayName}"
               ></a>
-              <ul
-                th:if="${not #lists.isEmpty(menuItem.children)}"
-                @mouseenter="open()"
-                @mouseleave="close()"
-                x-show="show"
-                x-transition:enter="transition ease-out duration-100"
-                x-transition:enter-start="transform opacity-0 scale-95"
-                x-transition:enter-end="transform opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-75"
-                x-transition:leave-start="transform opacity-100 scale-100"
-                x-transition:leave-end="transform opacity-0 scale-95"
-                class="menu-dropdown absolute left-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:bg-slate-700"
-              >
-                <li
-                  th:each="childMenuItem : ${menuItem.children}"
-                  class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
-                >
-                  <a
-                    class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                    th:href="@{${childMenuItem.status.href}}"
-                    th:text="${childMenuItem.status.displayName}"
-                  ></a>
-                </li>
-              </ul>
             </li>
           </ul>
-        </div>
-        <div class="flex items-center">
-          <ul x-data="colorSchemeSwitcher" class="flex items-center gap-4">
-            <li class="sm:hidden" x-on:click="open = true">
-              <div class="i-tabler-menu-2 text-lg text-gray-600 hover:text-blue-600 dark:text-slate-100"></div>
-            </li>
-            <li
-              th:if="${theme.config.style.enable_change_color_scheme}"
-              x-data="dropdown"
-              class="relative cursor-pointer transition-all"
-              @mouseenter="open()"
-              @mouseleave="close()"
-            >
-              <div
-                class="cursor-pointer text-lg text-gray-600 transition-all hover:text-blue-600 dark:text-slate-100"
-                :class="colorScheme.icon"
-                @click="[main.setColorScheme(nextColorScheme.value,true), currentValue = nextColorScheme.value]"
-                :title="`当前主题：${colorScheme.label}，点击切换为：${nextColorScheme.label}`"
-              ></div>
-            </li>
-            <!-- https://github.com/halo-sigs/plugin-search-widget -->
-            <li th:if="${pluginFinder.available('PluginSearchWidget')}">
-              <a
-                href="javascript:SearchWidget.open()"
-                title="搜索"
-                class="text-gray-600 hover:text-blue-600 dark:text-slate-100"
-              >
-                <div class="i-tabler-search text-lg"></div>
-              </a>
-            </li>
-            <li
-              x-data="dropdown"
-              class="relative cursor-pointer transition-all"
-              th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
-              @mouseenter="open()"
-              @mouseleave="close()"
-            >
-              <div>
-                <div class="h-5 w-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
-                  <img
-                    class="h-5 w-5 rounded-full"
-                    th:src="${currentUser.avatar ?: #theme.assets('/images/default-avatar.svg')}"
-                    th:alt="${currentUser.displayName}"
-                  />
-                </div>
-                <ul
-                  @mouseenter="open()"
-                  @mouseleave="close()"
-                  x-show="show"
-                  x-transition:enter="transition ease-out duration-100"
-                  x-transition:enter-start="transform opacity-0 scale-95"
-                  x-transition:enter-end="transform opacity-100 scale-100"
-                  x-transition:leave="transition ease-in duration-75"
-                  x-transition:leave-start="transform opacity-100 scale-100"
-                  x-transition:leave-end="transform opacity-0 scale-95"
-                  class="absolute right-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:divide-slate-600 dark:bg-slate-700"
-                >
-                  <li
-                    sec:authorize="isAuthenticated()"
-                    class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
-                  >
-                    <a
-                      class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                      href="/console"
-                      target="_blank"
-                    >
-                      控制台
-                    </a>
-                  </li>
-                  <li
-                    sec:authorize="isAuthenticated()"
-                    class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
-                  >
-                    <a
-                      class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                      href="/logout"
-                    >
-                      退出登录
-                    </a>
-                  </li>
-                  <li
-                    sec:authorize="isAnonymous()"
-                    class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
-                  >
-                    <a
-                      class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                      href="/console"
-                    >
-                      登录
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
-    <div
-      th:if="${theme.config.layout.header_widget != 'none'} and ${isHome}"
-      class="bg-cover bg-center bg-no-repeat"
-      th:styleappend="${theme.config.layout.header_background_type == 'image' ? 'background-image: url(' + theme.config.layout.header_background_image + ');' : 'background: ' + theme.config.layout.header_background + ';'}"
-      th:classappend="${theme.config.layout.header_widget == 'site_title' ? 'h-96' : ''}"
-    >
-      <th:block th:switch="${theme.config.layout.header_widget}">
-        <th:block th:case="latest_post" th:with="posts = ${postFinder.list(1,1)}">
-          <div class="container mx-auto py-6" th:if="${posts.total gt 0}">
-            <th:block th:replace="~{modules/featured-post-card :: featured-post-card(post=${posts.items[0]})}" />
-          </div>
-        </th:block>
-        <th:block th:case="latest_post_grid" th:with="posts = ${postFinder.list(1,5)}">
-          <div class="container mx-auto grid grid-cols-1 gap-3 py-6 sm:grid-cols-5" th:if="${posts.total gt 0}">
-            <div class="col-span-1 sm:col-span-3">
-              <th:block
-                th:replace="~{modules/post-card :: post-card(post=${posts.items[0]},cover=true,animation=false,border=false,direction='row')}"
+    <div class="flex items-center">
+      <ul x-data="colorSchemeSwitcher" class="flex items-center gap-4">
+        <li class="sm:hidden" x-on:click="open = true">
+          <div class="i-tabler-menu-2 text-lg text-gray-600 hover:text-blue-600 dark:text-slate-100"></div>
+        </li>
+        <li
+          th:if="${theme.config.style.enable_change_color_scheme}"
+          x-data="dropdown"
+          class="relative cursor-pointer transition-all"
+          @mouseenter="open()"
+          @mouseleave="close()"
+        >
+          <div
+            class="cursor-pointer text-lg text-gray-600 transition-all hover:text-blue-600 dark:text-slate-100"
+            :class="colorScheme.icon"
+            @click="[main.setColorScheme(nextColorScheme.value,true), currentValue = nextColorScheme.value]"
+            :title="`当前主题：${colorScheme.label}，点击切换为：${nextColorScheme.label}`"
+          ></div>
+        </li>
+        <!-- https://github.com/halo-sigs/plugin-search-widget -->
+        <li th:if="${pluginFinder.available('PluginSearchWidget')}">
+          <a
+            href="javascript:SearchWidget.open()"
+            title="搜索"
+            class="text-gray-600 hover:text-blue-600 dark:text-slate-100"
+          >
+            <div class="i-tabler-search text-lg"></div>
+          </a>
+        </li>
+        <li
+          x-data="dropdown"
+          class="relative cursor-pointer transition-all"
+          th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
+          @mouseenter="open()"
+          @mouseleave="close()"
+        >
+          <div>
+            <div class="h-5 w-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
+              <img
+                class="h-5 w-5 rounded-full"
+                th:src="${currentUser.avatar ?: #theme.assets('/images/default-avatar.svg')}"
+                th:alt="${currentUser.displayName}"
               />
             </div>
-            <div class="col-span-1 grid grid-cols-1 gap-3 sm:col-span-2 sm:grid-cols-2">
-              <th:block th:each="post,postStat : ${posts.items}">
-                <th:block th:if="${postStat.index != 0}">
-                  <th:block
-                    th:replace="~{modules/post-card :: post-card(post=${post},cover=false,animation=false,border=false,direction='row')}"
-                  />
-                </th:block>
-              </th:block>
-            </div>
+            <ul
+              @mouseenter="open()"
+              @mouseleave="close()"
+              x-show="show"
+              x-transition:enter="transition ease-out duration-100"
+              x-transition:enter-start="transform opacity-0 scale-95"
+              x-transition:enter-end="transform opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-75"
+              x-transition:leave-start="transform opacity-100 scale-100"
+              x-transition:leave-end="transform opacity-0 scale-95"
+              class="absolute right-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:divide-slate-600 dark:bg-slate-700"
+            >
+              <li
+                sec:authorize="isAuthenticated()"
+                class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+              >
+                <a
+                  class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                  href="/console"
+                  target="_blank"
+                >
+                  控制台
+                </a>
+              </li>
+              <li
+                sec:authorize="isAuthenticated()"
+                class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+              >
+                <a
+                  class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                  href="/logout"
+                >
+                  退出登录
+                </a>
+              </li>
+              <li
+                sec:authorize="isAnonymous()"
+                class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+              >
+                <a
+                  class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                  href="/console"
+                >
+                  登录
+                </a>
+              </li>
+            </ul>
           </div>
-        </th:block>
-        <th:block th:case="site_title">
-          <div class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6">
-            <span class="text-5xl text-white" th:text="${site.title}"></span>
-            <span class="text-sm font-light text-white opacity-50" th:text="${site.subtitle}"></span>
-          </div>
-        </th:block>
-      </th:block>
-    </div>
-    <div
-      th:if="${theme.config.layout.content_header} and ${not #strings.isEmpty(cover)}"
-      class="h-96 bg-cover bg-center bg-no-repeat"
-      th:style="'background-image: url('+${cover}+')'"
-    >
-      <div class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6">
-        <span class="text-5xl text-white" th:text="${title}"></span>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
   <div th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}">
