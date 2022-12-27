@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${error.status} + ' | ' + ${#strings.defaultString(error.title, 'Internal server error')} + ' - ' +${site.title}, header = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
+  th:replace="~{modules/layout :: html(title = ${error.status} + ' | ' + ${#strings.defaultString(error.title, 'Internal server error')} + ' - ' +${site.title}, hero = null, header = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
 >
   <th:block th:fragment="content">
     <section class="flex items-center dark:bg-gray-900 dark:text-gray-100">
