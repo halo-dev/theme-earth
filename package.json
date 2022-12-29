@@ -1,7 +1,7 @@
 {
   "name": "@halo-dev/theme-earth",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Default theme for Halo 2.0",
   "scripts": {
     "dev": "vite build --watch",
