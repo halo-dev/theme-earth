@@ -41,6 +41,9 @@
     <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
     <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
   </span>
+  <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
+    <halo:footer />
+  </span>
 </footer>
 
 <footer th:if="${theme.config.footer.style == 'style_2'}" class="mt-10 bg-white py-8 dark:bg-slate-800">
@@ -109,5 +112,10 @@
         <div th:classappend="${social_media.icon}" class="h-5 w-5"></div>
       </a>
     </div>
+  </div>
+  <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
+    <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
+      <halo:footer />
+    </span>
   </div>
 </footer>
