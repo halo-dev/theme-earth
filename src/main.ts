@@ -4,11 +4,13 @@ import Alpine from "alpinejs";
 import * as tocbot from "tocbot";
 import dropdown from "./alpine-data/dropdown";
 import colorSchemeSwitcher from "./alpine-data/color-scheme-switcher";
+import postUpvote from "./alpine-data/post-upvote";
 
 window.Alpine = Alpine;
 
 Alpine.data("dropdown", dropdown);
 Alpine.data("colorSchemeSwitcher", colorSchemeSwitcher);
+Alpine.data("postUpvote", postUpvote);
 
 Alpine.start();
 
