@@ -8,7 +8,7 @@
     <div class="flex h-full items-center gap-6">
       <div class="mr-2 h-full">
         <a href="/" class="inline-flex h-full items-center">
-          <img th:if="${not #strings.isEmpty(site.logo)}" th:src="${site.logo}" th:alt="Logo" class="h-full w-8" />
+          <img th:if="${not #strings.isEmpty(site.logo)}" th:src="${site.logo}" th:alt="Logo" class="h-full w-auto" />
           <span
             th:if="${#strings.isEmpty(site.logo)}"
             id="site-title"
