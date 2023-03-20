@@ -43,7 +43,7 @@
             <div class="i-tabler-heart text-lg text-gray-600 hover:text-red-600 dark:text-slate-100"></div>
           </div>
           <a
-            th:if="${pluginFinder.available('PluginCommentWidget')} and ${post.spec.allowComment} and ${site.comment.enable}"
+            th:if="${pluginFinder.available('PluginCommentWidget')} and ${singlePage.spec.allowComment} and ${site.comment.enable}"
             href="#comment"
             class="cursor-pointer rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-slate-600"
           >
