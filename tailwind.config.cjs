@@ -62,5 +62,6 @@ module.exports = {
     "i-simple-icons-steam",
     "i-simple-icons-github",
     "i-simple-icons-gitlab",
+    "i-simple-icons-rss",
   ],
 };

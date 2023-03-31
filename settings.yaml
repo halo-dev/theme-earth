@@ -166,6 +166,8 @@ spec:
                   value: i-simple-icons-github
                 - label: GitLab
                   value: i-simple-icons-gitlab
+                - label: RSS
+                  value: i-simple-icons-rss
             - $formkit: text
               name: name
               label: 名称
@@ -284,6 +286,8 @@ spec:
                   value: i-simple-icons-github
                 - label: GitLab
                   value: i-simple-icons-gitlab
+                - label: RSS
+                  value: i-simple-icons-rss
             - $formkit: text
               name: name
               label: 名称
