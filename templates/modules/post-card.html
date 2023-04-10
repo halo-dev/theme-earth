@@ -1,6 +1,6 @@
 <div
   th:fragment="post-card(post,cover,animation,border,direction)"
-  class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg dark:bg-slate-800 dark:ring-slate-700"
+  class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg dark:bg-slate-800 dark:ring-slate-700"
   th:classappend="${animation  ? 'hover:-translate-y-1' : ''} + ' ' + ${border ? 'hover:ring-2' : ''} + ' ' + ${direction == 'column' ? '!grid grid-cols-1 sm:grid-cols-5' : ''}"
 >
   <div
@@ -52,11 +52,13 @@
     >
       <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
     </h1>
-    <p
-      class="font-sm font-light line-clamp-6 dark:text-slate-200"
-      th:text="${post.status.excerpt}"
-      th:classappend="${list_layout == 'grid_3' ? ' sm:line-clamp-8' : ''}"
-    ></p>
+    <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
+      <p
+        class="font-sm font-light line-clamp-6 dark:text-slate-200"
+        th:text="${post.status.excerpt}"
+        th:classappend="${list_layout == 'grid_3' ? ' sm:line-clamp-8' : ''}"
+      ></p>
+    </a>
     <div class="mt-4 flex flex-1 items-center justify-start gap-2">
       <a th:href="@{${post.owner.permalink}}" th:title="${post.owner.displayName}">
         <img
