@@ -1,6 +1,6 @@
 <div
   th:fragment="post-card(post,cover,animation,border,direction)"
-  class="group flex cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg dark:bg-slate-800 dark:ring-slate-700"
+  class="group flex flex-col overflow-hidden rounded-xl bg-white shadow-md ring-black transition-all duration-500 hover:shadow-lg dark:bg-slate-800 dark:ring-slate-700"
   th:classappend="${animation  ? 'hover:-translate-y-1' : ''} + ' ' + ${border ? 'hover:ring-2' : ''} + ' ' + ${direction == 'column' ? '!grid grid-cols-1 sm:grid-cols-5' : ''}"
 >
   <div
