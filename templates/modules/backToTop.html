@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<button class="backToTop" onclick="backToTop()" onmouseover="mouseCover()" onmouseleave="mouseLeave()">
+  <span>▲</span>
+</button>
+</body>
+<script>
+  let goTopBtn = document.querySelector('.backToTop')
+  let rootElement = document.documentElement;
+  function backToTop(){
+  scrollTo(0,0);
+  }
+  function mouseCover(){
+    goTopBtn.classList.add('mouseCover');
+  }
+  function mouseLeave(){
+    goTopBtn.classList.remove('mouseCover');
+  }
+  function handleScroll() {
+    let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
+    if ((rootElement.scrollTop / scrollTotal ) > 0.20 ) {
+      // 显示按钮
+      goTopBtn.classList.add('backToTop');
+    } else {
+      // 隐藏按钮
+      goTopBtn.classList.remove('backToTop');
+    }
+  }
+  document.addEventListener("scroll", handleScroll);
+</script>
+<style>
+  .backToTop{
+    position: fixed;
+    right: 25px;
+    bottom: 125px;
+    border-radius: 50%;
+    background-color: #cccccc;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    opacity: 0.3;
+    font-size: 25px;
+  }
+  .mouseCover{
+    opacity: 1;
+  }
+  html,
+  body {
+    scroll-behavior: smooth;
+  }
+</style>
+</html>
