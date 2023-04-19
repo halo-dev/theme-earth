@@ -8,18 +8,22 @@
 <script>
   let goTopBtn = document.querySelector('.backToTop')
   let rootElement = document.documentElement;
-  function backToTop(){
-  scrollTo(0,0);
+
+  function backToTop() {
+    scrollTo(0, 0);
   }
-  function mouseCover(){
-    goTopBtn.classList.add('mouseCover');
+
+  function mouseCover() {
+    goTopBtn.style.opacity = "1";
   }
-  function mouseLeave(){
-    goTopBtn.classList.remove('mouseCover');
+
+  function mouseLeave() {
+    goTopBtn.style.opacity = "0.3";
   }
+
   function handleScroll() {
     let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
-    if ((rootElement.scrollTop / scrollTotal ) > 0.20 ) {
+    if ((rootElement.scrollTop / scrollTotal) > 0.20) {
       // 显示按钮
       goTopBtn.classList.add('backToTop');
     } else {
@@ -27,10 +31,11 @@
       goTopBtn.classList.remove('backToTop');
     }
   }
+
   document.addEventListener("scroll", handleScroll);
 </script>
 <style>
-  .backToTop{
+  .backToTop {
     position: fixed;
     right: 25px;
     bottom: 125px;
@@ -41,9 +46,6 @@
     text-align: center;
     opacity: 0.3;
     font-size: 25px;
-  }
-  .mouseCover{
-    opacity: 1;
   }
   html,
   body {
