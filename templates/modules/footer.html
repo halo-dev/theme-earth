@@ -94,6 +94,16 @@
   <hr class="my-6 border-gray-200 dark:border-slate-700 sm:mx-auto lg:my-8" />
   <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
     <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
+        <span class="container mx-auto block text-center text-sm text-gray-500" 
+              style="width: 300px; margin: 0 auto;">
+          <a
+            href="https://beian.miit.gov.cn/"
+            class="hover:underline"
+            target="_blank"
+            th:href="${theme.config.beian.icp_link}"
+            th:text="${theme.config.beian.icp_text}"
+          ></a>
+        </span>
       ©
       <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
       <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
