@@ -1,42 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<button class="backToTop" 
-        onclick="backToTop()" 
-        onmouseover="mouseCover()" 
-        onmouseleave="mouseLeave()">
-  <span>▲</span>
+<button 
+  id="goTopBtn"
+  class="backToTop" 
+  onclick="main.backToTop()">
+  <span class="i-bx-arrow-to-top text-lg inline-flex items-center gap-2 text-base dark:text-slate-50"></span>
 </button>
-</body>
-<script>
-  let goTopBtn = document.querySelector('.backToTop')
-  let rootElement = document.documentElement;
-
-  function backToTop() {
-    scrollTo(0, 0);
-  }
-
-  function mouseCover() {
-    goTopBtn.style.opacity = "1";
-  }
-
-  function mouseLeave() {
-    goTopBtn.style.opacity = "0.3";
-  }
-
-  function handleScroll() {
-    let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
-    if ((rootElement.scrollTop / scrollTotal) > 0.20) {
-      // 显示按钮
-      goTopBtn.classList.add('backToTop');
-    } else {
-      // 隐藏按钮
-      goTopBtn.classList.remove('backToTop');
-    }
-  }
-
-  document.addEventListener("scroll", handleScroll);
-</script>
 <style>
   .backToTop {
     position: fixed;
@@ -50,9 +17,11 @@
     opacity: 0.3;
     font-size: 25px;
   }
+  .backToTop:hover{
+    opacity: 1;
+  }
   html,
   body {
     scroll-behavior: smooth;
   }
 </style>
-</html>

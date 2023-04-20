@@ -5,6 +5,7 @@ import * as tocbot from "tocbot";
 import dropdown from "./alpine-data/dropdown";
 import colorSchemeSwitcher from "./alpine-data/color-scheme-switcher";
 import postUpvote from "./alpine-data/post-upvote";
+import {backToTop} from "./alpine-data/back-to-top";
 
 window.Alpine = Alpine;
 
@@ -71,6 +72,8 @@ export function setColorScheme(colorScheme: ColorSchemeType, store: boolean) {
     localStorage.setItem("color-scheme", colorScheme);
   }
 }
+
+export {backToTop}
 
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
   if (currentColorScheme === "system") {
