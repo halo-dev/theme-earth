@@ -61,6 +61,7 @@
       <h1 class="my-3 text-2xl font-medium dark:text-slate-50" th:text="${singlePage.spec.title}"></h1>
       <article
         class="prose prose-base mt-4 !max-w-none dark:prose-invert"
+        style="word-wrap:break-word"
         th:utext="${singlePage.content.content}"
       ></article>
       <hr class="my-10 dark:border-slate-700" />
