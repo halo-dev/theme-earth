@@ -7,7 +7,8 @@
         class="mr-3 h-8 w-8"
         th:alt="${site.title}"
       />
-      <span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-slate-50" th:text="${site.title}">
+      <span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-slate-50" 
+            th:text="${theme.config.footer.title ?: site.title}">
       </span>
     </a>
     <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}">
@@ -58,7 +59,7 @@
         />
         <span
           class="self-center whitespace-nowrap text-2xl font-semibold dark:text-slate-50"
-          th:text="${site.title}"
+          th:text="${theme.config.footer.title ?: site.title}"
         ></span>
       </a>
       <span
