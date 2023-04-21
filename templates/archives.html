@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: html(title = '归档 - ' + ${site.title}, hero = null, content = ~{::content}, head = null, footer = null, sidebar = ~{::sidebar}, contentClass = '')}"
+>
+<th:block th:fragment="content">
+  <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
+    <h1 class="mb-3 text-2xl font-medium dark:text-slate-50">归档</h1>
+    <div class="flex flex-col gap-4">
+      <th:block th:each="archive : ${archives.items}">
+        <th:block th:each="month : ${archive.months}">
+          <h2 class="mt-2 text-lg font-medium dark:text-slate-50" th:text="${archive.year + '年' + month.month + '月'}"></h2>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <a th:each="post : ${month.posts}" th:href="${post.status.permalink}" target="_self">
+              <div
+                class="relative flex items-center space-x-3 rounded border border-gray-300 bg-white px-5 py-4 shadow-sm hover:border-gray-400 hover:shadow dark:border-slate-600 dark:bg-slate-700 dark:hover:border-slate-700"
+              >
+                <div class="min-w-0 flex-1">
+                  <div>
+                    <p
+                      class="truncate text-sm font-medium text-gray-900 dark:text-slate-100"
+                      th:text="${#dates.format(post.spec.publishTime, 'MM-dd') + ' ' + post.spec.title}"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </th:block>
+      </th:block>
+    </div>
+  </div>
+
+  <div th:if="${archives.total == 0}" class="mt-6 flex items-center justify-center">
+    <span class="text-sm font-light text-gray-600">当前没有文章</span>
+  </div>
+  
+  <div class="mt-6 flex items-center justify-between" th:if="${archives.hasPrevious() || archives.hasNext()}">
+    <a
+      th:href="@{${archives.prevUrl}}"
+      class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
+    >
+      <span class="i-tabler-arrow-left text-lg transition-all group-hover:-translate-x-1"></span>
+      <span>上一页</span>
+    </a>
+    <span class="text-sm text-gray-900 dark:text-slate-50" th:text="|${archives.page} / ${archives.totalPages}|"></span>
+    <a
+      th:href="@{${archives.nextUrl}}"
+      class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
+    >
+      <span>下一页</span>
+      <span class="i-tabler-arrow-right text-lg transition-all group-hover:translate-x-1"></span>
+    </a>
+  </div>
+</th:block>
+</html>
