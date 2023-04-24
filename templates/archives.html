@@ -14,63 +14,53 @@
               <h2 class="mt-2 text-lg font-medium dark:text-slate-50" th:text="${archive.year + '年' + month.month + '月'}"></h2>
             </div>
             <div class="basis-3/4">
-              <a th:each="post : ${month.posts}" th:href="${post.status.permalink}" target="_self">
-                <div class="my-2 rounded border border-gray-300 bg-white px-5 py-4 shadow-sm hover:border-gray-400 hover:shadow dark:border-slate-600 dark:bg-slate-700 dark:hover:border-slate-700">
-                  <div class="min-w-0 flex-1 grid grid-cols-12 gap-4">
-                    <div class="col-span-7 flex flex-nowrap gap-2">
-                        <h1
-                          class="truncate text-xl font-medium text-gray-900 dark:text-slate-100"
+              <th:block th:each="post : ${month.posts}">
+                <div class="my-2 rounded border border-gray-300 bg-white shadow-sm hover:border-gray-400 hover:shadow dark:border-slate-600 dark:bg-slate-700 dark:hover:border-slate-700">
+                  <div class="relative flex flex-col gap-2 p-4">
+                    <div class="min-w-0 flex-1 grid grid-cols-12 gap-4">
+                      <div class="col-span-7 flex flex-nowrap gap-2">
+                        <a th:href="${post.status.permalink}" target="_self"
+                          class="truncate text-2xl font-medium text-gray-900 dark:text-slate-100"
                           th:text="${post.spec.title}"
-                        ></h1>
-                      <div class="inline-flex items-center gap-1 text-xs text-gray-600 dark:text-slate-500 align-bottom">
-                        <span class="i-tabler-eye"></span>
-                        <span th:text="${post.stats.visit}" class="tabular-nums"> </span>
+                        ></a>
+                      </div>
+                      <div class="col-start-11 col-span-3">
+                        <p
+                          class="truncate text-sm font-medium text-gray-900 dark:text-slate-100"
+                          th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
+                        ></p>
                       </div>
                     </div>
-                    <div class="col-start-11 col-span-3">
-                      <p
-                        class="truncate text-sm font-medium text-gray-900 dark:text-slate-100"
-                        th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"
-                      ></p>
+
+                    <div
+                      th:if="${not #lists.isEmpty(post.categories)} or ${not #lists.isEmpty(post.tags)}"
+                      class="flex flex-wrap items-center gap-2"
+                    >
+                      <a
+                        th:if="${#lists.size(post.categories)} gt 0"
+                        th:href="@{${post.categories[0].status.permalink}}"
+                        th:title="${post.categories[0].spec.displayName}"
+                        th:text="${post.categories[0].spec.displayName}"
+                        class="mr-1 text-sm font-medium text-gray-800 hover:text-gray-900 dark:text-slate-500 dark:hover:text-slate-600"
+                      >
+                      </a>
+                      <a
+                        th:each="tag : ${post.tags}"
+                        th:href="@{${tag.status.permalink}}"
+                        th:title="${tag.spec.displayName}"
+                        th:text="|#${tag.spec.displayName}|"
+                        class="cursor-pointer text-sm italic text-gray-600 hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-500"
+                      >
+                      </a>
+                    </div>
+                    
+                    <div class="font-sm font-light line-clamp-6 dark:text-slate-200">
+                      <th:block th:text="${post.status.excerpt}"></th:block>
                     </div>
                   </div>
-                  <div class="flex flex-col gap-1.5">
-                    <div class="flex-wrap !gap-y-1">
-                      <th:block th:if="${not #lists.isEmpty(post.categories)}">
-                        <span class="inline-flex flex-wrap gap-1 text-sm text-gray-900 dark:text-slate-100">
-                          分类：
-                        </span>
-                        <th:block th:each="category : ${post.categories}">
-                          <a
-                            th:href="@{${category.status.permalink}}"
-                            th:title="${category.spec.displayName}"
-                            th:text="${category.spec.displayName}"
-                            class="inline-flex flex-wrap gap-1 rounded bg-gray-100 px-1 py-0.5 text-sm text-gray-900 hover:bg-gray-200 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-slate-700 dark:hover:text-slate-100"
-                          >
-                          </a>
-                        </th:block>
-                      </th:block>
-                      <th:block th:if="${not #lists.isEmpty(post.tags)}">
-                        <span class="inline-flex flex-wrap gap-1 text-sm text-gray-900 dark:text-slate-100">
-                        标签：
-                        </span> 
-                        <th:block th:each="tag : ${post.tags}">
-                          <a
-                            th:href="@{${tag.status.permalink}}"
-                            th:title="${tag.spec.displayName}"
-                            th:text="|#${tag.spec.displayName}|"
-                            class="inline-flex flex-wrap gap-1 rounded bg-gray-100 px-1 py-0.5 text-sm text-gray-900 hover:bg-gray-200 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-slate-700 dark:hover:text-slate-100"
-                          >
-                          </a>
-                        </th:block>
-                      </th:block>
-                    </div>
-                  </div>
-                  <div class="inline-flex flex-wrap gap-1 text-xs text-gray-500 break-words text-gray-500 dark:text-slate-100">
-                    <th:block th:text="${post.status.excerpt}"></th:block>
+                  
                 </div>
-                </div>
-              </a>
+              </th:block>
             </div>
           </div>
         </th:block>
