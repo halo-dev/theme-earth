@@ -31,7 +31,6 @@
                         ></p>
                       </div>
                     </div>
-
                     <div
                       th:if="${not #lists.isEmpty(post.categories)} or ${not #lists.isEmpty(post.tags)}"
                       class="flex flex-wrap items-center gap-2"
@@ -53,12 +52,10 @@
                       >
                       </a>
                     </div>
-                    
                     <div class="font-sm font-light line-clamp-6 dark:text-slate-200">
                       <th:block th:text="${post.status.excerpt}"></th:block>
                     </div>
                   </div>
-                  
                 </div>
               </th:block>
             </div>
