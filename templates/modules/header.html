@@ -144,7 +144,7 @@
               >
                 <a
                   class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                  href="/console"
+                  href="/console/login"
                 >
                   登录
                 </a>
@@ -191,7 +191,11 @@
       <nav class="mt-6">
         <ul class="-my-2 divide-y divide-gray-100 text-sm text-gray-800 dark:divide-slate-800 dark:text-slate-100">
           <li th:each="menuItem : ${menu.menuItems}">
-            <a class="flex items-center justify-between gap-1 py-2" th:href="@{${menuItem.status.href}}" th:target="${menuItem.spec.target?.value}">
+            <a
+              class="flex items-center justify-between gap-1 py-2"
+              th:href="@{${menuItem.status.href}}"
+              th:target="${menuItem.spec.target?.value}"
+            >
               <span th:text="${menuItem.status.displayName}"></span>
             </a>
             <ul class="divide-y divide-gray-100 dark:divide-slate-800" th:if="${not #lists.isEmpty(menuItem.children)}">

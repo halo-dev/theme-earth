@@ -15,13 +15,13 @@
   </th:block>
   <th:block th:fragment="sidebar_prepend">
     <div
-      class="sticky top-20 z-5  w-full cursor-pointer rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md dark:bg-slate-800"
+      class="z-5 sticky top-20 w-full cursor-pointer rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md dark:bg-slate-800"
     >
       <h2 class="inline-flex items-center gap-2 text-base dark:text-slate-50">
         <span class="i-tabler-list text-lg"></span>
         目录
       </h2>
-      <div class="overflow-auto max-h-64 toc mt-2"></div>
+      <div class="toc mt-2 max-h-64 overflow-auto"></div>
     </div>
   </th:block>
   <th:block th:fragment="sidebar">
@@ -98,7 +98,7 @@
       </div>
       <article
         id="content"
-        class="prose prose-base mt-4 !max-w-none prose-pre:p-0 dark:prose-invert break-words"
+        class="prose prose-base mt-4 !max-w-none break-words dark:prose-invert prose-pre:p-0"
         th:utext="${post.content.content}"
       ></article>
       <div
@@ -147,7 +147,7 @@
 
     <a
       sec:authorize="isAuthenticated()"
-      th:href="'/console#/posts/editor?name='+${post.metadata.name}+'&returnToView=true'"
+      th:href="|/console/posts/editor?name=${post.metadata.name}&returnToView=true|"
       id="edit-button"
       class="fixed bottom-10 right-10 flex h-14 w-14 items-center justify-center rounded-full bg-[#4CCBA0] text-white shadow transition-all duration-300 hover:opacity-80 hover:shadow-lg"
     >
