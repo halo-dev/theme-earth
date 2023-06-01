@@ -60,7 +60,7 @@
       </div>
       <h1 class="my-3 text-2xl font-medium dark:text-slate-50" th:text="${singlePage.spec.title}"></h1>
       <article
-        class="prose prose-base mt-4 !max-w-none dark:prose-invert break-words"
+        class="prose prose-base mt-4 !max-w-none break-words dark:prose-invert"
         th:utext="${singlePage.content.content}"
       ></article>
       <hr class="my-10 dark:border-slate-700" />
@@ -80,7 +80,7 @@
 
     <a
       sec:authorize="isAuthenticated()"
-      th:href="'/console#/pages/single/editor?name='+${singlePage.metadata.name}+'&returnToView=true'"
+      th:href="|/console/single-pages/editor?name=${singlePage.metadata.name}&returnToView=true|"
       id="edit-button"
       class="fixed bottom-10 right-10 flex h-14 w-14 items-center justify-center rounded-full bg-[#4CCBA0] text-white shadow transition-all duration-300 hover:opacity-80 hover:shadow-lg"
     >
