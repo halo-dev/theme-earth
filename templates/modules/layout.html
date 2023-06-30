@@ -23,7 +23,7 @@
       <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
     </th:block>
     <section class="container mx-auto mt-6 grid grid-cols-4 gap-6" th:classappend="${contentClass}">
-      <div class="col-span-4 sm:col-span-3">
+      <div class="z-0 col-span-4 sm:col-span-3">
         <th:block th:replace="${content}" />
       </div>
       <th:block th:if="${sidebar != null}">
