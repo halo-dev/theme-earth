@@ -33,3 +33,7 @@ body {
 .toc-list-item > .toc-list {
   @apply my-3 ml-3 space-y-1 border-l pl-2;
 }
+
+.is-active-li {
+  @apply rounded bg-gray-100 dark:bg-slate-600;
+}

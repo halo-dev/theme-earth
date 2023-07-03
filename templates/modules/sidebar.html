@@ -1,4 +1,4 @@
-<aside th:fragment="sidebar (prepend)" class="col-span-1 hidden h-full flex-col gap-6 sm:flex">
+<aside th:fragment="sidebar (prepend)" class="z-0 col-span-1 hidden h-full flex-col gap-6 sm:flex">
   <th:block th:with="widgets = ${theme.config.sidebar.widgets} ">
     <th:block th:if="${prepend != null}">
       <th:block th:replace="${prepend}" />
