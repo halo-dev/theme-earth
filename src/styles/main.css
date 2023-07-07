@@ -34,6 +34,10 @@ body {
   @apply my-3 ml-3 space-y-1 border-l pl-2;
 }
 
+.pattern-header-text {
+  text-shadow: 2px 2px 10px #000;
+}
+
 .is-active-li {
   @apply rounded bg-gray-100 dark:bg-slate-600;
 }
