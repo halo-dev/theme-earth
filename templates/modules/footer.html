@@ -37,6 +37,23 @@
       th:href="${theme.config.beian.icp_link}"
       th:text="${theme.config.beian.icp_text}"
     ></a>
+  <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
+    <style>
+      .text-with-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+    </style>
+    <div class="center">
+      <p class="text-with-image">
+        <img src="/themes/theme-earth/assets/images/gongan_beian.png">
+        <a href="https://www.beian.gov.cn/portal/registerSystemInfo" class="hover:underline" target="_blank"
+          th:href="${theme.config.beian.gongan_link}" th:text="${theme.config.beian.gongan_text}"></a>
+      </p>
+    </div>
+  </span>
   </span>
   <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
     ©
