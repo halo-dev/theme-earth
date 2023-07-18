@@ -48,7 +48,8 @@
     </style>
     <div class="center">
       <p class="text-with-image">
-        <img src="/themes/theme-earth/assets/images/gongan_beian.png">
+        <img th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+        src="/themes/theme-earth/assets/images/gongan_beian.png">
         <a href="https://www.beian.gov.cn/portal/registerSystemInfo" class="hover:underline" target="_blank"
           th:href="${theme.config.beian.gongan_link}" th:text="${theme.config.beian.gongan_text}"></a>
       </p>
