@@ -37,6 +37,16 @@
       th:href="${theme.config.beian.icp_link}"
       th:text="${theme.config.beian.icp_text}"
     ></a>
+  <span th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+    class="container mx-auto block text-center text-sm text-gray-500">
+    <div class="center">
+      <p class="flex items-center justify-center gap-1">
+        <img th:src="@{/assets/images/gongan_beian.png}">
+        <a href="https://www.beian.gov.cn/portal/registerSystemInfo" class="hover:underline" target="_blank"
+          th:href="${theme.config.beian.gongan_link}" th:text="${theme.config.beian.gongan_text}"></a>
+      </p>
+    </div>
+  </span>
   </span>
   <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
     ©
