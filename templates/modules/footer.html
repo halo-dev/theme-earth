@@ -27,26 +27,56 @@
         </li>
       </ul>
     </th:block>
+
+    <th:block th:with="social_medias = ${theme.config.footer.social_media}">
+      <div th:unless="${#lists.isEmpty(social_medias)}" class="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+        <a
+          th:each="social_media : ${social_medias}"
+          th:href="${social_media.url}"
+          class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+          th:title="${social_media.name}"
+        >
+          <div th:classappend="${social_media.icon}" class="h-5 w-5"></div>
+        </a>
+      </div>
+    </th:block>
   </div>
   <hr class="my-6 border-gray-100 dark:border-slate-700 sm:mx-auto lg:my-8" />
-  <span class="container mx-auto block text-center text-sm text-gray-500">
-    <a
-      href="https://beian.miit.gov.cn/"
-      class="hover:underline"
-      target="_blank"
-      th:href="${theme.config.beian.icp_link}"
-      th:text="${theme.config.beian.icp_text}"
-    ></a>
-  </span>
-  <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
-    ©
-    <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
-    <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
-    <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
-  </span>
-  <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
-    <halo:footer />
-  </span>
+  <div class="space-y-1">
+    <span class="container mx-auto block text-center text-sm text-gray-500">
+      <a
+        href="https://beian.miit.gov.cn/"
+        class="hover:underline"
+        target="_blank"
+        th:href="${theme.config.beian.icp_link}"
+        th:text="${theme.config.beian.icp_text}"
+      ></a>
+    </span>
+    <div
+      th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+      class="container mx-auto block text-center text-sm text-gray-500"
+    >
+      <p class="flex items-center justify-center gap-1">
+        <img th:src="@{/assets/images/gongan_beian.png}" class="h-4 w-4" />
+        <a
+          href="https://www.beian.gov.cn/portal/registerSystemInfo"
+          class="hover:underline"
+          target="_blank"
+          th:href="${theme.config.beian.gongan_link}"
+          th:text="${theme.config.beian.gongan_text}"
+        ></a>
+      </p>
+    </div>
+    <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
+      ©
+      <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+      <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
+      <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
+    </span>
+    <span class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
+      <halo:footer />
+    </span>
+  </div>
 </footer>
 
 <footer th:if="${theme.config.footer.style == 'style_2'}" class="mt-10 bg-white py-8 dark:bg-slate-800">
@@ -95,27 +125,47 @@
     </div>
   </div>
   <hr class="my-6 border-gray-200 dark:border-slate-700 sm:mx-auto lg:my-8" />
-  <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
-    <div>
-      <span class="block text-center text-sm text-gray-500">
-        <a
-          href="https://beian.miit.gov.cn/"
-          class="hover:underline"
-          target="_blank"
-          th:href="${theme.config.beian.icp_link}"
-          th:text="${theme.config.beian.icp_text}"
-        ></a>
-      </span>
+  <div class="container mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between">
+    <div class="flex flex-col space-y-1 text-center sm:text-left">
       <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
         ©
         <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
         <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
         <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
       </span>
+
+      <div class="flex flex-col gap-1 sm:flex-row">
+        <span class="block text-center text-sm text-gray-500 sm:text-left">
+          <a
+            href="https://beian.miit.gov.cn/"
+            class="hover:underline"
+            target="_blank"
+            th:href="${theme.config.beian.icp_link}"
+            th:text="${theme.config.beian.icp_text}"
+          ></a>
+        </span>
+        <div
+          th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+          class="inline-flex items-center justify-center gap-1 text-sm text-gray-500 sm:justify-start"
+        >
+          <img th:src="@{/assets/images/gongan_beian.png}" class="h-4 w-4" />
+          <a
+            href="https://www.beian.gov.cn/portal/registerSystemInfo"
+            class="hover:underline"
+            target="_blank"
+            th:href="${theme.config.beian.gongan_link}"
+            th:text="${theme.config.beian.gongan_text}"
+          ></a>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-500 dark:text-slate-300">
+        <halo:footer />
+      </p>
     </div>
     <div
       th:with="social_medias = ${theme.config.footer.social_media}"
-      class="mt-4 flex space-x-6 sm:mt-0 sm:justify-center"
+      class="mt-4 flex justify-center space-x-6 sm:mt-0"
     >
       <th:block th:each="social_media : ${social_medias}">
         <a
@@ -176,10 +226,5 @@
         </span>
       </th:block>
     </div>
-  </div>
-  <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
-    <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
-      <halo:footer />
-    </span>
   </div>
 </footer>

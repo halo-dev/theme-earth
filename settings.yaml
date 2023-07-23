@@ -316,3 +316,11 @@ spec:
           name: icp_link
           label: ICP备案跳转链接
           value: https://beian.miit.gov.cn/
+
+        - $formkit: text
+          name: gongan_text
+          label: 公安联网备案号
+        - $formkit: text
+          name: gongan_link
+          label: 公安联网备案跳转链接
+          value: https://www.beian.gov.cn/portal/registerSystemInfo
