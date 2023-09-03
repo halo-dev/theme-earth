@@ -29,7 +29,7 @@
   </th:block>
   <th:block th:fragment="content">
     <div x-data="postUpvote" class="rounded-xl bg-white p-4 dark:bg-slate-800">
-      <div th:attr="x-data=|{name:'${post.metadata.name}'}|" class="flex items-center justify-between">
+      <div th:attr="x-data=|{name:'${post.metadata.name}'}|" class="flex items-center justify-between flex-wrap">
         <div class="inline-flex items-center justify-start gap-2">
           <a th:href="@{${post.owner.permalink}}" th:title="${post.owner.displayName}">
             <img
