@@ -63,11 +63,8 @@
         class="prose prose-base mt-4 !max-w-none break-words dark:prose-invert"
         th:utext="${singlePage.content.content}"
       ></article>
-      <hr class="my-10 dark:border-slate-700" />
-      <!-- https://github.com/halo-sigs/plugin-comment-widget -->
-      <div
-        th:if="${pluginFinder.available('PluginCommentWidget')} and ${singlePage.spec.allowComment} and ${site.comment.enable}"
-      >
+      <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
+      <div th:if="${haloCommentEnabled}">
         <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50">评论</h2>
         <halo:comment
           group="content.halo.run"
