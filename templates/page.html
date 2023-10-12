@@ -31,25 +31,26 @@
               <span th:text="|发布于 ${#dates.format(singlePage.spec.publishTime,'yyyy-MM-dd')}|"></span>
               <span class="text-gray-300 dark:text-slate-200">/</span>
               <span th:text="|${singlePage.stats?.visit ?:0} 阅读|"></span>
-              <span class="text-gray-300 dark:text-slate-200">/</span>
-              <span th:text="|${singlePage.stats?.comment ?:0} 评论|"> </span>
-              <span class="text-gray-300 dark:text-slate-200">/</span>
-              <span th:text="|${singlePage.stats?.upvote ?:0} 点赞|"> </span>
             </div>
           </div>
         </div>
         <div class="inline-flex flex-row gap-1">
-          <div th:if="${false}" class="cursor-pointer rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-slate-600">
-            <div class="i-tabler-heart text-lg text-gray-600 hover:text-red-600 dark:text-slate-100"></div>
-          </div>
           <a
-            th:if="${pluginFinder.available('PluginCommentWidget')} and ${singlePage.spec.allowComment} and ${site.comment.enable}"
+            th:if="${haloCommentEnabled}"
             href="#comment"
-            class="cursor-pointer rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-slate-600"
+            class="group inline-flex cursor-pointer items-center gap-0.5 rounded-lg"
           >
             <div
-              class="i-tabler-message-circle text-lg text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-50"
-            ></div>
+              class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
+            >
+              <div
+                class="i-tabler-message-circle text-lg text-gray-600 group-hover:text-indigo-500 dark:text-slate-500"
+              ></div>
+            </div>
+            <span
+              class="text-sm text-gray-600 group-hover:text-indigo-500 dark:text-slate-500"
+              th:text="${singlePage.stats?.comment ?:0}"
+            ></span>
           </a>
           <div th:if="${false}" class="cursor-pointer rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-slate-600">
             <div
