@@ -1,14 +1,14 @@
-interface PostUpvote {
+interface upvoteState {
   upvotedNames: string[];
   init(): void;
   upvoted(id: string): boolean;
   handleUpvote(name: string): void;
 }
 
-export default (): PostUpvote => ({
+export default (key: string, group: string, plural: string): upvoteState => ({
   upvotedNames: [],
   init() {
-    this.upvotedNames = JSON.parse(localStorage.getItem("halo.upvoted.post.names") || "[]");
+    this.upvotedNames = JSON.parse(localStorage.getItem(`halo.upvoted.${key}.names`) || "[]");
   },
   upvoted(id: string) {
     return this.upvotedNames.includes(id);
@@ -25,24 +25,24 @@ export default (): PostUpvote => ({
 
     xhr.onload = () => {
       this.upvotedNames = [...this.upvotedNames, name];
-      localStorage.setItem("halo.upvoted.post.names", JSON.stringify(this.upvotedNames));
+      localStorage.setItem(`halo.upvoted.${key}.names`, JSON.stringify(this.upvotedNames));
 
-      const upvoteNode = document.querySelector('[data-upvote-post-name="' + name + '"]');
+      const upvoteNode = document.querySelector("[data-upvote-" + key + '-name="' + name + '"]');
 
       if (!upvoteNode) {
         return;
       }
 
       const upvoteCount = parseInt(upvoteNode.textContent || "0");
-      upvoteNode.textContent = upvoteCount + 1 + " 点赞";
+      upvoteNode.textContent = upvoteCount + 1 + "";
     };
     xhr.onerror = function () {
       alert("网络请求失败，请稍后再试");
     };
     xhr.send(
       JSON.stringify({
-        group: "content.halo.run",
-        plural: "posts",
+        group: group,
+        plural: plural,
         name: name,
       })
     );

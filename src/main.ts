@@ -1,16 +1,17 @@
 import "./styles/tailwind.css";
-import "./styles/main.css";
+import "./styles/main.scss";
 import Alpine from "alpinejs";
 import * as tocbot from "tocbot";
 import dropdown from "./alpine-data/dropdown";
 import colorSchemeSwitcher from "./alpine-data/color-scheme-switcher";
-import postUpvote from "./alpine-data/post-upvote";
+import upvote from "./alpine-data/upvote";
 
 window.Alpine = Alpine;
 
 Alpine.data("dropdown", dropdown);
 Alpine.data("colorSchemeSwitcher", colorSchemeSwitcher);
-Alpine.data("postUpvote", postUpvote);
+// @ts-ignore
+Alpine.data("upvote", upvote);
 
 Alpine.start();
 
