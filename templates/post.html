@@ -28,7 +28,7 @@
     <th:block th:replace="~{modules/sidebar :: sidebar(prepend = ~{::sidebar_prepend})}"></th:block>
   </th:block>
   <th:block th:fragment="content">
-    <div x-data="postUpvote" class="rounded-xl bg-white p-4 dark:bg-slate-800">
+    <div x-data="upvote('post','content.halo.run','posts')" class="rounded-xl bg-white p-4 dark:bg-slate-800">
       <div th:attr="x-data=|{name:'${post.metadata.name}'}|" class="flex items-center justify-between">
         <div class="inline-flex items-center justify-start gap-2">
           <a th:href="@{${post.owner.permalink}}" th:title="${post.owner.displayName}">
@@ -53,8 +53,11 @@
               <span class="text-gray-300 dark:text-slate-200">/</span>
               <span th:text="|${post.stats?.comment ?:0} 评论|"> </span>
               <span class="text-gray-300 dark:text-slate-200">/</span>
-              <span th:attr="data-upvote-post-name=${post.metadata.name}" th:text="|${post.stats?.upvote ?:0} 点赞|">
-              </span>
+              <div>
+                <span th:attr="data-upvote-post-name=${post.metadata.name}" th:text="|${post.stats?.upvote ?:0}|">
+                </span>
+                <span> 点赞 </span>
+              </div>
             </div>
           </div>
         </div>
