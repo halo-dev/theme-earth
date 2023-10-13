@@ -41,11 +41,12 @@ export function generateToc() {
     extraListClasses: "space-y-1 dark:border-slate-500",
     extraLinkClasses:
       "group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100 text-sm opacity-80 dark:hover:bg-slate-700 dark:text-slate-50",
-    activeLinkClass: "is-active-link",
     collapseDepth: 6,
     headingsOffset: 100,
     scrollSmooth: true,
     scrollSmoothOffset: -100,
+    // @ts-ignore 
+    tocScrollOffset: 50,
   });
 }
 
