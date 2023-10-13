@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0
   tocbot:
-    specifier: ^4.21.0
-    version: 4.21.0
+    specifier: ^4.21.2
+    version: 4.21.2
 
 devDependencies:
   '@iconify-json/bx':
@@ -3774,8 +3774,8 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /tocbot@4.21.0:
-    resolution: {integrity: sha512-vXk8htr8mIl3hc2s2mDkaPTBfqmqZA2o0x7eXbxUibdrpEIPdpM0L9hH/RvEvlgSM+ZTgS34sGipk5+VrLJCLA==}
+  /tocbot@4.21.2:
+    resolution: {integrity: sha512-R5Muhi/TUu4i4snWVrMgNoXyJm2f8sJfdgIkQvqb+cuIXQEIMAiWGWgCgYXHqX4+XiS/Bnm7IYZ9Zy6NVe6lhw==}
     dev: false
 
   /tr46@0.0.3:
