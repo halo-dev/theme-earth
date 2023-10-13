@@ -4,6 +4,24 @@ Halo 2.0 的默认主题。
 
 ![Earth](./screenshot.jpg)
 
+## 使用方式
+
+1. 手动下载主题包并在 Console 的主题管理界面安装，安装方式可参考：<https://docs.halo.run/user-guide/themes>
+2. 如果安装了[应用市场](https://www.halo.run/store/apps/app-VYJbF)插件，可以直接在应用市场中搜索`Earth`并安装。
+
+## 插件支持
+
+Earth 主题支持以下 Halo 插件：
+
+- 友情链接（/links）：<https://halo.run/store/apps/app-hfbQg>
+- 图库（/photos）：<https://halo.run/store/apps/app-BmQJW>
+- 瞬间（/moments）：<https://halo.run/store/apps/app-SnwWD>
+
+为了获得更好的体验，你还可以安装以下插件（如果需要）：
+
+- highlight.js 代码高亮：<https://halo.run/store/apps/app-sqpgf>
+- lightgallery.js 灯箱：<https://halo.run/store/apps/app-OoggD>
+
 ## 开发
 
 ```bash
