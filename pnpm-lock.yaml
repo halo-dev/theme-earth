@@ -8,6 +8,9 @@ dependencies:
   alpinejs:
     specifier: ^3.12.2
     version: 3.12.2
+  pupa:
+    specifier: ^3.1.0
+    version: 3.1.0
   tocbot:
     specifier: ^4.21.2
     version: 4.21.2
@@ -20,8 +23,8 @@ devDependencies:
     specifier: ^1.1.5
     version: 1.1.5
   '@iconify-json/simple-icons':
-    specifier: ^1.1.58
-    version: 1.1.58
+    specifier: ^1.1.74
+    version: 1.1.74
   '@iconify-json/tabler':
     specifier: ^1.1.80
     version: 1.1.80
@@ -74,8 +77,8 @@ devDependencies:
     specifier: ^3.3.2
     version: 3.3.2
   tailwindcss-plugin-icons:
-    specifier: ^2.1.1
-    version: 2.1.1(tailwindcss@3.3.2)
+    specifier: ^2.2.0
+    version: 2.2.0(tailwindcss@3.3.2)
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
@@ -382,8 +385,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
-  /@iconify-json/simple-icons@1.1.58:
-    resolution: {integrity: sha512-W4Kj3eADpGNwOi5ICXF0CHKCeHMugNUnY3KDfz/Z8rgQzWDh3eRTIVqwmzwr0EkA3EkPAiV1XeNQbzhx98ZNJQ==}
+  /@iconify-json/simple-icons@1.1.74:
+    resolution: {integrity: sha512-KlDN8k/8LyWWe+i1ErGmMHWFbiAFvz1R8ifkXI05vHt0K3Z6Ce1uDZY20CbQVhbwIFStS0fVdJAlYhcL7MYvVg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
@@ -1520,7 +1523,6 @@ packages:
   /escape-goat@4.0.0:
     resolution: {integrity: sha512-2Sd4ShcWxbx6OY1IHyla/CVNwvg7XwZVoXZHcSu9w9SReNP1EzzD5T8NWKIR38fIqEns9kDWKUQTXXAmlDrdPg==}
     engines: {node: '>=12'}
-    dev: true
 
   /escape-string-regexp@1.0.5:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
@@ -3241,7 +3243,6 @@ packages:
     engines: {node: '>=12.20'}
     dependencies:
       escape-goat: 4.0.0
-    dev: true
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -3693,8 +3694,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /tailwindcss-plugin-icons@2.1.1(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-9WTcvyBhAt1/PzMbTdv4ez+46qZp7qUMcC5aI9iq17GU95rcDbfnar0mV2kqkvfJcpyW8njbxtquBY1y0LBZiw==}
+  /tailwindcss-plugin-icons@2.2.0(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-gtAYh5eAIazE0AmqmD+I//yrpQGHqgS6zkxE2ftlMHZuQURiR4HGpjtOtyJeNqKmVmCPgzqVF+R+hB9QZWzVjg==}
     peerDependencies:
       tailwindcss: 3.x
     dependencies:
