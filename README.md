@@ -6,8 +6,12 @@ Halo 2.0 的默认主题。
 
 ## 使用方式
 
-1. 手动下载主题包并在 Console 的主题管理界面安装，安装方式可参考：<https://docs.halo.run/user-guide/themes>
-2. 如果安装了[应用市场](https://www.halo.run/store/apps/app-VYJbF)插件，可以直接在应用市场中搜索`Earth`并安装。
+1. 手动从以下地址下载主题包并在 Console 的主题管理界面安装，安装方式可参考：<https://docs.halo.run/user-guide/themes>
+
+    - https://www.halo.run/store/apps/app-KgWqR
+    - https://github.com/halo-dev/theme-earth/releases
+
+3. 如果安装了[应用市场](https://www.halo.run/store/apps/app-VYJbF)插件，可以直接在应用市场中搜索`Earth`并安装。
 
 ## 插件支持
 
