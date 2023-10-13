@@ -141,7 +141,7 @@
         </div>
       </div>
       <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
-      <div th:if="${haloCommentEnabled}">
+      <div id="comment" th:if="${haloCommentEnabled}">
         <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50">评论</h2>
         <halo:comment
           group="content.halo.run"
