@@ -81,7 +81,7 @@
               class="i-tabler-message-circle text-lg text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-50"
             ></div>
           </a>
-          <div x-data="share" class="cursor-pointer rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-slate-600">
+          <div th:attr="x-data=|share(${theme.config.post.share_items})|" class="cursor-pointer rounded-lg p-1 hover:bg-gray-100 dark:hover:bg-slate-600">
             <div
               class="i-tabler-share text-lg text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-50"
               @click="shareModal = true"

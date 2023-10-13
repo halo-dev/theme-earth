@@ -1,9 +1,10 @@
 import pupa from "pupa";
 
-export default () => ({
+export default (shareIds: { id: string }[]) => ({
   permalink: window.location.href,
   title: document.title,
   shareModal: false,
+  copied: false,
   presetShareItems: [
     {
       id: "x",
@@ -54,11 +55,42 @@ export default () => ({
       type: "url",
       url: `https://www.douban.com/share/service?href={url}&name={title}`,
     },
+    {
+      id: "wechat",
+      name: "微信",
+      icon: "i-simple-icons-wechat",
+      type: "url",
+      url: `/themes/theme-earth/assets/qrcode-share.html?url={url}`,
+    },
+    {
+      id: "native",
+      name: "系统分享",
+      icon: "i-tabler-device-desktop",
+      type: "native",
+    },
   ],
+  get activeShareItems() {
+    return shareIds
+      .map((id) => this.presetShareItems.find((item) => item.id === id.id))
+      .filter(Boolean)
+      .filter((item) => item?.type !== "native" || navigator.canShare?.({ title: this.title, url: this.permalink }));
+  },
   handleShare(id: string) {
-    const item = this.presetShareItems.find((item) => item.id === id);
+    const item = this.activeShareItems.find((item) => item?.id === id);
 
     if (!item) {
+      return;
+    }
+
+    if (item.type === "native") {
+      if (navigator.share) {
+        navigator.share({
+          title: this.title,
+          url: this.permalink,
+        });
+        return;
+      }
+      alert("您的浏览器不支持系统分享");
       return;
     }
 
@@ -67,6 +99,13 @@ export default () => ({
     const top = window.innerHeight / 2 - height / 2;
     const left = window.innerWidth / 2 - width / 2;
     const windowParams = `width=${width}, height= ${height}, top=${top}, left=${left}, status=no, scrollbars=no, resizable=no`;
-    window.open(pupa(item.url, { url: this.permalink, title: this.title }), `分享：${this.title}`, windowParams);
+    window.open(pupa(item.url || "", { url: this.permalink, title: this.title }), `分享：${this.title}`, windowParams);
+  },
+  handleCopy() {
+    navigator.clipboard.writeText(this.permalink);
+    this.copied = true;
+    setTimeout(() => {
+      this.copied = false;
+    }, 2000);
   },
 });

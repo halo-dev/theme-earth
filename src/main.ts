@@ -13,6 +13,7 @@ Alpine.data("dropdown", dropdown);
 Alpine.data("colorSchemeSwitcher", colorSchemeSwitcher);
 // @ts-ignore
 Alpine.data("upvote", upvote);
+// @ts-ignore
 Alpine.data("share", share);
 
 Alpine.start();

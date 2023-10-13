@@ -63,6 +63,7 @@ module.exports = {
     "i-simple-icons-gitlab",
     "i-simple-icons-rss",
     "i-simple-icons-x",
-    "i-simple-icons-qzone"
+    "i-simple-icons-qzone",
+    "i-tabler-device-desktop"
   ],
 };
