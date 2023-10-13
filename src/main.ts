@@ -5,6 +5,7 @@ import * as tocbot from "tocbot";
 import dropdown from "./alpine-data/dropdown";
 import colorSchemeSwitcher from "./alpine-data/color-scheme-switcher";
 import upvote from "./alpine-data/upvote";
+import share from "./alpine-data/share";
 
 window.Alpine = Alpine;
 
@@ -12,6 +13,8 @@ Alpine.data("dropdown", dropdown);
 Alpine.data("colorSchemeSwitcher", colorSchemeSwitcher);
 // @ts-ignore
 Alpine.data("upvote", upvote);
+// @ts-ignore
+Alpine.data("share", share);
 
 Alpine.start();
 

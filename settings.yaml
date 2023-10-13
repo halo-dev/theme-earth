@@ -86,6 +86,45 @@ spec:
           label: 允许访客切换配色
           value: true
 
+    - group: post
+      label: 文章
+      formSchema:
+        - $formkit: repeater
+          name: share_items
+          label: 分享按钮
+          value:
+            - id: wechat
+            - id: x
+            - id: telegram
+            - id: facebook
+            - id: qq
+            - id: qzone
+            - id: weibo
+            - id: douban
+            - id: native
+          children:
+            - $formkit: select
+              name: id
+              label: 分享平台
+              options:
+                - label: 微信
+                  value: wechat
+                - label: X
+                  value: x
+                - label: Telegram
+                  value: telegram
+                - label: Facebook
+                  value: facebook
+                - label: QQ
+                  value: qq
+                - label: QQ 空间
+                  value: qzone
+                - label: 微博
+                  value: weibo
+                - label: 豆瓣
+                  value: douban
+                - label: 系统分享
+                  value: native
     - group: sidebar
       label: 侧边栏
       formSchema:
