@@ -62,6 +62,7 @@ module.exports = {
     "i-simple-icons-github",
     "i-simple-icons-gitlab",
     "i-simple-icons-rss",
-    "i-simple-icons-x"
+    "i-simple-icons-x",
+    "i-simple-icons-qzone"
   ],
 };
