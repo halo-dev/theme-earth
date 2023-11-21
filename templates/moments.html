@@ -38,7 +38,12 @@
             th:with="content=${moment.spec.content}"
             class="animated fadeIn flex w-full items-start gap-2 py-5"
           >
-            <img class="h-12 w-12 rounded-full" th:src="${moment.owner.avatar}" th:alt="${moment.owner.displayName}" />
+            <img 
+              th:src="${moment.owner.avatar ?: #theme.assets('/images/default-avatar.svg')}"
+              th:title="${moment.owner.displayName}"
+              th:alt="${moment.owner.displayName}"
+              class="h-12 w-12 rounded-full"
+            />
             <div class="ml-6" style="width: calc(100% - 4.75rem)">
               <div
                 th:utext="${content.html}"
