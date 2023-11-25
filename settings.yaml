@@ -362,4 +362,4 @@ spec:
         - $formkit: text
           name: gongan_link
           label: 公安联网备案跳转链接
-          value: https://www.beian.gov.cn/portal/registerSystemInfo
+          value: https://beian.mps.gov.cn/#/query/webSearch
