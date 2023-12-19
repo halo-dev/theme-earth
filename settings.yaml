@@ -89,6 +89,15 @@ spec:
     - group: post
       label: 文章
       formSchema:
+        - $formkit: select
+          name: content_style
+          label: 内容样式
+          value: "tailwind"
+          options:
+            - label: GitHub 风格
+              value: github
+            - label: Tailwind CSS Typography
+              value: tailwind
         - $formkit: repeater
           name: share_items
           label: 分享按钮

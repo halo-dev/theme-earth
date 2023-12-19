@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${post.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = null, footer = ~{::footer}, sidebar = ~{::sidebar}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')}"
+  th:replace="~{modules/layout :: html(title = ${post.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = ~{::head}, footer = ~{::footer}, sidebar = ~{::sidebar}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')}"
 >
+  <th:block th:fragment="head">
+    <link rel="stylesheet" th:href="@{/assets/styles/github-markdown.css?v={version}(version=${theme.spec.version})}" />
+  </th:block>
   <th:block th:fragment="hero">
     <th:block
       th:replace="~{modules/hero :: hero(isHome = false, cover = ${post.spec.cover}, title = ${post.spec.title})}"
@@ -29,7 +32,10 @@
   </th:block>
   <th:block th:fragment="content">
     <div x-data="upvote('post','content.halo.run','posts')" class="rounded-xl bg-white p-4 dark:bg-slate-800">
-      <div th:attr="x-data=|{name:'${post.metadata.name}'}|" class="flex items-center justify-between flex-col sm:flex-row gap-2">
+      <div
+        th:attr="x-data=|{name:'${post.metadata.name}'}|"
+        class="flex flex-col items-center justify-between gap-2 sm:flex-row"
+      >
         <div class="flex w-full items-center justify-start gap-2">
           <a th:href="@{${post.owner.permalink}}" th:title="${post.owner.displayName}">
             <img
@@ -53,7 +59,7 @@
             </div>
           </div>
         </div>
-        <div class="flex self-end flex-row gap-1.5 items-center">
+        <div class="flex flex-row items-center gap-1.5 self-end">
           <div @click="handleUpvote(name)" class="group inline-flex cursor-pointer items-center rounded-lg">
             <div
               class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
@@ -115,7 +121,8 @@
       </div>
       <article
         id="content"
-        class="prose prose-base mt-4 !max-w-none break-words dark:prose-invert prose-pre:p-0"
+        class="!max-w-none break-words"
+        th:classappend="${theme.config.post.content_style == 'github' ? 'markdown-body' : 'tailwind-typography'}"
         th:utext="${post.content.content}"
       ></article>
       <div
