@@ -50,3 +50,46 @@ body {
     @apply rounded bg-gray-100 px-1 py-0.5 text-sm text-gray-900 hover:bg-gray-200 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-slate-700 dark:hover:text-slate-100;
   }
 }
+
+.markdown-body {
+  line-height: 1.75;
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border: none !important;
+  }
+
+  pre {
+    padding: 0 !important;
+
+    code {
+      border: 1px solid #fbf6f6;
+    }
+  }
+
+  p > img {
+    border-radius: 0.4rem;
+    overflow: hidden;
+    @apply shadow;
+  }
+
+  :not(pre) > code {
+    background-color: #afb8c133;
+  }
+}
+
+.tailwind-typography {
+  @apply prose prose-base mt-4 dark:prose-invert prose-pre:p-0;
+}

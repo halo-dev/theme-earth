@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${singlePage.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = null, footer = ~{::footer}, sidebar = null, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(singlePage.spec.cover)} ? '!-mt-20' : '')}"
+  th:replace="~{modules/layout :: html(title = ${singlePage.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = ~{::head}, footer = ~{::footer}, sidebar = null, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(singlePage.spec.cover)} ? '!-mt-20' : '')}"
 >
+  <th:block th:fragment="head">
+    <link rel="stylesheet" th:href="@{/assets/styles/github-markdown.css?v={version}(version=${theme.spec.version})}" />
+  </th:block>
   <th:block th:fragment="hero">
     <th:block
       th:replace="~{modules/hero :: hero(isHome = false, cover = ${singlePage.spec.cover}, title = ${singlePage.spec.title})}"
@@ -61,7 +64,8 @@
       </div>
       <h1 class="my-3 text-2xl font-medium dark:text-slate-50" th:text="${singlePage.spec.title}"></h1>
       <article
-        class="prose prose-base mt-4 !max-w-none break-words dark:prose-invert"
+        class="!max-w-none break-words"
+        th:classappend="${theme.config.post.content_style == 'github' ? 'markdown-body' : 'tailwind-typography'}"
         th:utext="${singlePage.content.content}"
       ></article>
       <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
