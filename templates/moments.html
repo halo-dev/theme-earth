@@ -38,7 +38,7 @@
             th:with="content=${moment.spec.content}"
             class="animated fadeIn flex w-full items-start gap-2 py-5"
           >
-            <img 
+            <img
               th:src="${moment.owner.avatar ?: #theme.assets('/images/default-avatar.svg')}"
               th:title="${moment.owner.displayName}"
               th:alt="${moment.owner.displayName}"
@@ -148,12 +148,7 @@
               </div>
 
               <div class="mt-2" x-show="showComment">
-                <halo:comment
-                  group="moment.halo.run"
-                  kind="Moment"
-                  th:attr="name=${moment.metadata.name}"
-                  colorScheme="window.main.currentColorScheme"
-                />
+                <halo:comment group="moment.halo.run" kind="Moment" th:attr="name=${moment.metadata.name}" />
               </div>
             </div>
           </li>
