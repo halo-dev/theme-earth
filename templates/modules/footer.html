@@ -4,7 +4,7 @@
       <img
         th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
         th:src="${theme.config.footer.logo ?: site.logo}"
-        class="mr-3 h-8 w-8"
+        class="mr-3 size-8"
         th:alt="${site.title}"
       />
       <span
@@ -46,7 +46,7 @@
       class="container mx-auto block text-center text-sm text-gray-500 dark:text-slate-300"
     >
       <p class="flex items-center justify-center gap-1">
-        <img th:src="@{/assets/images/gongan_beian.png}" class="h-4 w-4" alt="gongan_beian" />
+        <img th:src="@{/assets/images/gongan_beian.png}" class="size-4" alt="gongan_beian" />
         <a
           href="https://beian.mps.gov.cn/#/query/webSearch"
           class="hover:underline"
@@ -137,7 +137,7 @@
           th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
           class="inline-flex items-center justify-center gap-1 text-sm text-gray-500 sm:justify-start"
         >
-          <img th:src="@{/assets/images/gongan_beian.png}" class="h-4 w-4" alt="gongan_beian" />
+          <img th:src="@{/assets/images/gongan_beian.png}" class="size-4" alt="gongan_beian" />
           <a
             href="https://beian.mps.gov.cn/#/query/webSearch"
             class="hover:underline"

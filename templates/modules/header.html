@@ -49,7 +49,7 @@
               class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
             >
               <a
-                class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
                 th:href="@{${childMenuItem.status.href}}"
                 th:text="${childMenuItem.status.displayName}"
                 th:target="${childMenuItem.spec.target?.value}"
@@ -96,9 +96,9 @@
           @mouseleave="close()"
         >
           <div>
-            <div class="h-5 w-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
+            <div class="size-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
               <img
-                class="h-5 w-5 rounded-full"
+                class="size-5 rounded-full"
                 th:src="${currentUser.avatar ?: #theme.assets('/images/default-avatar.svg')}"
                 th:alt="${currentUser.displayName}"
               />
@@ -120,7 +120,7 @@
                 class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
               >
                 <a
-                  class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                  class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
                   href="/console"
                   target="_blank"
                 >
@@ -132,7 +132,7 @@
                 class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
               >
                 <a
-                  class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                  class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
                   href="/logout"
                 >
                   退出登录
@@ -143,7 +143,7 @@
                 class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
               >
                 <a
-                  class="h-full w-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                  class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
                   href="/console/login"
                 >
                   登录
@@ -201,7 +201,7 @@
             <ul class="divide-y divide-gray-100 dark:divide-slate-800" th:if="${not #lists.isEmpty(menuItem.children)}">
               <li th:each="childMenuItem : ${menuItem.children}" class="flex w-full items-center text-left text-sm">
                 <a
-                  class="h-full w-full truncate px-4 py-2 text-gray-600 dark:text-slate-200"
+                  class="size-full truncate px-4 py-2 text-gray-600 dark:text-slate-200"
                   th:href="@{${childMenuItem.status.href}}"
                   th:text="${childMenuItem.status.displayName}"
                   th:target="${childMenuItem.spec.target?.value}"

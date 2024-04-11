@@ -4,7 +4,7 @@
 >
   <div class="flex flex-col items-center justify-center gap-4">
     <div th:if="${not #strings.isEmpty(theme.config.sidebar.profile.logo)}" class="relative h-24 w-24">
-      <img th:src="${theme.config.sidebar.profile.logo}" th:alt="${site.title}" class="h-full w-full rounded-full" />
+      <img th:src="${theme.config.sidebar.profile.logo}" th:alt="${site.title}" class="size-full rounded-full" />
     </div>
     <div><h1 class="text-2xl font-medium dark:text-slate-50" th:text="${site.title}"></h1></div>
     <div th:if="${not #strings.isEmpty(site.subtitle)}">
