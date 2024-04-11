@@ -41,7 +41,7 @@
             <img
               th:if="${not #strings.isEmpty(post.owner.avatar)}"
               th:src="${post.owner.avatar}"
-              class="h-10 w-10 rounded-full"
+              class="size-10 rounded-full"
               th:alt="${post.owner.displayName}"
             />
           </a>
@@ -165,9 +165,9 @@
       sec:authorize="isAuthenticated()"
       th:href="|/console/posts/editor?name=${post.metadata.name}&returnToView=true|"
       id="edit-button"
-      class="fixed bottom-10 right-10 flex h-14 w-14 items-center justify-center rounded-full bg-[#4CCBA0] text-white shadow transition-all duration-300 hover:opacity-80 hover:shadow-lg"
+      class="fixed bottom-10 right-10 flex size-14 items-center justify-center rounded-full bg-[#4CCBA0] text-white shadow transition-all duration-300 hover:opacity-80 hover:shadow-lg"
     >
-      <div class="i-tabler-edit !h-7 !w-7"></div>
+      <div class="i-tabler-edit !size-7"></div>
     </a>
   </th:block>
 </html>

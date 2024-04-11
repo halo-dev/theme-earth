@@ -5,19 +5,19 @@
 >
   <div
     th:if="${cover} and ${not #strings.isEmpty(post.spec.cover)}"
-    class="aspect-w-16 aspect-h-9"
+    class="aspect-h-9 aspect-w-16"
     th:classappend="${direction == 'column' ? 'col-span-2' : ''}"
   >
     <a th:href="@{${post.status.permalink}}" th:title="${post.spec.title}">
       <img
         th:src="${post.spec.cover}"
         th:alt="${post.spec.title}"
-        class="h-full w-full object-cover transition-all duration-500"
+        class="size-full object-cover transition-all duration-500"
         th:classappend="${animation} ? 'group-hover:scale-105'"
       />
     </a>
-    <div th:if="${post.spec.pinned}" class="absolute !top-1.5 !left-2" title="置顶">
-      <div class="i-bx-arrow-to-top !h-5 !w-5 text-sky-600"></div>
+    <div th:if="${post.spec.pinned}" class="absolute !left-2 !top-1.5" title="置顶">
+      <div class="i-bx-arrow-to-top !size-5 text-sky-600"></div>
     </div>
   </div>
   <div
@@ -47,13 +47,13 @@
       </a>
     </div>
     <h1
-      class="cursor-pointer text-2xl font-medium transition-all line-clamp-2 hover:text-gray-500 hover:underline dark:text-slate-50 dark:hover:text-white"
+      class="line-clamp-2 cursor-pointer text-2xl font-medium transition-all hover:text-gray-500 hover:underline dark:text-slate-50 dark:hover:text-white"
       th:classappend="|${direction == 'column' ? 'sm:line-clamp-2' : ''} ${list_layout == 'grid_2' ? 'sm:line-clamp-3' : ''} ${list_layout == 'grid_3' ? 'sm:line-clamp-4' : ''}|"
     >
       <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
     </h1>
     <p
-      class="font-sm font-light line-clamp-6 dark:text-slate-200"
+      class="font-sm line-clamp-6 font-light dark:text-slate-200"
       th:text="${post.status.excerpt}"
       th:classappend="${list_layout == 'grid_3' ? ' sm:line-clamp-8' : ''}"
     ></p>
@@ -63,7 +63,7 @@
           th:src="${post.owner.avatar ?: #theme.assets('/images/default-avatar.svg')}"
           th:title="${post.owner.displayName}"
           th:alt="${post.owner.displayName}"
-          class="h-8 w-8 rounded-full border drop-shadow-sm dark:border-slate-700"
+          class="size-8 rounded-full border drop-shadow-sm dark:border-slate-700"
         />
       </a>
       <a

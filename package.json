@@ -37,33 +37,33 @@
     "type": "git"
   },
   "devDependencies": {
-    "@iconify-json/bx": "^1.1.6",
-    "@iconify-json/gg": "^1.1.5",
-    "@iconify-json/simple-icons": "^1.1.74",
-    "@iconify-json/tabler": "^1.1.80",
+    "@iconify-json/bx": "^1.1.10",
+    "@iconify-json/gg": "^1.1.9",
+    "@iconify-json/simple-icons": "^1.1.99",
+    "@iconify-json/tabler": "^1.1.109",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.9",
-    "@types/alpinejs": "^3.7.2",
+    "@tailwindcss/typography": "^0.5.12",
+    "@types/alpinejs": "^3.13.10",
     "@types/node": "18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.43.0",
-    "eslint-config-prettier": "^8.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.38",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "release-it": "^15.11.0",
-    "sass": "^1.69.3",
-    "tailwindcss": "^3.3.2",
-    "tailwindcss-plugin-icons": "^2.2.0",
+    "sass": "^1.74.1",
+    "tailwindcss": "^3.4.3",
+    "tailwindcss-plugin-icons": "^2.2.2",
     "typescript": "^4.9.5",
-    "vite": "^4.3.9"
+    "vite": "^5.2.8"
   },
   "dependencies": {
-    "alpinejs": "^3.12.2",
-    "tocbot": "^4.21.2",
-    "pupa": "^3.1.0"
+    "alpinejs": "^3.13.8",
+    "pupa": "^3.1.0",
+    "tocbot": "^4.25.0"
   }
 }

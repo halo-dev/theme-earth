@@ -10,7 +10,7 @@
       <li class="py-3" th:each="post : ${posts}">
         <div class="flex items-center justify-between">
           <div class="flex flex-col gap-1">
-            <h3 class="text-sm font-medium line-clamp-2 hover:text-gray-500 hover:underline dark:text-slate-100">
+            <h3 class="line-clamp-2 text-sm font-medium hover:text-gray-500 hover:underline dark:text-slate-100">
               <a th:text="${post.spec.title}" th:href="@{${post.status.permalink}}" th:title="${post.spec.title}"></a>
             </h3>
             <p

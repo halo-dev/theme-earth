@@ -48,7 +48,7 @@ export function generateToc() {
     headingsOffset: 100,
     scrollSmooth: true,
     scrollSmoothOffset: -100,
-    // @ts-ignore 
+    // @ts-ignore
     tocScrollOffset: 50,
   });
 }

@@ -6,14 +6,14 @@
       class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
       th:title="${social_media.name}"
     >
-      <div th:classappend="${social_media.icon}" class="h-5 w-5"></div>
+      <div th:classappend="${social_media.icon}" class="size-5"></div>
     </a>
     <span
       th:if="${social_media.url_type == 'image'}"
       x-data="{openImageModal:false}"
       class="cursor-pointer text-gray-500 hover:text-gray-900 dark:hover:text-white"
     >
-      <div th:classappend="${social_media.icon}" class="h-5 w-5" @click="openImageModal = true"></div>
+      <div th:classappend="${social_media.icon}" class="size-5" @click="openImageModal = true"></div>
       <div>
         <div
           class="fixed inset-0 z-50 bg-gray-800/40 opacity-100 backdrop-blur-sm dark:bg-black/80"
