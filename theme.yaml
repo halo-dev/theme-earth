@@ -17,5 +17,5 @@ spec:
   repo: https://github.com/halo-dev/theme-earth.git
   settingName: "theme-earth-setting"
   configMapName: "theme-earth-configMap"
-  version: 1.7.1
+  version: 1.8.0
   require: ">=2.8.0"
