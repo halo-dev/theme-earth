@@ -9,13 +9,16 @@ metadata:
 spec:
   displayName: Earth
   author:
-    name: halo-dev
-    website: https://halo.run
+    name: Halo
+    website: https://www.halo.run
   description: Default theme for Halo 2.0
-  logo: https://halo.run/logo
-  website: https://github.com/halo-dev/theme-earth
-  repo: https://github.com/halo-dev/theme-earth.git
+  logo: https://www.halo.run/logo
+  homepage: https://www.halo.run/store/apps/app-KgWqR
+  repo: https://github.com/halo-dev/theme-earth
   settingName: "theme-earth-setting"
   configMapName: "theme-earth-configMap"
   version: 1.8.0
-  require: ">=2.8.0"
+  requires: ">=2.8.0"
+  license:
+    - name: "GPL-3.0"
+      url: "https://github.com/halo-dev/theme-earth/blob/main/LICENSE"
