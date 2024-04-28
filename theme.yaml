@@ -15,6 +15,7 @@ spec:
   logo: https://www.halo.run/logo
   homepage: https://www.halo.run/store/apps/app-KgWqR
   repo: https://github.com/halo-dev/theme-earth
+  issues: https://github.com/halo-dev/theme-earth/issues
   settingName: "theme-earth-setting"
   configMapName: "theme-earth-configMap"
   version: 1.8.0
