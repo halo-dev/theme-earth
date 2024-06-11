@@ -44,7 +44,7 @@ export default (key: string, group: string, plural: string): upvoteState => ({
         group: group,
         plural: plural,
         name: name,
-      })
+      }),
     );
   },
 });

@@ -39,10 +39,10 @@
   "devDependencies": {
     "@iconify-json/bx": "^1.1.10",
     "@iconify-json/gg": "^1.1.9",
-    "@iconify-json/simple-icons": "^1.1.99",
-    "@iconify-json/tabler": "^1.1.109",
+    "@iconify-json/simple-icons": "^1.1.105",
+    "@iconify-json/tabler": "^1.1.113",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.12",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/alpinejs": "^3.13.10",
     "@types/node": "18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
@@ -52,18 +52,18 @@
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^4.2.1",
     "postcss": "^8.4.38",
-    "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier": "^3.3.1",
+    "prettier-plugin-tailwindcss": "^0.6.2",
     "release-it": "^15.11.0",
-    "sass": "^1.74.1",
-    "tailwindcss": "^3.4.3",
+    "sass": "^1.77.4",
+    "tailwindcss": "^3.4.4",
     "tailwindcss-plugin-icons": "^2.2.2",
-    "typescript": "^4.9.5",
-    "vite": "^5.2.8"
+    "typescript": "^5.4.5",
+    "vite": "^5.2.13"
   },
   "dependencies": {
-    "alpinejs": "^3.13.8",
+    "alpinejs": "^3.14.0",
     "pupa": "^3.1.0",
-    "tocbot": "^4.25.0"
+    "tocbot": "^4.28.2"
   }
 }

@@ -7,12 +7,12 @@
   >
     <th:block th:switch="${theme.config.layout.header_widget}">
       <th:block th:case="latest_post" th:with="posts = ${postFinder.list(1,1)}">
-        <div class="container mx-auto py-6" th:if="${posts.total gt 0}">
+        <div class="max-w-7xl px-4 lg:px-6 mx-auto py-6" th:if="${posts.total gt 0}">
           <th:block th:replace="~{modules/featured-post-card :: featured-post-card(post=${posts.items[0]})}" />
         </div>
       </th:block>
       <th:block th:case="latest_post_grid" th:with="posts = ${postFinder.list(1,5)}">
-        <div class="container mx-auto grid grid-cols-1 gap-3 py-6 sm:grid-cols-5" th:if="${posts.total gt 0}">
+        <div class="max-w-7xl px-4 lg:px-6 mx-auto grid grid-cols-1 gap-3 py-6 sm:grid-cols-5" th:if="${posts.total gt 0}">
           <div class="col-span-1 sm:col-span-3">
             <th:block
               th:replace="~{modules/post-card :: post-card(post=${posts.items[0]},cover=true,animation=false,border=false,direction='row')}"
@@ -30,7 +30,7 @@
         </div>
       </th:block>
       <th:block th:case="site_title">
-        <div class="container mx-auto flex h-full flex-col items-center justify-center gap-3 py-6">
+        <div class="max-w-7xl px-4 lg:px-6 mx-auto flex h-full flex-col items-center justify-center gap-3 py-6">
           <span class="text-5xl text-white" th:text="${site.title}"></span>
           <span class="text-sm font-light text-white opacity-50" th:text="${site.subtitle}"></span>
         </div>

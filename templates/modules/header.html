@@ -1,10 +1,10 @@
 <header
   id="header-menu"
-  class="sticky top-0 z-10 flex h-14 bg-white py-3 shadow-sm transition-all dark:bg-gray-800"
+  class="sticky top-0 z-10 flex h-16 bg-white py-3 shadow-sm transition-all dark:bg-gray-800"
   x-data="{ open : false }"
   th:with="menu = ${menuFinder.getPrimary()}"
 >
-  <div class="container mx-auto flex h-full justify-between">
+  <div class="max-w-7xl w-full px-4 lg:px-6 mx-auto flex h-full justify-between">
     <div class="flex h-full items-center gap-6">
       <div class="mr-2 h-full">
         <a href="/" class="inline-flex h-full items-center">
