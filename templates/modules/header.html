@@ -133,7 +133,7 @@
               >
                 <a
                   class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                  href="/logout"
+                  onclick="logout()"
                 >
                   退出登录
                 </a>
@@ -213,4 +213,28 @@
       </nav>
     </div>
   </div>
+  <script>
+    function logout() {
+      fetch('/logout', {
+        method: 'POST',
+        headers: {
+            'X-Xsrf-Token':
+              document.cookie
+                .split('; ')
+                .find((row) => row.startsWith('XSRF-TOKEN'))
+                ?.split('=')[1] || '',
+          }
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          console.error('Logout failed:', response.status);
+        }
+      })
+      .catch(error => {
+        console.error('Network error:', error);
+      });
+    }
+  </script>
 </header>
