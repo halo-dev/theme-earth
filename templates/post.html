@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html
   xmlns:th="https://www.thymeleaf.org"
   th:replace="~{modules/layout :: html(title = ${post.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = ~{::head}, footer = ~{::footer}, sidebar = ~{::sidebar}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')}"
@@ -37,13 +37,12 @@
         class="flex flex-col items-center justify-between gap-2 sm:flex-row"
       >
         <div class="flex w-full items-center justify-start gap-2">
-          <a th:href="@{${post.owner.permalink}}" th:title="${post.owner.displayName}">
-            <img
-              th:if="${not #strings.isEmpty(post.owner.avatar)}"
-              th:src="${post.owner.avatar}"
-              class="size-10 rounded-full"
-              th:alt="${post.owner.displayName}"
-            />
+          <a
+            th:unless="${#strings.isEmpty(post.owner.avatar)}"
+            th:href="@{${post.owner.permalink}}"
+            th:title="${post.owner.displayName}"
+          >
+            <img th:src="${post.owner.avatar}" class="size-10 rounded-full" th:alt="${post.owner.displayName}" />
           </a>
           <div class="flex flex-col gap-0.5">
             <a

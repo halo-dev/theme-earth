@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html
   xmlns:th="https://www.thymeleaf.org"
   th:replace="~{modules/layout :: html(title = '归档 - ' + ${site.title}, hero = null, content = ~{::content}, head = null, footer = null, sidebar = ~{::sidebar}, contentClass = '')}"
@@ -12,14 +12,14 @@
             <div class="grid grid-cols-12 gap-4">
               <div class="col-span-12 sm:col-span-3">
                 <h2
-                  class="sticky top-16 mt-2 text-lg font-medium dark:text-slate-50"
+                  class="sticky top-20 mt-2 text-lg font-medium dark:text-slate-50"
                   th:text="|${archive.year} 年 ${month.month} 月|"
                 ></h2>
               </div>
               <div class="col-span-12 sm:col-span-9">
                 <th:block th:each="post : ${month.posts}">
                   <div
-                    class="my-2 rounded border border-gray-300 bg-white shadow-sm hover:border-gray-400 hover:shadow dark:border-slate-600 dark:bg-slate-700 dark:hover:border-slate-700"
+                    class="my-2 rounded-xl border border-gray-300 bg-white shadow-sm hover:border-gray-400 hover:shadow dark:border-slate-600 dark:bg-slate-700 dark:hover:border-slate-700"
                   >
                     <div class="relative flex flex-col gap-2 p-4">
                       <div class="flex min-w-0 flex-wrap items-center justify-between gap-4">
@@ -58,7 +58,7 @@
                         >
                         </a>
                       </div>
-                      <div class="line-clamp-6 text-sm font-light dark:text-slate-200">
+                      <div class="line-clamp-2 text-sm font-light dark:text-slate-200">
                         <th:block th:text="${post.status.excerpt}"></th:block>
                       </div>
                     </div>

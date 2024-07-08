@@ -1,9 +1,9 @@
-<ul th:fragment="next (categories)" class="my-3 ml-3 space-y-1 border-l pl-2">
+<ul th:fragment="next (categories)" class="my-3 ml-3 space-y-1 border-l pl-2 dark:border-slate-700">
   <li th:fragment="single (categories)" th:each="category : ${categories}">
     <a
       th:href="@{${category.status.permalink}}"
       th:title="${category.spec.displayName}"
-      class="group flex items-center justify-between rounded px-1.5 py-1 transition-all hover:bg-gray-100 dark:hover:bg-slate-700"
+      class="group flex items-center justify-between rounded px-2 py-1 transition-all hover:bg-gray-100 dark:hover:bg-slate-700"
     >
       <span class="text-sm opacity-80 dark:text-slate-50" th:text="${category.spec.displayName}"> </span>
       <span

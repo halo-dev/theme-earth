@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html
   xmlns:th="https://www.thymeleaf.org"
   th:replace="~{modules/layout :: html(title = ${singlePage.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = ~{::head}, footer = ~{::footer}, sidebar = null, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(singlePage.spec.cover)} ? '!-mt-20' : '')}"
@@ -15,9 +15,12 @@
     <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
       <div class="flex items-center justify-between">
         <div class="inline-flex items-center justify-start gap-2">
-          <a th:href="@{${singlePage.owner.permalink}}" th:title="${singlePage.owner.displayName}">
+          <a
+            th:unless="${#strings.isEmpty(singlePage.owner.avatar)}"
+            th:href="@{${singlePage.owner.permalink}}"
+            th:title="${singlePage.owner.displayName}"
+          >
             <img
-              th:if="${not #strings.isEmpty(singlePage.owner.avatar)}"
               th:src="${singlePage.owner.avatar}"
               th:alt="${singlePage.owner.displayName}"
               class="size-10 rounded-full"
