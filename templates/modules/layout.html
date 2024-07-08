@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" th:fragment="html (title,hero,content,head,footer,sidebar,contentClass)">
   <head>
     <meta charset="UTF-8" />
@@ -22,8 +22,8 @@
     <th:block th:unless="${hero != null}">
       <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
     </th:block>
-    <section class="container mx-auto mt-6 grid grid-cols-4 gap-6" th:classappend="${contentClass}">
-      <div class="z-0 col-span-4 sm:col-span-3">
+    <section class="max-w-7xl px-4 lg:px-6 mx-auto mt-6 flex gap-6" th:classappend="${contentClass}">
+      <div class="z-0 min-w-0 flex-1 shrink">
         <th:block th:replace="${content}" />
       </div>
       <th:block th:if="${sidebar != null}">

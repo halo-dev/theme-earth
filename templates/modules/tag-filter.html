@@ -8,8 +8,8 @@
       th:each="tagItem,tagStat: ${tags}"
       th:href="@{${tagItem.status.permalink}}"
       th:title="${tagItem.spec.displayName}"
-      class="rounded bg-gray-100 px-1 py-0.5 text-sm text-gray-900 hover:bg-gray-200 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-slate-700 dark:hover:text-slate-100"
-      th:classappend="(${tag} and ${tag.metadata.name == tagItem.metadata.name}) or (not ${tag} and ${tagStat.index == 0}) ? '!bg-gray-200 dark:!bg-slate-700 dark:!text-slate-100 ring-2 ring-gray-300 dark:ring-slate-600' : ''"
+      class="inline-flex items-center gap-x-1.5 rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-800 shadow-sm hover:border-indigo-400 dark:bg-slate-700 dark:text-slate-200 dark:border-slate-800 dark:hover:border-indigo-200"
+      th:classappend="(${tag} and ${tag.metadata.name == tagItem.metadata.name}) or (not ${tag} and ${tagStat.index == 0}) ? '!border-indigo-400 dark:!border-indigo-200' : ''"
     >
       <th:block th:text="|#${tagItem.spec.displayName}|" />
       <sup th:text="${tagItem.status.visiblePostCount}"></sup>
