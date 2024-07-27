@@ -4,7 +4,7 @@
       <img
         th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
         th:src="${theme.config.footer.logo ?: site.logo}"
-        class="mr-3 size-8"
+        class="size-8 mr-3"
         th:alt="${site.title}"
       />
       <span
