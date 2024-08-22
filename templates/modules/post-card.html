@@ -21,7 +21,7 @@
     </div>
   </div>
   <div
-    class="relative grid h-full grid-cols-1 content-between gap-2 p-4 col-span-3"
+    class="relative col-span-3 grid h-full grid-cols-1 content-between gap-2 p-4"
     th:with="list_layout=${theme.config.layout.post_list_layout}"
     th:classappend="${#strings.isEmpty(post.spec.cover) ? 'col-span-5' : ''}"
   >
