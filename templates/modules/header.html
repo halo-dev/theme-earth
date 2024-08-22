@@ -130,13 +130,14 @@
               <li
                 sec:authorize="isAuthenticated()"
                 class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+                x-data="logout"
+                @click="handleLogout"
               >
-                <a
+                <span
                   class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
-                  href="/logout"
                 >
                   退出登录
-                </a>
+                </span>
               </li>
               <li
                 sec:authorize="isAnonymous()"
