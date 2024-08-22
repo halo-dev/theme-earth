@@ -33,7 +33,7 @@
               <template x-for="item in activeShareItems">
                 <div class="inline-flex flex-col items-center justify-center gap-1.5 rounded-full">
                   <div
-                    class="size-12 sm:size-16 inline-flex cursor-pointer items-center justify-center rounded-full bg-gray-100 transition-all hover:bg-gray-200 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-slate-700 dark:hover:text-slate-100"
+                    class="inline-flex size-12 cursor-pointer items-center justify-center rounded-full bg-gray-100 transition-all hover:bg-gray-200 dark:bg-slate-600 dark:text-slate-50 dark:hover:bg-slate-700 dark:hover:text-slate-100 sm:size-16"
                     @click="handleShare(item.id)"
                   >
                     <div class="text-xl text-gray-900 dark:text-slate-50" :class="item.icon"></div>

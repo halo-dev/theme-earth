@@ -70,6 +70,14 @@ spec:
           label: 显示文章页面顶部背景
           value: true
 
+    - group: global
+      label: 全局
+      formSchema:
+        - $formkit: checkbox
+          name: show_scroll_button
+          label: 显示滚动到顶部按钮
+          value: true
+
     - group: style
       label: 样式
       formSchema:
