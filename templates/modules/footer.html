@@ -1,10 +1,10 @@
 <footer th:if="${theme.config.footer.style == 'style_1'}" class="mt-10 bg-white py-8 dark:bg-slate-800">
-  <div class="max-w-7xl px-4 lg:px-6 mx-auto sm:flex sm:items-center sm:justify-between">
+  <div class="mx-auto max-w-7xl px-4 sm:flex sm:items-center sm:justify-between lg:px-6">
     <a href="/" class="mb-4 flex items-center justify-center sm:mb-0 sm:justify-start">
       <img
         th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
         th:src="${theme.config.footer.logo ?: site.logo}"
-        class="size-8 mr-3"
+        class="mr-3 size-8"
         th:alt="${site.title}"
       />
       <span
@@ -32,7 +32,7 @@
   </div>
   <hr class="my-6 border-gray-100 dark:border-slate-700 sm:mx-auto lg:my-8" />
   <div class="space-y-1">
-    <span class="max-w-7xl px-4 lg:px-6 mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
+    <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
       <a
         href="https://beian.miit.gov.cn/"
         class="hover:underline"
@@ -43,7 +43,7 @@
     </span>
     <div
       th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
-      class="max-w-7xl px-4 lg:px-6 mx-auto block text-center text-sm text-gray-500 dark:text-slate-300"
+      class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6"
     >
       <p class="flex items-center justify-center gap-1">
         <img th:src="@{/assets/images/gongan_beian.png}" class="size-4" alt="gongan_beian" />
@@ -56,20 +56,20 @@
         ></a>
       </p>
     </div>
-    <span class="max-w-7xl px-4 lg:px-6 mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
+    <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
       ©
       <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
       <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
       <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
     </span>
-    <span class="max-w-7xl px-4 lg:px-6 mx-auto block text-center text-sm text-gray-500 dark:text-slate-300">
+    <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
       <halo:footer />
     </span>
   </div>
 </footer>
 
 <footer th:if="${theme.config.footer.style == 'style_2'}" class="mt-10 bg-white py-8 dark:bg-slate-800">
-  <div class="max-w-7xl px-4 lg:px-6 mx-auto md:flex md:justify-between md:gap-10">
+  <div class="mx-auto max-w-7xl px-4 md:flex md:justify-between md:gap-10 lg:px-6">
     <div class="mb-6 max-w-full md:mb-0 md:max-w-md">
       <a href="/" class="mb-6 flex items-center">
         <img
@@ -114,7 +114,7 @@
     </div>
   </div>
   <hr class="my-6 border-gray-200 dark:border-slate-700 sm:mx-auto lg:my-8" />
-  <div class="max-w-7xl px-4 lg:px-6 mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between">
+  <div class="mx-auto flex max-w-7xl flex-col px-4 sm:flex-row sm:items-center sm:justify-between lg:px-6">
     <div class="flex flex-col space-y-1 text-center sm:text-left">
       <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
         ©

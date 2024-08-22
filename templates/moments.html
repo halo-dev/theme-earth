@@ -67,10 +67,10 @@
                     <video th:src="${media.url}" class="rounded-lg object-cover"></video>
                     <div
                       th:if="${#strings.equals(media.type,'VIDEO')}"
-                      class="size-full absolute flex cursor-pointer items-center justify-center rounded-lg bg-gray-50 opacity-50 transition-all hover:opacity-70"
+                      class="absolute flex size-full cursor-pointer items-center justify-center rounded-lg bg-gray-50 opacity-50 transition-all hover:opacity-70"
                       @click="openVideoModal = true"
                     >
-                      <i class="!size-7 i-tabler-play"></i>
+                      <i class="i-tabler-play !size-7"></i>
                     </div>
                     <template x-teleport="body">
                       <div>
@@ -124,8 +124,8 @@
                   x-bind:class="{'!text-red-700': upvoted(name)}"
                   @click="handleUpvote(name)"
                 >
-                  <i x-show="upvoted(name)" class="size-3 i-tabler-heart-filled"></i>
-                  <i x-show="!upvoted(name)" class="size-3 i-tabler-heart"></i>
+                  <i x-show="upvoted(name)" class="i-tabler-heart-filled size-3"></i>
+                  <i x-show="!upvoted(name)" class="i-tabler-heart size-3"></i>
                   <span
                     class="ml-1"
                     th:attr="data-upvote-moment-name=${moment.metadata.name}"
@@ -138,11 +138,11 @@
                   :class="{'!text-black dark:!text-slate-300':showComment}"
                   x-on:click="showComment = !showComment"
                 >
-                  <i class="size-3 i-tabler-message-circle"></i>
+                  <i class="i-tabler-message-circle size-3"></i>
                   <span class="ml-1" th:text="${moment.stats.approvedComment}"> </span>
                 </div>
                 <div class="inline-flex items-center text-sm text-gray-400 transition-all dark:text-slate-400">
-                  <i class="size-3 i-tabler-calendar"></i>
+                  <i class="i-tabler-calendar size-3"></i>
                   <span class="ml-1" th:text="${#dates.format(moment.spec.releaseTime,'yyyy-MM-dd')}"> </span>
                 </div>
               </div>

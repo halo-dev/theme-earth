@@ -66,6 +66,14 @@ spec:
             - label: 隐藏
               value: false
 
+    - group: global
+      label: 全局
+      formSchema:
+        - $formkit: checkbox
+          name: show_scroll_button
+          label: 显示滚动到顶部按钮
+          value: true
+
     - group: style
       label: 样式
       formSchema:

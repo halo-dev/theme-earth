@@ -22,7 +22,7 @@
     <th:block th:unless="${hero != null}">
       <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
     </th:block>
-    <section class="max-w-7xl px-4 lg:px-6 mx-auto mt-6 flex gap-6" th:classappend="${contentClass}">
+    <section class="mx-auto mt-6 flex max-w-7xl gap-6 px-4 lg:px-6" th:classappend="${contentClass}">
       <div class="z-0 min-w-0 flex-1 shrink">
         <th:block th:replace="${content}" />
       </div>
@@ -37,5 +37,14 @@
     <th:block th:if="${footer != null}">
       <th:block th:replace="${footer}" />
     </th:block>
+
+    <button
+      th:if="${theme.config.global.show_scroll_button}"
+      type="button"
+      id="btn-scroll-to-top"
+      class="fixed bottom-5 right-5 flex items-center justify-center rounded-full bg-gray-800 p-3 opacity-0 shadow transition-all duration-300 hover:opacity-70 hover:shadow-lg dark:bg-slate-600 lg:bottom-10 lg:right-10"
+    >
+      <span class="i-tabler-chevron-up text-2xl text-white dark:text-slate-200"></span>
+    </button>
   </body>
 </html>
