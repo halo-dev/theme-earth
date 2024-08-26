@@ -34,8 +34,12 @@
       </th:block>
       <th:block th:case="site_title">
         <div class="mx-auto flex h-full max-w-7xl flex-col items-center justify-center gap-3 px-4 py-6 lg:px-6">
-          <span class="text-5xl text-white" th:text="${site.title}"></span>
-          <span class="text-sm font-light text-white opacity-50" th:text="${site.subtitle}"></span>
+          <span class="text-5xl" th:style="|color:${theme.config.layout.title_color}|" th:text="${site.title}"></span>
+          <span
+            class="text-sm font-light opacity-50"
+            th:style="|color:${theme.config.layout.title_color}|"
+            th:text="${site.subtitle}"
+          ></span>
         </div>
       </th:block>
     </th:block>

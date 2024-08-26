@@ -21,6 +21,7 @@ spec:
           help: "选择单条时，文章卡片的图片将位于左侧"
         - $formkit: select
           name: header_widget
+          id: header_widget
           label: 首页顶部模块
           value: site_title
           options:
@@ -33,6 +34,7 @@ spec:
             - label: 站点标题
               value: site_title
         - $formkit: select
+          if: "$get(header_widget).value !== none"
           name: header_background_type
           id: header_background_type
           key: header_background_type
@@ -44,27 +46,29 @@ spec:
             - label: 图片
               value: image
         - $formkit: text
-          if: "$get(header_background_type).value === manual"
+          if: "$get(header_widget).value !== none && $get(header_background_type).value === manual"
           name: header_background
           id: header_background
           key: header_background
           label: 首页顶部背景
         - $formkit: attachment
-          if: "$get(header_background_type).value === image"
+          if: "$get(header_widget).value !== none && $get(header_background_type).value === image"
           name: header_background_image
           id: header_background_image
           key: header_background_image
           label: 首页顶部背景图片
           value: /themes/theme-earth/assets/images/default-background-2023-10-12.jpeg
-        - $formkit: radio
+        - $formkit: color
+          if: "$get(header_widget).value === site_title"
+          name: title_color
+          id: title_color
+          key: title_color
+          label: 标题文字颜色
+          value: #ffffff
+        - $formkit: checkbox
           name: content_header
-          label: 文章页顶部
+          label: 显示文章页面顶部背景
           value: true
-          options:
-            - label: 显示
-              value: true
-            - label: 隐藏
-              value: false
 
     - group: global
       label: 全局
