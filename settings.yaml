@@ -110,8 +110,20 @@ spec:
               value: github
             - label: Tailwind CSS Typography
               value: tailwind
+        - $formkit: checkbox
+          name: show_upvote_button
+          label: 显示点赞按钮
+          value: true
+        - $formkit: checkbox
+          name: show_share_button
+          id: show_share_button
+          label: 显示分享按钮
+          value: true
         - $formkit: repeater
+          if: $get(show_share_button).value
           name: share_items
+          key: share_items
+          id: share_items
           label: 分享按钮
           value:
             - id: wechat
