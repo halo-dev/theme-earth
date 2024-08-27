@@ -64,7 +64,7 @@ spec:
           id: title_color
           key: title_color
           label: 标题文字颜色
-          value: #ffffff
+          value: "#ffffff"
         - $formkit: checkbox
           name: content_header
           label: 显示文章页面顶部背景
