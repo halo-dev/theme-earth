@@ -7,6 +7,11 @@
       <img
         th:src="${post.spec.cover}"
         th:alt="${post.spec.title}"
+        th:srcset="|${thumbnail.gen(post.spec.cover, 's')} 400w,
+                    ${thumbnail.gen(post.spec.cover, 'm')} 800w,
+                    ${thumbnail.gen(post.spec.cover, 'l')} 1200w,
+                    ${thumbnail.gen(post.spec.cover, 'xl')} 1600w|"
+        sizes="(max-width: 1600px) 100vw, 1600px"
         class="size-full object-cover transition-all duration-500"
       />
     </a>

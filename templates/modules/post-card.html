@@ -12,6 +12,10 @@
       <img
         th:src="${post.spec.cover}"
         th:alt="${post.spec.title}"
+        th:srcset="|${thumbnail.gen(post.spec.cover, 's')} 400w,
+                    ${thumbnail.gen(post.spec.cover, 'm')} 800w,
+                    ${thumbnail.gen(post.spec.cover, 'l')} 1200w|"
+        sizes="(max-width: 1200px) 100vw, 1200px"
         class="size-full object-cover transition-all duration-500"
         th:classappend="${animation} ? 'group-hover:scale-105'"
       />
