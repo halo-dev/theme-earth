@@ -204,6 +204,8 @@ spec:
                   value: i-tabler-mail
                 - label: 微信
                   value: i-simple-icons-wechat
+                - label: 支付宝
+                  value: i-simple-icons-alipay
                 - label: 腾讯 QQ
                   value: i-simple-icons-tencentqq
                 - label: 新浪微博
@@ -324,6 +326,8 @@ spec:
                   value: i-tabler-mail
                 - label: 微信
                   value: i-simple-icons-wechat
+                - label: 支付宝
+                  value: i-simple-icons-alipay
                 - label: 腾讯 QQ
                   value: i-simple-icons-tencentqq
                 - label: 新浪微博
