@@ -158,6 +158,40 @@ spec:
                   value: douban
                 - label: 系统分享
                   value: native
+    - group: photos
+      label: 图库
+      formSchema:
+        - $formkit: text
+          name: title
+          label: 标题
+          help: 如果不设置，默认为“图库”
+        - $formkit: radio
+          name: show_title
+          label: 显示标题
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: radio
+          name: show_sidebar
+          label: 显示侧边栏
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
+        - $formkit: radio
+          name: show_category
+          label: 显示分类
+          value: true
+          options:
+            - label: 显示
+              value: true
+            - label: 隐藏
+              value: false
     - group: sidebar
       label: 侧边栏
       formSchema:
