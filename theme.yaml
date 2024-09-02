@@ -19,3 +19,9 @@ spec:
   license:
     - name: "GPL-3.0"
       url: "https://github.com/Anyexyz/theme-earth_fixed/blob/main/LICENSE"
+  customTemplates:
+    page:
+      - name: 友链
+        description: 友链页面，包含评论
+        screenshot:
+        file: friends.html
