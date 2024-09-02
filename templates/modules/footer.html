@@ -32,7 +32,10 @@
   </div>
   <hr class="my-6 border-gray-100 dark:border-slate-700 sm:mx-auto lg:my-8" />
   <div class="space-y-1">
-    <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
+    <span
+      class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6"
+      th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+    >
       <a
         href="https://beian.miit.gov.cn/"
         class="hover:underline"
@@ -124,7 +127,10 @@
       </span>
 
       <div class="flex flex-col gap-1 sm:flex-row">
-        <span class="block text-center text-sm text-gray-500 sm:text-left">
+        <span
+          class="block text-center text-sm text-gray-500 sm:text-left"
+          th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+        >
           <a
             href="https://beian.miit.gov.cn/"
             class="hover:underline"
