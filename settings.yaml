@@ -1,7 +1,7 @@
 apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: theme-earth-setting
+  name: theme-earth_fixed-setting
 spec:
   forms:
     - group: layout
@@ -57,7 +57,7 @@ spec:
           id: header_background_image
           key: header_background_image
           label: 首页顶部背景图片
-          value: /themes/theme-earth/assets/images/default-background-2023-10-12.jpeg
+          value: /themes/theme-earth_fixed/assets/images/default-background-2023-10-12.jpeg
         - $formkit: color
           if: "$get(header_widget).value === site_title"
           name: title_color
