@@ -60,7 +60,7 @@ export default (shareIds: { id: string }[]) => ({
       name: "微信",
       icon: "i-simple-icons-wechat",
       type: "url",
-      url: `/themes/theme-earth/assets/qrcode-share.html?url={url}`,
+      url: `/themes/theme-earth_fixed/assets/qrcode-share.html?url={url}`,
     },
     {
       id: "native",

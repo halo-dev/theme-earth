@@ -9,7 +9,7 @@ Halo 2.0 的默认主题。
 1. 手动从以下地址下载主题包并在 Console 的主题管理界面安装，安装方式可参考：<https://docs.halo.run/user-guide/themes>
 
     - https://www.halo.run/store/apps/app-KgWqR
-    - https://github.com/halo-dev/theme-earth/releases
+    - https://github.com/halo-dev/theme-earth_fixed/releases
 
 3. 如果安装了[应用市场](https://www.halo.run/store/apps/app-VYJbF)插件，可以直接在应用市场中搜索`Earth`并安装。
 
@@ -29,11 +29,11 @@ Earth 主题支持以下 Halo 插件：
 ## 开发
 
 ```bash
-git clone git@github.com:halo-dev/theme-earth.git ~/halo2-dev/themes/theme-earth
+git clone git@github.com:halo-dev/theme-earth_fixed.git ~/halo2-dev/themes/theme-earth_fixed
 ```
 
 ```bash
-cd ~/halo2-dev/themes/theme-earth
+cd ~/halo2-dev/themes/theme-earth_fixed
 ```
 
 ```bash
