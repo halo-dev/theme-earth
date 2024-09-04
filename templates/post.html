@@ -59,6 +59,15 @@
           </div>
         </div>
         <div class="flex flex-row items-center gap-1.5 self-end">
+          <div sec:authorize="isAuthenticated()" class="flex items-center justify-between" id="edit-button">
+            <a
+              th:href="|/console/posts/editor?name=${post.metadata.name}&returnToView=true|"
+              class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
+            >
+              <span class="i-tabler-edit text-lg transition-all group-hover:-translate-x-1"></span>
+              <span>编辑</span>
+            </a>
+          </div>
           <div
             th:if="${theme.config.post.show_upvote_button}"
             @click="handleUpvote(name)"
@@ -164,14 +173,5 @@
         <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
       </div>
     </div>
-
-    <a
-      sec:authorize="isAuthenticated()"
-      th:href="|/console/posts/editor?name=${post.metadata.name}&returnToView=true|"
-      id="edit-button"
-      class="fixed bottom-10 right-10 flex size-14 items-center justify-center rounded-full bg-[#4CCBA0] text-white shadow transition-all duration-300 hover:opacity-80 hover:shadow-lg"
-    >
-      <div class="i-tabler-edit !size-7"></div>
-    </a>
   </th:block>
 </html>
