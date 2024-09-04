@@ -58,6 +58,10 @@
                     th:if="${#strings.equals(media.type,'PHOTO')}"
                     class="transform-gpu rounded-lg object-cover"
                     th:src="${media.url}"
+                    th:srcset="|${thumbnail.gen(media.url, 's')} 400w,
+                                ${thumbnail.gen(media.url, 'm')} 800w,
+                                ${thumbnail.gen(media.url, 'l')} 1200w|"
+                    sizes="(max-width: 1200px) 100vw, 1200px"
                   />
                   <div
                     th:if="${#strings.equals(media.type,'VIDEO')}"

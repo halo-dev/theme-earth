@@ -15,7 +15,7 @@ spec:
   settingName: "theme-earth_fixed-setting"
   configMapName: "theme-earth_fixed-configMap"
   version: 1.9.1
-  requires: ">=2.8.0"
+  requires: ">=2.19.0"
   license:
     - name: "GPL-3.0"
       url: "https://github.com/Anyexyz/theme-earth_fixed/blob/main/LICENSE"
