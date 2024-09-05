@@ -41,14 +41,21 @@
           </div>
         </div>
         <div class="inline-flex flex-row gap-1">
-          <div sec:authorize="isAuthenticated()" class="flex items-center justify-between" id="edit-button">
-            <a
-              th:href="|/console/single-pages/editor?name=${singlePage.metadata.name}&returnToView=true|"
-              class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
-            >
-              <span class="i-tabler-edit text-lg transition-all group-hover:-translate-x-1"></span>
-              <span>编辑</span>
-            </a>
+          <div
+            sec:authorize="isAuthenticated()"
+            th:attr="x-data=|uiPermission('${#authentication.name}','system:singlepages:manage')|"
+            class="flex items-center justify-between"
+            id="edit-button"
+          >
+            <template x-if="shouldDisplay">
+              <a
+                th:href="|/console/single-pages/editor?name=${singlePage.metadata.name}&returnToView=true|"
+                class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
+              >
+                <span class="i-tabler-edit text-lg transition-all group-hover:-translate-x-1"></span>
+                <span>编辑</span>
+              </a>
+            </template>
           </div>
           <a
             th:if="${haloCommentEnabled}"

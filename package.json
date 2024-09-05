@@ -70,6 +70,7 @@
     "vite": "^5.2.13"
   },
   "dependencies": {
+    "@halo-dev/api-client": "^2.19.0",
     "alpinejs": "^3.14.0",
     "pupa": "^3.1.0",
     "tocbot": "^4.28.2"
