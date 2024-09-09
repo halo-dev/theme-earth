@@ -34,6 +34,14 @@
           </div>
         </th:block>
       </div>
+      <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
+      <div th:if="${haloCommentEnabled}">
+          <halo:comment
+              group="plugin.halo.run"
+              kind="Plugin"
+              th:attr="name=${pluginName}"
+          />
+      </div>
     </div>
   </th:block>
 </html>
