@@ -108,7 +108,7 @@
 
           <div
             th:if="${theme.config.post.show_share_button}"
-            th:attr="x-data=|share(${theme.config.post.share_items})|"
+            th:attr="x-data=|share(${theme.config.post.share_items},${theme.config.post.share_item_ids})|"
             class="group inline-flex cursor-pointer items-center gap-0.5 rounded-lg"
             @click="shareModal = true"
           >

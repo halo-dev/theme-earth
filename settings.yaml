@@ -81,7 +81,7 @@ spec:
     - group: style
       label: 样式
       formSchema:
-        - $formkit: radio
+        - $formkit: select
           name: color_scheme
           label: 默认配色
           value: system
@@ -119,12 +119,57 @@ spec:
           id: show_share_button
           label: 显示分享按钮
           value: true
-        - $formkit: repeater
+        - $formkit: select
           if: $get(show_share_button).value
+          name: share_item_ids
+          key: share_item_ids
+          id: share_item_ids
+          multiple: true
+          sortable: true
+          label: 分享平台
+          value:
+            - wechat
+            - x
+            - telegram
+            - facebook
+            - qq
+            - qzone
+            - weibo
+            - douban
+            - native
+          options:
+            - label: 微信
+              value: wechat
+            - label: X
+              value: x
+            - label: Telegram
+              value: telegram
+            - label: Facebook
+              value: facebook
+            - label: QQ
+              value: qq
+            - label: QQ 空间
+              value: qzone
+            - label: 微博
+              value: weibo
+            - label: 豆瓣
+              value: douban
+            - label: 系统分享
+              value: native
+        - $formkit: checkbox
+          name: show_deprecated_items
+          key: show_deprecated_items
+          id: show_deprecated_items
+          label: 显示已过时选项
+          value: false
+          help: 这些选项将在未来的版本移除，请尽快使用替代方案
+        - $formkit: repeater
+          if: $get(show_deprecated_items).value
           name: share_items
           key: share_items
           id: share_items
           label: 分享按钮
+          help: 此选项已过时，请使用上方新提供的分享平台设置项
           value:
             - id: wechat
             - id: x
@@ -247,7 +292,7 @@ spec:
               name: url
               label: 链接
               validation: "required"
-            - $formkit: radio
+            - $formkit: select
               name: url_type
               label: 链接类型
               value: normal
@@ -291,25 +336,32 @@ spec:
           if: "$get(style).value === style_2"
           label: 标语
 
-        - $formkit: menuRadio
+        - $formkit: select
           if: "$get(style).value === style_1"
-          name: menu
-          id: menu
-          key: menu
+          name: right_menu
+          id: right_menu
+          key: right_menu
           label: 右侧菜单
+          action: "/api/v1alpha1/menus"
+          autoSelect: false
+          clearable: true
+          requestOption:
+            labelField: "spec.displayName"
+            valueField: "metadata.name"
 
-        - $formkit: repeater
+        - $formkit: select
           if: "$get(style).value === style_2"
-          name: menus
-          id: menus
-          key: menus
+          name: menu_names
+          id: menu_names
+          key: menu_names
           label: 菜单组
           value: []
-          children:
-            - $formkit: menuRadio
-              name: name
-              label: 菜单
-              validation: "required"
+          multiple: true
+          sortable: true
+          action: "/api/v1alpha1/menus"
+          requestOption:
+            labelField: "spec.displayName"
+            valueField: "metadata.name"
 
         - $formkit: repeater
           name: social_media
@@ -367,7 +419,7 @@ spec:
               name: url
               label: 链接
               validation: "required"
-            - $formkit: radio
+            - $formkit: select
               name: url_type
               label: 链接类型
               value: normal
@@ -378,6 +430,35 @@ spec:
                 - label: 图片
                   value: image
 
+        - $formkit: checkbox
+          name: show_deprecated_items
+          key: show_deprecated_items
+          id: show_deprecated_items
+          label: 显示已过时选项
+          value: false
+          help: 这些选项将在未来的版本移除，请尽快使用替代方案
+
+        - $formkit: menuRadio
+          if: "$get(show_deprecated_items).value"
+          name: menu
+          id: menu
+          key: menu
+          label: 右侧菜单
+          help: 此选项已过时，请使用上方新提供的右侧菜单设置项
+
+        - $formkit: repeater
+          if: "$get(show_deprecated_items).value"
+          name: menus
+          id: menus
+          key: menus
+          label: 菜单组
+          value: []
+          help: 此选项已过时，请使用上方新提供的菜单组设置项
+          children:
+            - $formkit: menuRadio
+              name: name
+              label: 菜单
+              validation: "required"
     - group: beian
       label: 备案设置
       formSchema:

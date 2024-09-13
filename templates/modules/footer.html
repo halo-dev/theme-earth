@@ -13,15 +13,17 @@
       >
       </span>
     </a>
-    <th:block th:if="${not #strings.isEmpty(theme.config.footer.menu)}">
+    <th:block
+      th:unless="${#strings.isEmpty(theme.config.footer.right_menu)} and ${#strings.isEmpty(theme.config.footer.menu)}"
+    >
       <ul
-        th:with="menu = ${menuFinder.getByName(theme.config.footer.menu)}"
-        class="mb-6 flex flex-wrap items-center justify-center text-sm text-gray-500 dark:text-slate-200 sm:mb-0 sm:justify-start"
+        th:with="menu = ${menuFinder.getByName(theme.config.footer.right_menu ?: theme.config.footer.menu)}"
+        class="mb-6 flex flex-wrap items-center justify-center space-x-4 text-sm text-gray-500 dark:text-slate-200 sm:mb-0 sm:justify-start md:space-x-6"
       >
         <li th:each="menuItem : ${menu.menuItems}">
           <a
             th:href="@{${menuItem.status.href}}"
-            class="mr-4 transition-all hover:text-gray-900 hover:underline dark:hover:text-white md:mr-6"
+            class="transition-all hover:text-gray-900 hover:underline dark:hover:text-white"
             th:text="${menuItem.status.displayName}"
           ></a>
         </li>
@@ -32,8 +34,10 @@
   </div>
   <hr class="my-6 border-gray-100 dark:border-slate-700 sm:mx-auto lg:my-8" />
   <div class="space-y-1">
-    <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6"
-      th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}">
+    <span
+      class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6"
+      th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+    >
       <a
         href="https://beian.miit.gov.cn/"
         class="hover:underline"
@@ -92,7 +96,31 @@
       </span>
     </div>
     <div
-      th:if="${not #lists.isEmpty(theme.config.footer.menus)}"
+      th:unless="${#lists.isEmpty(theme.config.footer.menu_names)}"
+      class="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12"
+    >
+      <th:block th:each="name : ${theme.config.footer.menu_names}">
+        <div th:with="menu = ${menuFinder.getByName(name)}">
+          <h2
+            class="mb-6 text-sm font-semibold text-gray-900 dark:text-slate-50"
+            th:text="${menu.spec.displayName}"
+          ></h2>
+          <ul th:with="menuItems = ${menu.menuItems}" class="text-sm text-gray-500 dark:text-slate-200">
+            <li th:each="menuItem : ${menuItems}" class="mb-4">
+              <a
+                th:href="@{${menuItem.status.href}}"
+                class="transition-all hover:text-gray-900 hover:underline dark:hover:text-white"
+                th:text="${menuItem.status.displayName}"
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </th:block>
+    </div>
+
+    <!--/*Compatibility solution, will be removed in the future*/-->
+    <div
+      th:if="${#lists.isEmpty(theme.config.footer.menu_names)} and ${not #lists.isEmpty(theme.config.footer.menus)}"
       class="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12"
     >
       <th:block th:each="menuName : ${theme.config.footer.menus}">
@@ -125,8 +153,10 @@
       </span>
 
       <div class="flex flex-col gap-1 sm:flex-row">
-        <span class="block text-center text-sm text-gray-500 sm:text-left"
-          th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}">
+        <span
+          class="block text-center text-sm text-gray-500 sm:text-left"
+          th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+        >
           <a
             href="https://beian.miit.gov.cn/"
             class="hover:underline"
