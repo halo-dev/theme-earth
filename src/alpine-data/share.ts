@@ -1,6 +1,6 @@
 import pupa from "pupa";
 
-export default (shareIds: { id: string }[]) => ({
+export default (deprecatedShareIds: { id: string }[], shareIds: string[]) => ({
   permalink: window.location.href,
   title: document.title,
   shareModal: false,
@@ -69,9 +69,15 @@ export default (shareIds: { id: string }[]) => ({
       type: "native",
     },
   ],
+  get getShareIds() {
+    if (shareIds?.length) {
+      return shareIds;
+    }
+    return deprecatedShareIds.map((item) => item.id);
+  },
   get activeShareItems() {
     return shareIds
-      .map((id) => this.presetShareItems.find((item) => item.id === id.id))
+      .map((id) => this.presetShareItems.find((item) => item.id === id))
       .filter(Boolean)
       .filter((item) => item?.type !== "native" || navigator.canShare?.({ title: this.title, url: this.permalink }));
   },
