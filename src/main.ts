@@ -6,7 +6,6 @@ import dropdown from "./alpine-data/dropdown";
 import colorSchemeSwitcher from "./alpine-data/color-scheme-switcher";
 import upvote from "./alpine-data/upvote";
 import share from "./alpine-data/share";
-import logout from "./alpine-data/logout";
 import uiPermission from "./alpine-data/ui-permission";
 
 window.Alpine = Alpine;
@@ -17,7 +16,6 @@ Alpine.data("colorSchemeSwitcher", colorSchemeSwitcher);
 Alpine.data("upvote", upvote);
 // @ts-ignore
 Alpine.data("share", share);
-Alpine.data("logout", logout);
 // @ts-ignore
 Alpine.data("uiPermission", uiPermission);
 
