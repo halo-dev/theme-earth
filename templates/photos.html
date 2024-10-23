@@ -1,12 +1,21 @@
 <!doctype html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = '图库 - ' + ${site.title}, hero = null, content = ~{::content}, head = null, footer = null, sidebar = ~{::sidebar}, contentClass = '')}"
+  th:replace="~{modules/layout :: html(title = ${theme.config.photos.title ?: '图库'} + ' - ' + ${site.title}, hero = null, content = ~{::content}, head = null, footer = null, sidebar = ~{::sidebar}, contentClass = '')}"
 >
+  <th:block th:fragment="sidebar">
+    <th:block th:if="${theme.config.photos.show_sidebar}">
+      <th:block th:replace="~{modules/sidebar :: sidebar(prepend = null)}" />
+    </th:block>
+  </th:block>
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
-      <h1 class="mb-9 text-2xl font-medium dark:text-slate-50">图库</h1>
-      <div class="mb-8">
+      <h1
+        class="mb-9 text-2xl font-medium dark:text-slate-50"
+        th:if="${theme.config.photos.show_title}"
+        th:text="${theme.config.photos.title ?: '图库'}"
+      ></h1>
+      <div class="mb-8" th:if="${theme.config.photos.show_category}">
         <nav class="flex flex-wrap gap-4" aria-label="Tabs">
           <a
             th:href="@{/photos}"

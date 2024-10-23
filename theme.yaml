@@ -1,25 +1,27 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-earth
-  annotations:
-    # Add supports for Halo App Store
-    # https://halo.run/store/apps/app-KgWqR
-    "store.halo.run/app-id": "app-KgWqR"
+  name: theme-earth_fixed
 spec:
-  displayName: Earth
+  displayName: Earth-Fixed
   author:
-    name: Halo
-    website: https://www.halo.run
-  description: Default theme for Halo 2.0
+    name: Anyexyz
+    website: https://www.anye.xyz
+  description: Halo 2.0 的 Earth 主题二次开发版本
   logo: https://www.halo.run/logo
-  homepage: https://www.halo.run/store/apps/app-KgWqR
-  repo: https://github.com/halo-dev/theme-earth
-  issues: https://github.com/halo-dev/theme-earth/issues
-  settingName: "theme-earth-setting"
-  configMapName: "theme-earth-configMap"
+  homepage: https://www.anye.xyz
+  repo: https://github.com/halo-dev/theme-earth_fixed
+  issues: https://github.com/halo-dev/theme-earth_fixed/issues
+  settingName: "theme-earth_fixed-setting"
+  configMapName: "theme-earth_fixed-configMap"
   version: 1.11.0
   requires: ">=2.20.0"
   license:
     - name: "GPL-3.0"
-      url: "https://github.com/halo-dev/theme-earth/blob/main/LICENSE"
+      url: "https://github.com/Anyexyz/theme-earth_fixed/blob/main/LICENSE"
+  customTemplates:
+    page:
+      - name: 友链
+        description: 友链页面，包含评论
+        screenshot:
+        file: friends.html

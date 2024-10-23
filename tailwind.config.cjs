@@ -35,6 +35,7 @@ module.exports = {
     "i-gg-dark-mode",
     "i-tabler-mail",
     "i-simple-icons-wechat",
+    "i-simple-icons-alipay",
     "i-simple-icons-tencentqq",
     "i-simple-icons-sinaweibo",
     "i-simple-icons-zhihu",
