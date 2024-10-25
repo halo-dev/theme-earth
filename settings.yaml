@@ -81,7 +81,7 @@ spec:
           name: show_site_title_suffix
           label: 是否显示站点标题后缀
           help: 开启后，页面标题将显示为："页面标题 - 站点标题"
-          value: false
+          value: true
 
     - group: style
       label: 样式
