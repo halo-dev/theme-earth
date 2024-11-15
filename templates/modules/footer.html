@@ -25,6 +25,7 @@
             th:href="@{${menuItem.status.href}}"
             class="transition-all hover:text-gray-900 hover:underline dark:hover:text-white"
             th:text="${menuItem.status.displayName}"
+            th:target="${menuItem.spec.target?.value}"
           ></a>
         </li>
       </ul>
@@ -111,6 +112,7 @@
                 th:href="@{${menuItem.status.href}}"
                 class="transition-all hover:text-gray-900 hover:underline dark:hover:text-white"
                 th:text="${menuItem.status.displayName}"
+                th:target="${menuItem.spec.target?.value}"
               ></a>
             </li>
           </ul>
@@ -135,6 +137,7 @@
                 th:href="@{${menuItem.status.href}}"
                 class="transition-all hover:text-gray-900 hover:underline dark:hover:text-white"
                 th:text="${menuItem.status.displayName}"
+                th:target="${menuItem.spec.target?.value}"
               ></a>
             </li>
           </ul>
