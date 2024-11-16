@@ -14,4 +14,11 @@ export default defineConfig({
       formats: ["iife"],
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
 });
