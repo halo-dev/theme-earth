@@ -110,6 +110,19 @@ spec:
               value: github
             - label: Tailwind CSS Typography
               value: tailwind
+        - $formkit: select
+          name: title_position
+          label: 标题位置
+          value: "content"
+          options:
+            - value: "content"
+              label: "正文中"
+            - value: "cover"
+              label: "封面中"
+        - $formkit: text
+          name: cover_height
+          label: 封面图高度
+          value: "24rem"
         - $formkit: checkbox
           name: show_upvote_button
           label: 显示点赞按钮
