@@ -37,7 +37,7 @@
     >
       <h2 class="inline-flex items-center gap-2 text-base dark:text-slate-50">
         <span class="i-tabler-list text-lg"></span>
-        目录
+        <th:block th:text="#{page.post.toc}"></th:block>
       </h2>
       <div class="toc mt-2 max-h-64 overflow-auto"></div>
     </div>
@@ -67,9 +67,9 @@
               th:text="${post.owner.displayName}"
             ></a>
             <div class="flex items-center gap-2 text-xs font-light text-gray-600 dark:text-slate-100">
-              <span th:text="|发布于 ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}|"></span>
+              <span th:text="#{common.publishedOn(${#dates.format(post.spec.publishTime,'yyyy-MM-dd')})}"></span>
               <span class="text-gray-300 dark:text-slate-200">/</span>
-              <span th:text="|${post.stats?.visit ?:0} 阅读|"></span>
+              <span th:text="#{common.visitCount(${post.stats?.visit ?:0})}"></span>
             </div>
           </div>
         </div>

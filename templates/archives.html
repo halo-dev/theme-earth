@@ -13,7 +13,7 @@
               <div class="col-span-12 sm:col-span-3">
                 <h2
                   class="sticky top-20 mt-2 text-lg font-medium dark:text-slate-50"
-                  th:text="|${archive.year} 年 ${month.month} 月|"
+                  th:text="#{page.archives.date(${archive.year},${month.month})}"
                 ></h2>
               </div>
               <div class="col-span-12 sm:col-span-9">

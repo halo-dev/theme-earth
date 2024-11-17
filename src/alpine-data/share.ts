@@ -36,35 +36,35 @@ export default (deprecatedShareIds: { id: string }[], shareIds: string[]) => ({
     },
     {
       id: "qzone",
-      name: "QQ空间",
+      name: window.i18nResources["jsModule.share.qzone"],
       icon: "i-simple-icons-qzone",
       type: "url",
       url: `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}`,
     },
     {
       id: "weibo",
-      name: "微博",
+      name: window.i18nResources["jsModule.share.weibo"],
       icon: "i-simple-icons-sinaweibo",
       type: "url",
       url: `http://service.weibo.com/share/share.php?url={url}&title={title}`,
     },
     {
       id: "douban",
-      name: "豆瓣",
+      name: window.i18nResources["jsModule.share.douban"],
       icon: "i-simple-icons-douban",
       type: "url",
       url: `https://www.douban.com/share/service?href={url}&name={title}`,
     },
     {
       id: "wechat",
-      name: "微信",
+      name: window.i18nResources["jsModule.share.wechat"],
       icon: "i-simple-icons-wechat",
       type: "url",
       url: `/themes/theme-earth/assets/qrcode-share.html?url={url}`,
     },
     {
       id: "native",
-      name: "系统分享",
+      name: window.i18nResources["jsModule.share.native"],
       icon: "i-tabler-device-desktop",
       type: "native",
     },
@@ -96,7 +96,6 @@ export default (deprecatedShareIds: { id: string }[], shareIds: string[]) => ({
         });
         return;
       }
-      alert("您的浏览器不支持系统分享");
       return;
     }
 
@@ -105,7 +104,11 @@ export default (deprecatedShareIds: { id: string }[], shareIds: string[]) => ({
     const top = window.innerHeight / 2 - height / 2;
     const left = window.innerWidth / 2 - width / 2;
     const windowParams = `width=${width}, height= ${height}, top=${top}, left=${left}, status=no, scrollbars=no, resizable=no`;
-    window.open(pupa(item.url || "", { url: this.permalink, title: this.title }), `分享：${this.title}`, windowParams);
+    window.open(
+      pupa(item.url || "", { url: this.permalink, title: this.title }),
+      `${window.i18nResources["jsModule.share.windowTitle"]} - ${this.title}`,
+      windowParams,
+    );
   },
   handleCopy() {
     navigator.clipboard.writeText(this.permalink);

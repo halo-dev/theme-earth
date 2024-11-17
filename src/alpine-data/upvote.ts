@@ -37,7 +37,7 @@ export default (key: string, group: string, plural: string): upvoteState => ({
       upvoteNode.textContent = upvoteCount + 1 + "";
     };
     xhr.onerror = function () {
-      alert("网络请求失败，请稍后再试");
+      alert(window.i18nResources["jsModule.upvote.networkError"]);
     };
     xhr.send(
       JSON.stringify({
