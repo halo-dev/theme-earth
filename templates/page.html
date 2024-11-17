@@ -7,9 +7,20 @@
     <link rel="stylesheet" th:href="@{/assets/styles/github-markdown.css?v={version}(version=${theme.spec.version})}" />
   </th:block>
   <th:block th:fragment="hero">
-    <th:block
-      th:replace="~{modules/hero :: hero(isHome = false, cover = ${singlePage.spec.cover}, title = ${singlePage.spec.title})}"
-    />
+    <section th:unless="${#strings.isEmpty(singlePage.spec.cover)}">
+      <div class="relative flex items-center" th:styleappend="|height:${theme.config.post.cover_height ?: '24rem'}|">
+        <div
+          class="before:z-1 relative size-full bg-cover bg-center bg-no-repeat before:absolute before:inset-0 before:bg-black/40"
+          th:style="|background-image: url('${singlePage.spec.cover}')|"
+        ></div>
+        <header
+          class="pattern-header-text absolute top-1/3 mx-auto flex w-full flex-col items-center justify-center gap-3"
+          th:if="${theme.config.post.title_position == 'cover'}"
+        >
+          <h1 class="text-center text-2xl text-white sm:text-5xl" th:text="${singlePage.spec.title}"></h1>
+        </header>
+      </div>
+    </section>
   </th:block>
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
@@ -81,7 +92,12 @@
           </div>
         </div>
       </div>
-      <h1 class="my-3 text-2xl font-medium dark:text-slate-50" th:text="${singlePage.spec.title}"></h1>
+      <h1
+        th:if="${#strings.isEmpty(singlePage.spec.cover)} or ${theme.config.post.title_position == 'content'}"
+        class="my-3 text-3xl font-medium dark:text-slate-50"
+        th:text="${singlePage.spec.title}"
+      ></h1>
+
       <article
         class="!max-w-none break-words"
         th:classappend="${theme.config.post.content_style == 'github' ? 'markdown-body' : 'tailwind-typography'}"
