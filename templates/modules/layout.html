@@ -23,8 +23,11 @@
     <th:block th:unless="${hero != null}">
       <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
     </th:block>
-    <section class="mx-auto mt-6 flex max-w-7xl gap-6 px-4 lg:px-6" th:classappend="${contentClass}">
-      <div class="z-0 min-w-0 flex-1 shrink">
+    <section
+      class="mx-auto mt-6 grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-[1fr_18rem] lg:px-6"
+      th:classappend="${contentClass}"
+    >
+      <div class="z-0 min-w-0">
         <th:block th:replace="${content}" />
       </div>
       <th:block th:if="${sidebar != null}">
