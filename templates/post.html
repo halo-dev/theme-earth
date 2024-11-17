@@ -86,7 +86,7 @@
                 class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
               >
                 <span class="i-tabler-edit text-lg transition-all group-hover:-translate-x-1"></span>
-                <span>编辑</span>
+                <span th:text="#{common.edit}"></span>
               </a>
             </template>
           </div>
@@ -195,7 +195,7 @@
       </div>
       <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
       <div id="comment" th:if="${haloCommentEnabled}">
-        <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50">评论</h2>
+        <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50" th:text="#{common.comment}"></h2>
         <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
       </div>
     </div>

@@ -1,11 +1,11 @@
 <!doctype html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = '归档 - ' + ${site.title}, hero = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = '')}"
+  th:replace="~{modules/layout :: html(title = |#{page.archives.title} - ${site.title}|, hero = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = '')}"
 >
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
-      <h1 class="mb-6 text-2xl font-medium dark:text-slate-50">归档</h1>
+      <h1 class="mb-6 text-2xl font-medium dark:text-slate-50" th:text="#{page.archives.title}"></h1>
       <div class="flex flex-col gap-4">
         <th:block th:each="archive : ${archives.items}">
           <th:block th:each="month : ${archive.months}">
@@ -71,7 +71,7 @@
       </div>
 
       <div th:if="${archives.total == 0}" class="mt-6 flex items-center justify-center">
-        <span class="text-sm font-light text-gray-600">当前没有文章</span>
+        <span class="text-sm font-light text-gray-600" th:text="#{common.noPosts}"></span>
       </div>
 
       <div class="mt-6 flex items-center justify-between" th:if="${archives.hasPrevious() || archives.hasNext()}">
@@ -80,7 +80,7 @@
           class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
         >
           <span class="i-tabler-arrow-left text-lg transition-all group-hover:-translate-x-1"></span>
-          <span>上一页</span>
+          <span th:text="#{common.previousPage}"></span>
         </a>
         <span
           class="text-sm text-gray-900 dark:text-slate-50"
@@ -90,7 +90,7 @@
           th:href="@{${archives.nextUrl}}"
           class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
         >
-          <span>下一页</span>
+          <span th:text="#{common.nextPage}"></span>
           <span class="i-tabler-arrow-right text-lg transition-all group-hover:translate-x-1"></span>
         </a>
       </div>

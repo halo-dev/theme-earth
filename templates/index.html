@@ -21,7 +21,7 @@
     </div>
 
     <div th:if="${posts.total == 0}" class="mt-6 flex items-center justify-center">
-      <span class="text-sm font-light text-gray-600">当前没有文章</span>
+      <span class="text-sm font-light text-gray-600" th:text="#{common.noPosts}"></span>
     </div>
 
     <th:block

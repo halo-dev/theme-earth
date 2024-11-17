@@ -1,7 +1,7 @@
 <!doctype html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = '标签 - ' + ${site.title}, hero = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
+  th:replace="~{modules/layout :: html(title = |#{page.tags.title} - ${site.title}|, hero = null, content = ~{::content}, head = null, footer = null, sidebar = null, contentClass = null)}"
 >
   <th:block th:fragment="content">
     <div class="rounded-xl bg-white p-4 shadow transition-all duration-500 hover:shadow-md dark:bg-slate-800">
@@ -25,7 +25,7 @@
         </div>
 
         <div th:if="${posts.total == 0}" class="mt-6 flex items-center justify-center">
-          <span class="text-sm font-light text-gray-600 dark:text-slate-200">此标签下没有文章</span>
+          <span class="text-sm font-light text-gray-600 dark:text-slate-200" th:text="#{common.noPosts}"></span>
         </div>
 
         <div th:if="${posts.total gt 10}" class="mt-10 flex justify-end">
@@ -33,7 +33,7 @@
             class="group inline-flex items-center gap-2 truncate text-sm text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-200"
             th:href="@{${tag.status.permalink}}"
           >
-            <span>更多文章</span>
+            <span th:text="#{page.tags.morePosts}"></span>
             <span class="i-tabler-chevron-right -translate-x-1 text-lg transition-all group-hover:translate-x-0"></span>
           </a>
         </div>
