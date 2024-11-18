@@ -6,6 +6,7 @@ build: clean
 	echo "Collect theme dist"
 	mkdir dist
 	cp -r templates dist
+	cp -r i18n dist
 	cp theme.yaml settings.yaml README.md dist
 
 clean:
