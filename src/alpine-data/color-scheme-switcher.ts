@@ -10,8 +10,4 @@ export default () => ({
   get colorScheme() {
     return this.colorSchemes.find((x) => x.value === this.currentValue);
   },
-  get nextColorScheme() {
-    const index = this.colorSchemes.findIndex((x) => x.value === this.currentValue);
-    return this.colorSchemes[(index + 1) % this.colorSchemes.length];
-  },
 });
