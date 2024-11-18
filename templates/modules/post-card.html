@@ -20,7 +20,7 @@
         th:classappend="${animation} ? 'group-hover:scale-105'"
       />
     </a>
-    <div th:if="${post.spec.pinned}" class="absolute !left-2 !top-1.5" title="置顶">
+    <div th:if="${post.spec.pinned}" class="absolute !left-2 !top-1.5" th:title="#{fragment.postCard.pinned}">
       <div class="i-bx-arrow-to-top !size-5 text-sky-600"></div>
     </div>
   </div>
@@ -81,7 +81,7 @@
       ></a>
       <span
         class="text-sm tabular-nums text-gray-600 dark:text-slate-300"
-        th:text="|发布于 ${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}|"
+        th:text="#{common.publishedOn(${#dates.format(post.spec.publishTime,'yyyy-MM-dd')})}"
       >
       </span>
     </div>

@@ -19,25 +19,37 @@
     <div class="grid grid-cols-4 gap-5">
       <div class="inline-flex flex-col items-center">
         <span class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100" th:text="${stats.post}"></span>
-        <span class="text-xs font-light text-gray-600 dark:text-slate-300">文章数</span>
+        <span
+          class="text-xs font-light text-gray-600 dark:text-slate-300"
+          th:text="#{widget.profile.postCount.label}"
+        ></span>
       </div>
       <div class="inline-flex flex-col items-center">
         <span
           class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
           th:text="${stats.category}"
         ></span>
-        <span class="text-xs font-light text-gray-600 dark:text-slate-300">分类数</span>
+        <span
+          class="text-xs font-light text-gray-600 dark:text-slate-300"
+          th:text="#{widget.profile.categoryCount.label}"
+        ></span>
       </div>
       <div class="inline-flex flex-col items-center">
         <span
           class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100"
           th:text="${stats.comment}"
         ></span>
-        <span class="text-xs font-light text-gray-600 dark:text-slate-300">评论数</span>
+        <span
+          class="text-xs font-light text-gray-600 dark:text-slate-300"
+          th:text="#{widget.profile.commentCount.label}"
+        ></span>
       </div>
       <div class="inline-flex flex-col items-center">
         <span class="text-xl font-medium tabular-nums text-gray-900 dark:text-slate-100" th:text="${stats.visit}"></span
-        ><span class="text-xs font-light text-gray-600 dark:text-slate-300">访问量</span>
+        ><span
+          class="text-xs font-light text-gray-600 dark:text-slate-300"
+          th:text="#{widget.profile.visitCount.label}"
+        ></span>
       </div>
     </div>
     <div

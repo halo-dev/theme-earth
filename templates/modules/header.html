@@ -75,14 +75,13 @@
             class="cursor-pointer text-lg text-gray-600 transition-all hover:text-blue-600 dark:text-slate-100"
             :class="colorScheme.icon"
             @click="[main.setColorScheme(nextColorScheme.value,true), currentValue = nextColorScheme.value]"
-            :title="`当前主题：${colorScheme.label}，点击切换为：${nextColorScheme.label}`"
           ></div>
         </li>
         <!-- https://github.com/halo-sigs/plugin-search-widget -->
         <li th:if="${pluginFinder.available('PluginSearchWidget')}">
           <a
             href="javascript:SearchWidget.open()"
-            title="搜索"
+            th:title="#{fragment.header.search}"
             class="text-gray-600 hover:text-blue-600 dark:text-slate-100"
           >
             <div class="i-tabler-search text-lg"></div>
@@ -123,8 +122,8 @@
                   class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
                   href="/console"
                   target="_blank"
+                  th:text="#{fragment.header.console}"
                 >
-                  控制台
                 </a>
               </li>
               <li
@@ -134,8 +133,8 @@
                 <a
                   class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
                   href="/logout"
+                  th:text="#{fragment.header.logout}"
                 >
-                  退出登录
                 </a>
               </li>
               <li
@@ -146,8 +145,8 @@
                   class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
                   href="/login"
                   onclick="this.href = '/login?redirect_uri=' + encodeURIComponent(window.location.href)"
+                  th:text="#{fragment.header.login}"
                 >
-                  登录
                 </a>
               </li>
             </ul>
@@ -187,7 +186,7 @@
           tabindex="0"
           @click="open = false"
         ></button>
-        <h2 class="text-sm font-medium text-gray-600 dark:text-slate-300">菜单</h2>
+        <h2 class="text-sm font-medium text-gray-600 dark:text-slate-300" th:text="#{fragment.header.menu}"></h2>
       </div>
       <nav class="mt-6">
         <ul class="-my-2 divide-y divide-gray-100 text-sm text-gray-800 dark:divide-slate-800 dark:text-slate-100">
