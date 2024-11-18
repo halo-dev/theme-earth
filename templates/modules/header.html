@@ -8,9 +8,14 @@
     <div class="flex h-full items-center gap-6">
       <div class="mr-2 h-full">
         <a href="/" class="inline-flex h-full items-center">
-          <img th:if="${not #strings.isEmpty(site.logo)}" th:src="${site.logo}" th:alt="Logo" class="h-full w-auto" />
+          <img
+            th:if="${theme.config.global.logo_type == 'image'} and ${not #strings.isEmpty(site.logo)}"
+            th:src="${site.logo}"
+            th:alt="Logo"
+            class="h-full w-auto"
+          />
           <span
-            th:if="${#strings.isEmpty(site.logo)}"
+            th:if="${theme.config.global.logo_type == 'text'} or ${#strings.isEmpty(site.logo)}"
             id="site-title"
             class="text-lg font-medium text-gray-900 dark:text-slate-100"
             th:text="${site.title}"

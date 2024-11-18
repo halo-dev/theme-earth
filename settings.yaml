@@ -73,6 +73,16 @@ spec:
     - group: global
       label: 全局
       formSchema:
+        - $formkit: select
+          name: logo_type
+          id: logo_type
+          label: 菜单栏 Logo 类型
+          value: image
+          options:
+            - label: 文字
+              value: text
+            - label: 图片
+              value: image
         - $formkit: checkbox
           name: show_scroll_button
           label: 显示滚动到顶部按钮
