@@ -2,7 +2,7 @@
   <li>
     <a
       href="/"
-      class="inline-flex cursor-pointer items-center rounded px-3 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
+      class="inline-flex h-9 cursor-pointer items-center rounded px-3 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
       th:classappend="${_templateId == 'index'} ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
     >
       <span class="truncate text-base" th:text="#{common.all}"> </span>
@@ -16,18 +16,28 @@
       class="relative cursor-pointer transition-all"
       th:each="categoryItem,categoryStat : ${categories}"
     >
-      <a
-        th:href="@{${categoryItem.status.permalink}}"
-        class="inline-flex cursor-pointer items-center gap-1 rounded px-3 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
+      <div
+        class="group inline-flex h-9 cursor-pointer items-center gap-1 overflow-hidden rounded font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
         th:classappend="(${category} and ${category.metadata.name == categoryItem.metadata.name}) or (not ${category} and ${categoryStat.index == 0} and ${_templateId == 'categories'}) ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
       >
-        <span class="truncate text-base" th:text="${categoryItem.spec.displayName}"> </span>
-        <span
+        <a
+          class="truncate px-3 text-base"
+          th:href="@{${categoryItem.status.permalink}}"
+          th:text="${categoryItem.spec.displayName}"
+          th:classappend="${#lists.isEmpty(categoryItem.children) ? '' : '!pr-1'}"
+        >
+        </a>
+        <button
           th:if="${not #lists.isEmpty(categoryItem.children)}"
-          class="i-tabler-chevron-right text-lg transition-all duration-300"
-          x-bind:class="show ? 'rotate-90' : ''"
-        ></span>
-      </a>
+          @click="open()"
+          class="h-full px-2 text-lg group-hover:bg-gray-200 dark:group-hover:bg-slate-600"
+        >
+          <span
+            class="i-tabler-chevron-right block transition-all duration-300"
+            x-bind:class="show ? 'rotate-90' : ''"
+          ></span>
+        </button>
+      </div>
 
       <ul
         th:if="${not #lists.isEmpty(categoryItem.children)}"
