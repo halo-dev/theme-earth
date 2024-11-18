@@ -3,7 +3,7 @@
     <a
       href="/"
       class="inline-flex cursor-pointer items-center rounded px-3 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
-      th:classappend="${category == null} ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
+      th:classappend="${_templateId == 'index'} ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
     >
       <span class="truncate text-base" th:text="#{common.all}"> </span>
     </a>
@@ -14,12 +14,12 @@
       @mouseenter="open()"
       @mouseleave="close()"
       class="relative cursor-pointer transition-all"
-      th:each="categoryItem : ${categories}"
+      th:each="categoryItem,categoryStat : ${categories}"
     >
       <a
         th:href="@{${categoryItem.status.permalink}}"
         class="inline-flex cursor-pointer items-center gap-1 rounded px-3 py-1 font-medium text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-900 hover:shadow-sm dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-slate-50"
-        th:classappend="${category} and ${category.metadata.name == categoryItem.metadata.name} ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
+        th:classappend="(${category} and ${category.metadata.name == categoryItem.metadata.name}) or (not ${category} and ${categoryStat.index == 0} and ${_templateId == 'categories'}) ? '!text-gray-900 !bg-gray-100 dark:!bg-slate-700 dark:!text-slate-50'"
       >
         <span class="truncate text-base" th:text="${categoryItem.spec.displayName}"> </span>
         <span
