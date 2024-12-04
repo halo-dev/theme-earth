@@ -12,7 +12,7 @@
       th:classappend="(${tag} and ${tag.metadata.name == tagItem.metadata.name}) or (not ${tag} and ${tagStat.index == 0}) ? '!border-indigo-400 dark:!border-indigo-200' : ''"
     >
       <th:block th:text="|#${tagItem.spec.displayName}|" />
-      <sup th:text="${tagItem.status.visiblePostCount ?: 0}"></sup>
+      <sup th:text="${tagItem.postCount ?: 0}"></sup>
     </a>
   </div>
 </div>

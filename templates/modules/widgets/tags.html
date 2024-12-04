@@ -22,7 +22,7 @@
       class="inline-flex items-center gap-x-1.5 rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-800 shadow-sm hover:border-indigo-400 dark:border-slate-800 dark:bg-slate-700 dark:text-slate-200 dark:hover:border-indigo-200"
     >
       <th:block th:text="|#${tag.spec.displayName}|" />
-      <sup th:text="${tag.status.visiblePostCount ?: 0}"></sup>
+      <sup th:text="${tag.postCount ?: 0}"></sup>
     </a>
   </div>
 </div>
