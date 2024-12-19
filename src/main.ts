@@ -49,10 +49,7 @@ export function generateToc() {
       "group flex items-center justify-between rounded py-1 px-1.5 transition-all hover:bg-gray-100 text-sm opacity-80 dark:hover:bg-slate-700 dark:text-slate-50",
     collapseDepth: 6,
     headingsOffset: 100,
-    scrollSmooth: true,
-    scrollSmoothOffset: -100,
-    // @ts-ignore
-    tocScrollOffset: 50,
+    scrollSmooth: false,
   });
 }
 
