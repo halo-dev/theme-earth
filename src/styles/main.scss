@@ -2,6 +2,11 @@ body {
   overflow: overlay;
 }
 
+html {
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
 *::-webkit-scrollbar-track-piece {
   background-color: #f8f8f8;
   -webkit-border-radius: 2em;
