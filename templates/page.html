@@ -4,7 +4,11 @@
   th:replace="~{modules/layout :: html(title = ${singlePage.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = ~{::head}, footer = ~{::footer}, sidebar = null, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(singlePage.spec.cover)} ? '!-mt-20' : '')}"
 >
   <th:block th:fragment="head">
-    <link rel="stylesheet" th:href="@{/assets/styles/github-markdown.css?v={version}(version=${theme.spec.version})}" />
+    <link
+      th:if="${theme.config.post.content_style == 'github'}"
+      rel="stylesheet"
+      th:href="@{/assets/styles/github-markdown.css?v={version}(version=${theme.spec.version})}"
+    />
   </th:block>
   <th:block th:fragment="hero">
     <section th:unless="${#strings.isEmpty(singlePage.spec.cover)}">
