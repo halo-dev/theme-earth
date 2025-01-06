@@ -29,7 +29,13 @@
 
   <script th:inline="javascript">
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("pagination").addEventListener("change", (event) => {
+      const paginationSelect = document.getElementById("pagination");
+
+      if (!paginationSelect) {
+        return;
+      }
+
+      paginationSelect.addEventListener("change", (event) => {
         const selectedPage = event.target.value;
         window.location.href = `[(${context})]page/${selectedPage}`;
       });
