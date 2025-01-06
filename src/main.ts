@@ -50,6 +50,7 @@ export function generateToc() {
     collapseDepth: 6,
     headingsOffset: 100,
     scrollSmooth: false,
+    tocScrollOffset: 50,
   });
 }
 
