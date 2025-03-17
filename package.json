@@ -9,7 +9,8 @@
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
     "prettier": "prettier --write \"./src/**/*.{js,ts,css,json,ml,yaml,html}\" \"./templates/**/*.html\"",
     "release": "release-it",
-    "prepare": "husky"
+    "prepare": "husky",
+    "package": "npx @halo-dev/theme-package-cli"
   },
   "keywords": [
     "halo",
