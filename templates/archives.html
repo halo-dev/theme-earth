@@ -74,26 +74,9 @@
         <span class="text-sm font-light text-gray-600" th:text="#{common.noPosts}"></span>
       </div>
 
-      <div class="mt-6 flex items-center justify-between" th:if="${archives.hasPrevious() || archives.hasNext()}">
-        <a
-          th:href="@{${archives.prevUrl}}"
-          class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
-        >
-          <span class="i-tabler-arrow-left text-lg transition-all group-hover:-translate-x-1"></span>
-          <span th:text="#{common.previousPage}"></span>
-        </a>
-        <span
-          class="text-sm text-gray-900 dark:text-slate-50"
-          th:text="|${archives.page} / ${archives.totalPages}|"
-        ></span>
-        <a
-          th:href="@{${archives.nextUrl}}"
-          class="whitespace-no-wrap group inline-flex items-center justify-center gap-1 rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
-        >
-          <span th:text="#{common.nextPage}"></span>
-          <span class="i-tabler-arrow-right text-lg transition-all group-hover:translate-x-1"></span>
-        </a>
-      </div>
+      <th:block
+        th:replace="~{modules/pagination :: pagination(context = '/archives/', prevUrl = ${archives.prevUrl}, nextUrl = ${archives.nextUrl}, totalPages = ${archives.totalPages}, page = ${archives.page}, hasPrevious = ${archives.hasPrevious()}, hasNext = ${archives.hasNext()})}"
+      />
     </div>
   </th:block>
 </html>
