@@ -48,10 +48,8 @@ pnpm dev
 
 ## 构建
 
-> 如果你使用的是 Windows 操作系统，请安装 `make` 命令并在 Git Bash 或 WSL 中执行。
-
 ```bash
-make build
+pnpm build
 ```
 
-然后将 `dist` 目录压缩成 `ZIP` 格式压缩包即可在 Halo 后台上传安装。
+然后将 `dist` 目录的 `ZIP` 格式压缩包在 Halo 后台上传安装即可。
