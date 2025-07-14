@@ -114,7 +114,7 @@ spec:
         - $formkit: select
           name: content_style
           label: 内容样式
-          value: "tailwind"
+          value: "github"
           options:
             - label: GitHub 风格
               value: github
