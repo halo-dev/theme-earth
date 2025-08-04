@@ -3,6 +3,12 @@
   <head>
     <th:block th:replace="~{modules/base-head :: base-head(title = ${title})}" />
 
+    <script>
+      var docsme = {
+        disableThemeFunction: true,
+      };
+    </script>
+
     <th:block th:if="${head != null}">
       <th:block th:replace="${head}" />
     </th:block>
