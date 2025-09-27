@@ -17,14 +17,14 @@ Halo 2.0 的默认主题。
 
 Earth 主题支持以下 Halo 插件：
 
-- 友情链接（/links）：<https://halo.run/store/apps/app-hfbQg>
-- 图库（/photos）：<https://halo.run/store/apps/app-BmQJW>
-- 瞬间（/moments）：<https://halo.run/store/apps/app-SnwWD>
+- 友情链接（/links）：<https://www.halo.run/store/apps/app-hfbQg>
+- 图库（/photos）：<https://www.halo.run/store/apps/app-BmQJW>
+- 瞬间（/moments）：<https://www.halo.run/store/apps/app-SnwWD>
 
 为了获得更好的体验，你还可以安装以下插件（如果需要）：
 
-- highlight.js 代码高亮：<https://halo.run/store/apps/app-sqpgf>
-- lightgallery.js 灯箱：<https://halo.run/store/apps/app-OoggD>
+- Shiki 代码高亮：<https://www.halo.run/store/apps/app-kzloktzn>
+- lightgallery.js 灯箱：<https://www.halo.run/store/apps/app-OoggD>
 
 ## 开发
 
@@ -44,7 +44,7 @@ pnpm install
 pnpm dev
 ```
 
-主题开发文档可查阅：<https://docs.halo.run/2.0.0-SNAPSHOT/developer-guide/theme/prepare>
+主题开发文档可查阅：<https://docs.halo.run/developer-guide/theme/prepare>
 
 ## 构建
 
