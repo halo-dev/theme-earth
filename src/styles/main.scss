@@ -111,3 +111,26 @@ select {
   padding-right: 1.85em;
   display: inline-flex;
 }
+
+// Custom styles for docsme plugin
+.dm-layout,
+.dm-header__content {
+  @apply mx-auto max-w-7xl !important;
+}
+
+.dm-header__content {
+  @apply px-4 lg:px-6 !important;
+}
+
+.dm-main-content {
+  @apply mx-auto max-w-7xl !important;
+  @apply px-4 lg:px-6 !important;
+}
+
+.dm-sidebar__content {
+  padding: 0 1rem !important;
+}
+
+.dm-header {
+  z-index: 9 !important;
+}

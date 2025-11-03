@@ -114,7 +114,7 @@ spec:
         - $formkit: select
           name: content_style
           label: 内容样式
-          value: "tailwind"
+          value: "github"
           options:
             - label: GitHub 风格
               value: github
@@ -500,3 +500,20 @@ spec:
           name: gongan_link
           label: 公安联网备案跳转链接
           value: https://beian.mps.gov.cn/#/query/webSearch
+    - group: plugin
+      label: 插件集成
+      formSchema:
+        - $formkit: group
+          name: docsme
+          label: Docsme 文档管理
+          value:
+            source: theme
+          children:
+            - $formkit: select
+              name: source
+              label: 模板来源
+              options:
+                - label: 由此主题提供
+                  value: theme
+                - label: 使用插件默认模板
+                  value: plugin

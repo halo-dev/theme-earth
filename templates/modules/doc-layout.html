@@ -3,36 +3,37 @@
   <head>
     <th:block th:replace="~{modules/base-head :: base-head(title = ${title})}" />
 
+    <script>
+      var docsme = {
+        disableThemeFunction: true,
+      };
+    </script>
+
     <th:block th:if="${head != null}">
       <th:block th:replace="${head}" />
     </th:block>
+
+    <style>
+      footer {
+        margin: 0 !important;
+      }
+
+      #header-menu {
+        box-shadow: none !important;
+      }
+
+      #btn-search {
+        display: none !important;
+      }
+    </style>
   </head>
-  <body class="bg-slate-50 dark:bg-slate-900">
+
+  <body>
     <th:block th:replace="~{modules/header}" />
-    <th:block th:if="${hero != null}">
-      <th:block th:replace="${hero}" />
-    </th:block>
-    <th:block th:unless="${hero != null}">
-      <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
-    </th:block>
-    <section
-      class="mx-auto mt-6 grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-[1fr_18rem] lg:px-6"
-      th:classappend="${contentClass}"
-    >
-      <div class="z-0 min-w-0">
-        <th:block th:replace="${content}" />
-      </div>
-      <th:block th:if="${sidebar != null}">
-        <th:block th:replace="${sidebar}" />
-      </th:block>
-      <th:block th:if="${sidebar == null}">
-        <th:block th:replace="~{modules/sidebar :: sidebar(prepend = null)}" />
-      </th:block>
+    <section class="w-full" th:classappend="${contentClass}">
+      <th:block th:replace="${content}" />
     </section>
     <th:block th:replace="~{modules/footer}" />
-    <th:block th:if="${footer != null}">
-      <th:block th:replace="${footer}" />
-    </th:block>
 
     <button
       th:if="${theme.config.global.show_scroll_button}"
