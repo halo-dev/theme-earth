@@ -32,15 +32,12 @@ export default class NumberFormatterElement extends HTMLElement {
   }
 
   formatNumber(num: number): string {
-    if (num < 1000) {
-      return num.toString();
-    } else if (num < 1000000) {
-      return (num / 1000).toFixed(1).replace(/\.0$/, "") + "K";
-    } else if (num < 1000000000) {
-      return (num / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
-    } else {
-      return (num / 1000000000).toFixed(1).replace(/\.0$/, "") + "B";
-    }
+    const formatter = new Intl.NumberFormat("en-US", {
+      notation: "compact",
+      compactDisplay: "short",
+      maximumFractionDigits: 1,
+    });
+    return formatter.format(num);
   }
 }
 

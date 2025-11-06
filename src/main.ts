@@ -7,7 +7,7 @@ import colorSchemeSwitcher from "./alpine-data/color-scheme-switcher";
 import upvote from "./alpine-data/upvote";
 import share from "./alpine-data/share";
 import uiPermission from "./alpine-data/ui-permission";
-import "./alpine-data/number-formatter";
+import "./components/number-formatter";
 
 window.Alpine = Alpine;
 
