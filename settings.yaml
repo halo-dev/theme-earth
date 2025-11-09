@@ -180,6 +180,18 @@ spec:
             - label: 系统分享
               value: native
         - $formkit: checkbox
+          name: post_card_new_tab
+          id: post_card_new_tab
+          label: 文章卡片链接在新标签页打开
+          value: false
+          help: 控制文章列表页（如首页、分类页）的文章卡片链接是否在新标签页（_blank）打开。
+        - $formkit: checkbox
+          name: popular_posts_new_tab
+          id: popular_posts_new_tab
+          label: 热门文章链接在新标签页打开
+          value: false
+          help: 控制侧边栏的“热门文章”小部件中的文章链接是否在新标签页（_blank）打开。
+        - $formkit: checkbox
           name: show_deprecated_items
           key: show_deprecated_items
           id: show_deprecated_items

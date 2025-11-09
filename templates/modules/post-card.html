@@ -55,7 +55,12 @@
         class="line-clamp-2 cursor-pointer text-2xl font-medium transition-all hover:text-gray-500 hover:underline dark:text-slate-50 dark:hover:text-white"
         th:classappend="|${direction == 'column' ? 'sm:line-clamp-2' : ''} ${list_layout == 'grid_2' ? 'sm:line-clamp-3' : ''} ${list_layout == 'grid_3' ? 'sm:line-clamp-4' : ''}|"
       >
-        <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" th:title="${post.spec.title}"></a>
+        <a
+          th:href="@{${post.status.permalink}}"
+          th:text="${post.spec.title}"
+          th:title="${post.spec.title}"
+          th:attr="target=${theme.config.post.post_card_new_tab ? '_blank' : null}"
+        ></a>
       </h1>
       <p
         class="font-sm line-clamp-2 font-light dark:text-slate-200"
