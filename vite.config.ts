@@ -1,9 +1,11 @@
 import { defineConfig } from "vite";
-import { fileURLToPath } from "url";
-import path from "path";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 
 export default defineConfig({
-  plugins: [],
+  experimental: {
+    enableNativePlugin: true,
+  },
   build: {
     outDir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
     emptyOutDir: true,
@@ -12,13 +14,7 @@ export default defineConfig({
       name: "main",
       fileName: "main",
       formats: ["iife"],
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: "modern-compiler",
-      },
+      cssFileName: "style",
     },
   },
 });

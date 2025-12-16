@@ -1,6 +1,6 @@
 import pupa from "pupa";
 
-export default (deprecatedShareIds: { id: string }[], shareIds: string[]) => ({
+export default (shareIds: string[]) => ({
   permalink: window.location.href,
   title: document.title,
   shareModal: false,
@@ -69,12 +69,6 @@ export default (deprecatedShareIds: { id: string }[], shareIds: string[]) => ({
       type: "native",
     },
   ],
-  get getShareIds() {
-    if (shareIds?.length) {
-      return shareIds;
-    }
-    return deprecatedShareIds.map((item) => item.id);
-  },
   get activeShareItems() {
     return shareIds
       .map((id) => this.presetShareItems.find((item) => item.id === id))

@@ -179,66 +179,24 @@ spec:
               value: douban
             - label: 系统分享
               value: native
-        - $formkit: checkbox
-          name: show_deprecated_items
-          key: show_deprecated_items
-          id: show_deprecated_items
-          label: 显示已过时选项
-          value: false
-          help: 这些选项将在未来的版本移除，请尽快使用替代方案
-        - $formkit: repeater
-          if: $get(show_deprecated_items).value
-          name: share_items
-          key: share_items
-          id: share_items
-          label: 分享按钮
-          help: 此选项已过时，请使用上方新提供的分享平台设置项
-          value:
-            - id: wechat
-            - id: x
-            - id: telegram
-            - id: facebook
-            - id: qq
-            - id: qzone
-            - id: weibo
-            - id: douban
-            - id: native
-          children:
-            - $formkit: select
-              name: id
-              label: 分享平台
-              options:
-                - label: 微信
-                  value: wechat
-                - label: X
-                  value: x
-                - label: Telegram
-                  value: telegram
-                - label: Facebook
-                  value: facebook
-                - label: QQ
-                  value: qq
-                - label: QQ 空间
-                  value: qzone
-                - label: 微博
-                  value: weibo
-                - label: 豆瓣
-                  value: douban
-                - label: 系统分享
-                  value: native
     - group: sidebar
       label: 侧边栏
       formSchema:
-        - $formkit: repeater
+        - $formkit: array
           name: widgets
           label: 小部件
           value:
             - value: popular-posts
             - value: categories
             - value: tags
+          itemLabels:
+            - type: "text"
+              label: "$value.value"
           children:
             - $formkit: select
               name: value
+              id: value
+              key: value
               label: 部件
               options:
                 - label: 站点资料
@@ -249,9 +207,54 @@ spec:
                   value: categories
                 - label: 文章标签
                   value: tags
+            - $formkit: group
+              if: "$value.value === profile"
+              name: options
+              key: profile-options
+              id: profile-options
+              label: 站点资料选项
+              children:
+                - $formkit: attachment
+                  name: logo
+                  label: 站点资料 Logo
+                - $formkit: array
+                  name: social_media
+                  label: 社交媒体
+                  value: []
+                  itemLabels:
+                    - type: "iconify"
+                      label: "$value.icon"
+                    - type: "text"
+                      label: "$value.name"
+                    - type: "text"
+                      label: "$value.url"
+                  children:
+                    - $formkit: iconify
+                      format: svg
+                      name: icon
+                      label: 图标
+                      validation: "required"
+                    - $formkit: text
+                      name: name
+                      label: 名称
+                    - $formkit: text
+                      name: url
+                      label: 链接
+                      validation: "required"
+                    - $formkit: select
+                      name: url_type
+                      label: 链接类型
+                      value: normal
+                      help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
+                      options:
+                        - label: 跳转链接
+                          value: normal
+                        - label: 图片
+                          value: image
 
         - $formkit: group
           name: profile
+          help: 已废弃，将在未来的版本移除，请使用上方的站点资料小部件中的配置代替
           value:
             logo:
           children:
@@ -259,10 +262,16 @@ spec:
               name: logo
               label: 站点资料 Logo
 
-        - $formkit: repeater
+        - $formkit: array
           name: social_media
           label: 社交媒体
           value: []
+          help: 已废弃，将在未来的版本移除，请使用上方的站点资料小部件中的配置代替
+          itemLabels:
+            - type: "text"
+              label: "$value.name"
+            - type: "text"
+              label: "$value.url"
           children:
             - $formkit: select
               name: icon
@@ -386,55 +395,23 @@ spec:
             labelField: "spec.displayName"
             valueField: "metadata.name"
 
-        - $formkit: repeater
+        - $formkit: array
           name: social_media
           label: 社交媒体
           value: []
+          itemLabels:
+            - type: "iconify"
+              label: "$value.iconify"
+            - type: "text"
+              label: "$value.name"
+            - type: "text"
+              label: "$value.url"
           children:
-            - $formkit: select
-              name: icon
+            - $formkit: iconify
+              name: iconify
               label: 图标
-              options:
-                - label: 电子邮箱
-                  value: i-tabler-mail
-                - label: 微信
-                  value: i-simple-icons-wechat
-                - label: 腾讯 QQ
-                  value: i-simple-icons-tencentqq
-                - label: 新浪微博
-                  value: i-simple-icons-sinaweibo
-                - label: 知乎
-                  value: i-simple-icons-zhihu
-                - label: 豆瓣
-                  value: i-simple-icons-douban
-                - label: 哔哩哔哩
-                  value: i-simple-icons-bilibili
-                - label: 抖音 / TikTok
-                  value: i-simple-icons-tiktok
-                - label: Telegram
-                  value: i-simple-icons-telegram
-                - label: Facebook
-                  value: i-simple-icons-facebook
-                - label: Instagram
-                  value: i-simple-icons-instagram
-                - label: LinkedIn
-                  value: i-simple-icons-linkedin
-                - label: Twitter
-                  value: i-simple-icons-twitter
-                - label: Slack
-                  value: i-simple-icons-slack
-                - label: Discord
-                  value: i-simple-icons-discord
-                - label: YouTube
-                  value: i-simple-icons-youtube
-                - label: Steam
-                  value: i-simple-icons-steam
-                - label: GitHub
-                  value: i-simple-icons-github
-                - label: GitLab
-                  value: i-simple-icons-gitlab
-                - label: RSS
-                  value: i-simple-icons-rss
+              format: svg
+              validation: "required"
             - $formkit: text
               name: name
               label: 名称
@@ -452,36 +429,51 @@ spec:
                   value: normal
                 - label: 图片
                   value: image
-
-        - $formkit: checkbox
-          name: show_deprecated_items
-          key: show_deprecated_items
-          id: show_deprecated_items
-          label: 显示已过时选项
-          value: false
-          help: 这些选项将在未来的版本移除，请尽快使用替代方案
-
-        - $formkit: menuRadio
-          if: "$get(show_deprecated_items).value"
-          name: menu
-          id: menu
-          key: menu
-          label: 右侧菜单
-          help: 此选项已过时，请使用上方新提供的右侧菜单设置项
-
-        - $formkit: repeater
-          if: "$get(show_deprecated_items).value"
-          name: menus
-          id: menus
-          key: menus
-          label: 菜单组
-          value: []
-          help: 此选项已过时，请使用上方新提供的菜单组设置项
-          children:
-            - $formkit: menuRadio
-              name: name
-              label: 菜单
-              validation: "required"
+            - $formkit: select
+              name: icon
+              label: 图标
+              help: 已废弃，将在未来的版本移除，请使用上方的图标选择器代替
+              options:
+                - label: 电子邮箱（tabler:mail）
+                  value: i-tabler-mail
+                - label: 微信（simple-icons:wechat）
+                  value: i-simple-icons-wechat
+                - label: 腾讯 QQ（simple-icons:tencentqq）
+                  value: i-simple-icons-tencentqq
+                - label: 新浪微博（simple-icons:sinaweibo）
+                  value: i-simple-icons-sinaweibo
+                - label: 知乎（simple-icons:zhihu）
+                  value: i-simple-icons-zhihu
+                - label: 豆瓣（simple-icons:douban）
+                  value: i-simple-icons-douban
+                - label: 哔哩哔哩（simple-icons:bilibili）
+                  value: i-simple-icons-bilibili
+                - label: 抖音 / TikTok（simple-icons:tiktok）
+                  value: i-simple-icons-tiktok
+                - label: Telegram（simple-icons:telegram）
+                  value: i-simple-icons-telegram
+                - label: Facebook（simple-icons:facebook）
+                  value: i-simple-icons-facebook
+                - label: Instagram（simple-icons:instagram）
+                  value: i-simple-icons-instagram
+                - label: LinkedIn（simple-icons:linkedin）
+                  value: i-simple-icons-linkedin
+                - label: Twitter（simple-icons:twitter）
+                  value: i-simple-icons-twitter
+                - label: Slack（simple-icons:slack）
+                  value: i-simple-icons-slack
+                - label: Discord（simple-icons:discord）
+                  value: i-simple-icons-discord
+                - label: YouTube（simple-icons:youtube）
+                  value: i-simple-icons-youtube
+                - label: Steam（simple-icons:steam）
+                  value: i-simple-icons-steam
+                - label: GitHub（simple-icons:github）
+                  value: i-simple-icons-github
+                - label: GitLab（simple-icons:gitlab）
+                  value: i-simple-icons-gitlab
+                - label: RSS（simple-icons:rss）
+                  value: i-simple-icons-rss
     - group: beian
       label: 备案设置
       formSchema:
