@@ -63,7 +63,7 @@
           th:href="${social_media.url}"
           target="_blank"
         >
-          <th:block th:utext="${social_media.icon}" />
+          <th:block th:utext="${social_media.icon.value}" />
         </a>
 
         <span
@@ -72,7 +72,7 @@
           class="inline-flex cursor-pointer items-center justify-center rounded p-1 text-gray-600 hover:bg-gray-100 dark:text-slate-400 dark:hover:bg-slate-700 [&>svg]:size-5"
           @click="openImageModal = true"
         >
-          <th:block th:utext="${social_media.icon}" />
+          <th:block th:utext="${social_media.icon.value}" />
           <th:block th:replace="~{modules/image-view-modal}" />
         </span>
       </th:block>

@@ -7,8 +7,8 @@
         class="text-gray-500 hover:text-gray-900 dark:hover:text-white [&>svg]:size-5"
         th:title="${item.name}"
       >
-        <div th:if="${#strings.isEmpty(item.iconify)}" th:classappend="${item.icon}" class="size-5"></div>
-        <th:block th:unless="${#strings.isEmpty(item.iconify)}" th:utext="${item.iconify}"></th:block>
+        <div th:if="item.iconify == null" th:classappend="${item.icon}" class="size-5"></div>
+        <th:block th:unless="item.iconify == null" th:utext="${item.iconify.value}"></th:block>
       </a>
       <span
         th:if="${item.url_type == 'image'}"
@@ -16,8 +16,8 @@
         class="cursor-pointer text-gray-500 hover:text-gray-900 dark:hover:text-white [&>svg]:size-5"
         @click="openImageModal = true"
       >
-        <div th:if="${#strings.isEmpty(item.iconify)}" th:classappend="${item.icon}" class="size-5"></div>
-        <th:block th:unless="${#strings.isEmpty(item.iconify)}" th:utext="${item.iconify}"></th:block>
+        <div th:if="item.iconify == null" th:classappend="${item.icon}" class="size-5"></div>
+        <th:block th:unless="item.iconify == null" th:utext="${item.iconify.value}"></th:block>
         <th:block th:replace="~{modules/image-view-modal}" />
       </span>
     </th:block>
