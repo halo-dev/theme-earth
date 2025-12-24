@@ -4,7 +4,9 @@
       <th:block th:replace="${prepend}" />
     </th:block>
     <th:block th:each="widget : ${widgets}">
-      <th:block th:replace="~{'modules/widgets/'+${widget.value}}" />
+      <th:block th:with="options = ${widget.options}">
+        <th:block th:replace="~{'modules/widgets/'+${widget.value}}" />
+      </th:block>
     </th:block>
   </th:block>
 </aside>

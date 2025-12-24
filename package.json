@@ -1,55 +1,43 @@
 {
-  "name": "@halo-dev/theme-earth",
   "private": true,
-  "version": "1.2.1",
-  "description": "Default theme for Halo 2.0",
-  "scripts": {
-    "dev": "vite build --watch",
-    "build-only": "tsc && vite build",
-    "build": "pnpm run build-only && pnpm package",
-    "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
-    "prettier": "prettier --write \"./src/**/*.{js,ts,css,json,ml,yaml,html}\" \"./templates/**/*.html\"",
-    "release": "release-it",
-    "prepare": "husky",
-    "package": "npx @halo-dev/theme-package-cli"
-  },
-  "keywords": [
-    "halo",
-    "halo-theme",
-    "halo-template"
-  ],
-  "homepage": "https://github.com/halo-dev/theme-earth#readme",
-  "bugs": {
-    "url": "https://github.com/halo-dev/theme-earth/issues"
-  },
   "author": {
-    "name": "Halo OSS Organization",
-    "url": "https://github.com/halo-dev",
-    "email": "hi@halo.run"
+    "name": "Halo",
+    "email": "hi@halo.run",
+    "url": "https://github.com/halo-dev"
   },
   "maintainers": [
     {
       "name": "Ryan Wang",
-      "url": "https://github.com/ruibaby",
-      "email": "i@ryanc.cc"
+      "email": "i@ryanc.cc",
+      "url": "https://github.com/ruibaby"
     }
   ],
-  "license": "GPL-3.0",
-  "repository": {
-    "url": "https://github.com/halo-dev/theme-earth",
-    "type": "git"
+  "scripts": {
+    "build": "pnpm run build-only && pnpm package",
+    "build-only": "tsc && vite build",
+    "dev": "vite build --watch",
+    "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
+    "package": "npx @halo-dev/theme-package-cli",
+    "prepare": "husky",
+    "prettier": "prettier --write \"./src/**/*.{js,ts,css,json,ml,yaml,html}\" \"./templates/**/*.html\""
   },
   "lint-staged": {
     "*.{ts,json,yaml,yml,html}": [
       "prettier --write"
     ]
   },
+  "dependencies": {
+    "@halo-dev/api-client": "^2.20.0",
+    "alpinejs": "^3.14.3",
+    "pupa": "^3.1.0",
+    "tocbot": "^4.32.2"
+  },
   "devDependencies": {
     "@iconify/json": "^2.2.272",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.15",
     "@types/alpinejs": "^3.13.10",
-    "@types/node": "18.11.9",
+    "@types/node": "22.19.3",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "autoprefixer": "^10.4.20",
@@ -58,21 +46,14 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "postcss": "^8.4.49",
-    "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.8",
-    "release-it": "^15.11.0",
-    "sass-embedded": "^1.81.0",
-    "tailwindcss": "^3.4.15",
+    "postcss": "^8.5.6",
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "sass-embedded": "^1.96.0",
+    "tailwindcss": "^3.4.19",
     "tailwindcss-plugin-icons": "^2.2.2",
     "typescript": "^5.6.3",
-    "vite": "^5.4.11"
-  },
-  "dependencies": {
-    "@halo-dev/api-client": "^2.20.0",
-    "alpinejs": "^3.14.3",
-    "pupa": "^3.1.0",
-    "tocbot": "^4.32.2"
+    "vite": "^8.0.0-beta.2"
   },
   "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
   "pnpm": {
