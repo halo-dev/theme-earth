@@ -148,7 +148,7 @@
         class="mt-3 text-3xl font-medium dark:text-slate-50"
         th:text="${post.spec.title}"
       ></h1>
-      <div class="my-3 flex gap-2">
+      <div class="my-3 flex flex-wrap gap-2">
         <a
           th:each="tag : ${post.tags}"
           th:href="@{${tag.status.permalink}}"
