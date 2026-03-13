@@ -73,18 +73,22 @@ export default (shareIds: string[]) => ({
     return shareIds
       .map((id) => this.presetShareItems.find((item) => item.id === id))
       .filter(Boolean)
-      .filter((item) => item?.type !== "native" || navigator.canShare?.({ title: this.title, url: this.permalink }));
+      .filter(
+        (item) =>
+          item?.type !== "native" ||
+          navigator.canShare?.({ title: this.title, url: this.permalink }),
+      );
   },
-  handleShare(id: string) {
-    const item = this.activeShareItems.find((item) => item?.id === id);
+  async handleShare(id: string) {
+    const shareItem = this.activeShareItems.find((item) => item?.id === id);
 
-    if (!item) {
+    if (!shareItem) {
       return;
     }
 
-    if (item.type === "native") {
+    if (shareItem.type === "native") {
       if (navigator.share) {
-        navigator.share({
+        await navigator.share({
           title: this.title,
           url: this.permalink,
         });
@@ -99,13 +103,13 @@ export default (shareIds: string[]) => ({
     const left = window.innerWidth / 2 - width / 2;
     const windowParams = `width=${width}, height= ${height}, top=${top}, left=${left}, status=no, scrollbars=no, resizable=no`;
     window.open(
-      pupa(item.url || "", { url: this.permalink, title: this.title }),
+      pupa(shareItem.url || "", { url: this.permalink, title: this.title }),
       `${window.i18nResources["jsModule.share.windowTitle"]} - ${this.title}`,
       windowParams,
     );
   },
-  handleCopy() {
-    navigator.clipboard.writeText(this.permalink);
+  async handleCopy() {
+    await navigator.clipboard.writeText(this.permalink);
     this.copied = true;
     setTimeout(() => {
       this.copied = false;

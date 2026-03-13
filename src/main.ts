@@ -1,12 +1,13 @@
 import "./styles/tailwind.css";
 import "./styles/main.scss";
 import Alpine from "alpinejs";
-import * as tocbot from "tocbot";
-import dropdown from "./alpine-data/dropdown";
+import tocbot from "tocbot";
+
 import colorSchemeSwitcher from "./alpine-data/color-scheme-switcher";
-import upvote from "./alpine-data/upvote";
+import dropdown from "./alpine-data/dropdown";
 import share from "./alpine-data/share";
 import uiPermission from "./alpine-data/ui-permission";
+import upvote from "./alpine-data/upvote";
 import "./components/number-formatter";
 
 window.Alpine = Alpine;
@@ -59,11 +60,16 @@ type ColorSchemeType = "system" | "dark" | "light";
 
 export let currentColorScheme: ColorSchemeType = "system";
 
-export function initColorScheme(defaultColorScheme: ColorSchemeType, enableChangeColorScheme: boolean) {
+export function initColorScheme(
+  defaultColorScheme: ColorSchemeType,
+  enableChangeColorScheme: boolean,
+) {
   let colorScheme = defaultColorScheme;
 
   if (enableChangeColorScheme) {
-    colorScheme = (localStorage.getItem("color-scheme") as ColorSchemeType) || defaultColorScheme;
+    colorScheme =
+      (localStorage.getItem("color-scheme") as ColorSchemeType) ||
+      defaultColorScheme;
   }
 
   currentColorScheme = colorScheme;
@@ -73,12 +79,16 @@ export function initColorScheme(defaultColorScheme: ColorSchemeType, enableChang
 
 export function setColorScheme(colorScheme: ColorSchemeType, store: boolean) {
   if (colorScheme === "system") {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
     document.documentElement.classList.add(prefersDark ? "dark" : "light");
     document.documentElement.classList.remove(prefersDark ? "light" : "dark");
   } else {
     document.documentElement.classList.add(colorScheme);
-    document.documentElement.classList.remove(colorScheme === "dark" ? "light" : "dark");
+    document.documentElement.classList.remove(
+      colorScheme === "dark" ? "light" : "dark",
+    );
   }
   currentColorScheme = colorScheme;
   if (store) {
@@ -86,11 +96,13 @@ export function setColorScheme(colorScheme: ColorSchemeType, store: boolean) {
   }
 }
 
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
-  if (currentColorScheme === "system") {
-    setColorScheme("system", false);
-  }
-});
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", function () {
+    if (currentColorScheme === "system") {
+      setColorScheme("system", false);
+    }
+  });
 
 document.addEventListener("DOMContentLoaded", () => {
   const scrollToTopButton = document.getElementById("btn-scroll-to-top");

@@ -3,10 +3,6 @@ export default class NumberFormatterElement extends HTMLElement {
     return ["value"];
   }
 
-  constructor() {
-    super();
-  }
-
   connectedCallback() {
     this.render();
   }

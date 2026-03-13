@@ -1,4 +1,4 @@
-/// <reference types="vite/client" />
+/// <reference types="vite-plus/client" />
 import type { Alpine } from "alpinejs";
 
 export {};
