@@ -5,22 +5,14 @@
     "email": "hi@halo.run",
     "url": "https://github.com/halo-dev"
   },
-  "maintainers": [
-    {
-      "name": "Ryan Wang",
-      "email": "i@ryanc.cc",
-      "url": "https://github.com/ruibaby"
-    }
-  ],
   "type": "module",
   "scripts": {
+    "dev": "vp build --watch",
     "build": "pnpm run build-only && pnpm package",
     "build-only": "tsc && vp build",
-    "dev": "vp build --watch",
-    "lint": "vp lint",
+    "check": "vp check --fix",
     "package": "npx @halo-dev/theme-package-cli",
-    "prepare": "vp config",
-    "fmt": "vp fmt"
+    "prepare": "vp config"
   },
   "dependencies": {
     "@halo-dev/api-client": "^2.23.0",
