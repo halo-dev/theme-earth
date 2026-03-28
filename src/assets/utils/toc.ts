@@ -1,10 +1,10 @@
 import tocbot from "tocbot";
 
-export function generateToc(contentId: string, tocSelector: string) {
+export function generateToc(contentId: string, tocSelector: string, tocContainerSelector: string) {
   const content = document.getElementById(contentId);
   const titles = content?.querySelectorAll("h1, h2, h3, h4");
   if (!titles || titles.length === 0) {
-    const tocContainer = document.querySelector(tocSelector);
+    const tocContainer = document.querySelector(tocContainerSelector);
     tocContainer?.remove();
     return;
   }
