@@ -8,6 +8,7 @@ import share from "./alpine-data/share";
 import uiPermission from "./alpine-data/ui-permission";
 import upvote from "./alpine-data/upvote";
 import "./components/number-formatter";
+import "./utils/overlayscrollbars";
 
 window.Alpine = Alpine;
 

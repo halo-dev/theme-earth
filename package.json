@@ -12,6 +12,7 @@
   "dependencies": {
     "@halo-dev/api-client": "^2.23.0",
     "alpinejs": "^3.15.9",
+    "overlayscrollbars": "^2.14.0",
     "pupa": "^3.3.0",
     "tocbot": "^4.36.4"
   },

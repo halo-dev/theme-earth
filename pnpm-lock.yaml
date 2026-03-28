@@ -18,6 +18,9 @@ importers:
       alpinejs:
         specifier: ^3.15.9
         version: 3.15.9
+      overlayscrollbars:
+        specifier: ^2.14.0
+        version: 2.14.0
       pupa:
         specifier: ^3.3.0
         version: 3.3.0
@@ -1300,6 +1303,9 @@ packages:
 
   obug@2.1.1:
     resolution: {integrity: sha512-uTqF9MuPraAQ+IsnPf366RG4cP9RtUi7MLO1N3KEc+wb0a6yKpeL0lmk2IB1jY5KHPAlTc6T/JRdC/YqxHNwkQ==}
+
+  overlayscrollbars@2.14.0:
+    resolution: {integrity: sha512-RjV0pqc79kYhQLC3vTcLRb5GLpI1n6qh0Oua3g+bGH4EgNOJHVBGP7u0zZtxoAa0dkHlAqTTSYRb9MMmxNLjig==}
 
   oxfmt@0.40.0:
     resolution: {integrity: sha512-g0C3I7xUj4b4DcagevM9kgH6+pUHytikxUcn3/VUkvzTNaaXBeyZqb7IBsHwojeXm4mTBEC/aBjBTMVUkZwWUQ==}
@@ -2738,6 +2744,8 @@ snapshots:
   object-inspect@1.13.4: {}
 
   obug@2.1.1: {}
+
+  overlayscrollbars@2.14.0: {}
 
   oxfmt@0.40.0:
     dependencies:
