@@ -24,5 +24,5 @@ node_modules
 
 .gradle
 build
-templates/assets/dist
+templates
 dist

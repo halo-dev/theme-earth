@@ -1,0 +1,36 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|#{page.category.title(${category.spec.displayName})} - ${site.title}|"></title>
+  </template>
+  <template name="hero">
+    <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
+  </template>
+  <section class="mx-auto mt-6 grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-[1fr_18rem] lg:px-6">
+    <div class="z-0 min-w-0">
+      <th:block th:replace="~{modules/category-filter}" />
+
+      <div
+        id="post-list"
+        th:if="${posts.total gt 0}"
+        th:with="postItems=${posts.items},list_layout=${theme.config.layout.post_list_layout}"
+        class="mt-6 grid grid-cols-1 gap-6"
+        th:classappend="|${list_layout == 'grid_3' ? 'md:grid-cols-2 xl:grid-cols-3' : ''} ${list_layout == 'grid_2' ? 'md:grid-cols-2' : ''}|"
+      >
+        <th:block th:each="post : ${postItems}">
+          <th:block
+            th:replace="~{modules/post-card :: post-card(${post},true,true,true,${list_layout == 'single' ? 'column' : 'row'})}"
+          />
+        </th:block>
+      </div>
+
+      <div th:if="${posts.total == 0}" class="mt-6 flex items-center justify-center">
+        <span class="text-sm font-light text-gray-600 dark:text-slate-200" th:text="#{common.noPosts}"></span>
+      </div>
+
+      <th:block
+        th:replace="~{modules/pagination :: pagination(context = |${category.status.permalink}/|, prevUrl = ${posts.prevUrl}, nextUrl = ${posts.nextUrl}, totalPages = ${posts.totalPages}, page = ${posts.page}, hasPrevious = ${posts.hasPrevious()}, hasNext = ${posts.hasNext()})}"
+      />
+    </div>
+    <th:block th:replace="~{modules/sidebar :: sidebar(prepend = null)}" />
+  </section>
+</include>

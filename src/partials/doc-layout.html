@@ -1,17 +1,15 @@
 <!doctype html>
-<html th:lang="${#locale.toLanguageTag}" th:fragment="html (title,hero,content,head,footer,sidebar,contentClass)">
+<html th:lang="${#locale.toLanguageTag}">
   <head>
-    <th:block th:replace="~{modules/base-head :: base-head(title = ${title})}" />
+    <include src="base-head.html" />
+
+    <slot name="head" />
 
     <script>
       var docsme = {
         disableThemeFunction: true,
       };
     </script>
-
-    <th:block th:if="${head != null}">
-      <th:block th:replace="${head}" />
-    </th:block>
 
     <style>
       footer {
@@ -29,11 +27,13 @@
   </head>
 
   <body>
-    <th:block th:replace="~{modules/header}" />
-    <section class="w-full" th:classappend="${contentClass}">
-      <th:block th:replace="${content}" />
+    <include src="header.html" />
+
+    <section class="w-full">
+      <slot />
     </section>
-    <th:block th:replace="~{modules/footer}" />
+
+    <include src="footer.html" />
 
     <button
       th:if="${theme.config.global.show_scroll_button}"

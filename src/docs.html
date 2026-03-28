@@ -1,0 +1,18 @@
+<th:block th:if="${theme.config.plugin.docsme.source == 'plugin'}">
+  <th:block th:replace="~{plugin:plugin-docsme:docs}" />
+</th:block>
+
+<th:block th:if="${theme.config.plugin.docsme.source == 'theme'}">
+  <include src="doc-layout.html">
+    <template name="head">
+      <title th:text="|${site.title}|"></title>
+      <th:block th:replace="~{plugin:plugin-docsme:modules/style}" />
+      <th:block th:replace="~{plugin:plugin-docsme:modules/script}" />
+    </template>
+  </include>
+  <div class="dm-container">
+    <th:block
+      th:replace="~{plugin:plugin-docsme:modules/docs :: docs (footer = null, showHeader = false, showThemeSwitcher = false)}"
+    />
+  </div>
+</th:block>

@@ -73,11 +73,7 @@ export default (shareIds: string[]) => ({
     return shareIds
       .map((id) => this.presetShareItems.find((item) => item.id === id))
       .filter(Boolean)
-      .filter(
-        (item) =>
-          item?.type !== "native" ||
-          navigator.canShare?.({ title: this.title, url: this.permalink }),
-      );
+      .filter((item) => item?.type !== "native" || navigator.canShare?.({ title: this.title, url: this.permalink }));
   },
   async handleShare(id: string) {
     const shareItem = this.activeShareItems.find((item) => item?.id === id);

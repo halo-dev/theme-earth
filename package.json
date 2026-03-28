@@ -9,19 +9,21 @@
   "scripts": {
     "dev": "vp build --watch",
     "build": "pnpm run build-only && pnpm package",
-    "build-only": "tsc && vp build",
+    "build-only": "vp build",
     "check": "vp check --fix",
-    "package": "npx @halo-dev/theme-package-cli",
+    "package": "theme-package",
     "prepare": "vp config"
   },
   "dependencies": {
     "@halo-dev/api-client": "^2.23.0",
-    "alpinejs": "^3.15.8",
+    "alpinejs": "^3.15.9",
     "pupa": "^3.3.0",
     "tocbot": "^4.36.4"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.449",
+    "@halo-dev/theme-package-cli": "^1.0.1",
+    "@halo-dev/vite-plugin-halo-theme": "^1.0.3",
+    "@iconify/json": "^2.2.455",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/alpinejs": "^3.13.11",
@@ -35,7 +37,7 @@
     "vite": "npm:@voidzero-dev/vite-plus-core@latest",
     "vite-plus": "latest"
   },
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",

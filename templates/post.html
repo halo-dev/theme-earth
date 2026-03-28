@@ -1,16 +1,293 @@
 <!doctype html>
-<html
-  xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${post.spec.title} + ' - ' + ${site.title}, hero = ~{::hero}, content = ~{::content}, head = ~{::head}, footer = ~{::footer}, sidebar = ~{::sidebar}, contentClass = ${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : '')}"
->
-  <th:block th:fragment="head">
+<html th:lang="${#locale.toLanguageTag}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+    <link th:unless="${#strings.isEmpty(site.logo)}" rel="preload" th:href="${site.logo}" as="image" />
+    <script th:inline="javascript">
+      window.i18nResources = {
+        "jsModule.colorSchemeSwitcher.dark": `[(#{jsModule.colorSchemeSwitcher.dark})]`,
+        "jsModule.colorSchemeSwitcher.light": `[(#{jsModule.colorSchemeSwitcher.light})]`,
+        "jsModule.colorSchemeSwitcher.auto": `[(#{jsModule.colorSchemeSwitcher.auto})]`,
+        "jsModule.share.qzone": `[(#{jsModule.share.qzone})]`,
+        "jsModule.share.weibo": `[(#{jsModule.share.weibo})]`,
+        "jsModule.share.douban": `[(#{jsModule.share.douban})]`,
+        "jsModule.share.wechat": `[(#{jsModule.share.wechat})]`,
+        "jsModule.share.native": `[(#{jsModule.share.native})]`,
+        "jsModule.share.windowTitle": `[(#{jsModule.share.windowTitle})]`,
+        "jsModule.upvote.networkError": `[(#{jsModule.upvote.networkError})]`,
+      };
+      var colorScheme = /*[[${theme.config.style.color_scheme}]]*/ "system";
+      var enableChangeColorScheme = /*[[${theme.config.style.enable_change_color_scheme}]]*/ false;
+    </script>
+
+    <title th:text="|${post.spec.title} - ${site.title}|"></title>
     <link
       th:if="${theme.config.post.content_style == 'github'}"
       rel="stylesheet"
       th:href="@{/assets/styles/github-markdown.css?v={version}(version=${theme.spec.version})}"
     />
-  </th:block>
-  <th:block th:fragment="hero">
+
+    <script type="module" crossorigin src="/themes/theme-earth/assets/post-CTw3tzLb.js"></script>
+    <link rel="modulepreload" crossorigin href="/themes/theme-earth/assets/main-2iGHDDIu.js" />
+    <link rel="stylesheet" crossorigin href="/themes/theme-earth/assets/main-DluTjSsb.css" />
+  </head>
+  <body class="bg-slate-50 dark:bg-slate-900">
+    <header
+      id="header-menu"
+      class="sticky top-0 z-10 flex h-16 bg-white py-3 shadow-sm transition-all dark:bg-gray-800"
+      x-data="{ open : false }"
+      th:with="menu = ${menuFinder.getPrimary()}"
+    >
+      <div class="mx-auto flex h-full w-full max-w-7xl justify-between px-4 lg:px-6">
+        <div class="flex h-full items-center gap-6">
+          <div class="mr-2 h-full">
+            <a href="/" class="inline-flex h-full items-center">
+              <img
+                th:if="${theme.config.global.logo_type == 'image'} and ${not #strings.isEmpty(site.logo)}"
+                th:src="${site.logo}"
+                th:alt="Logo"
+                class="h-full w-auto"
+              />
+              <span
+                th:if="${theme.config.global.logo_type == 'text'} or ${#strings.isEmpty(site.logo)}"
+                id="site-title"
+                class="text-lg font-medium text-gray-900 dark:text-slate-100"
+                th:text="${site.title}"
+              ></span>
+            </a>
+          </div>
+          <ul
+            th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}"
+            class="hidden items-center gap-8 sm:flex"
+          >
+            <li
+              th:each="menuItem : ${menu.menuItems}"
+              class="relative cursor-pointer text-sm font-medium transition-all"
+              x-data="dropdown"
+              @mouseenter="open()"
+              @mouseleave="close()"
+            >
+              <a
+                class="text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                th:href="@{${menuItem.status.href}}"
+                th:text="${menuItem.status.displayName}"
+                th:target="${menuItem.spec.target?.value}"
+              ></a>
+              <ul
+                th:if="${not #lists.isEmpty(menuItem.children)}"
+                @mouseenter="open()"
+                @mouseleave="close()"
+                x-show="show"
+                x-cloak
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="menu-dropdown absolute left-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:divide-slate-600 dark:bg-slate-700"
+              >
+                <li
+                  th:each="childMenuItem : ${menuItem.children}"
+                  class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+                >
+                  <a
+                    class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                    th:href="@{${childMenuItem.status.href}}"
+                    th:text="${childMenuItem.status.displayName}"
+                    th:target="${childMenuItem.spec.target?.value}"
+                  ></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center">
+          <ul x-data="colorSchemeSwitcher" class="flex items-center gap-4">
+            <li class="sm:hidden" x-on:click="open = true">
+              <div class="i-tabler-menu-2 text-lg text-gray-600 hover:text-blue-600 dark:text-slate-100"></div>
+            </li>
+            <li
+              th:if="${theme.config.style.enable_change_color_scheme}"
+              x-data="dropdown"
+              class="relative cursor-pointer transition-all"
+              @mouseenter="open()"
+              @mouseleave="close()"
+            >
+              <div
+                class="cursor-pointer text-lg text-gray-600 transition-all hover:text-blue-600 dark:text-slate-100"
+                :class="colorScheme.icon"
+              ></div>
+              <ul
+                @mouseenter="open()"
+                @mouseleave="close()"
+                x-show="show"
+                x-cloak
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="absolute right-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:divide-slate-600 dark:bg-slate-700"
+              >
+                <template x-for="colorScheme in colorSchemes">
+                  <li
+                    class="flex w-full items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-blue-600 dark:text-slate-50 dark:hover:bg-slate-600 dark:hover:text-gray-300"
+                    @click="setColorScheme(colorScheme.value,true)"
+                  >
+                    <span :class="colorScheme.icon"></span>
+                    <span x-text="colorScheme.label"></span>
+                  </li>
+                </template>
+              </ul>
+            </li>
+            <!-- https://github.com/halo-sigs/plugin-search-widget -->
+            <li th:if="${pluginFinder.available('PluginSearchWidget')}">
+              <a
+                href="javascript:SearchWidget.open()"
+                th:title="#{fragment.header.search}"
+                class="text-gray-600 hover:text-blue-600 dark:text-slate-100"
+              >
+                <div class="i-tabler-search text-lg"></div>
+              </a>
+            </li>
+            <li
+              x-data="dropdown"
+              class="relative cursor-pointer transition-all"
+              th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
+              @mouseenter="open()"
+              @mouseleave="close()"
+            >
+              <div>
+                <div class="size-5 text-gray-600 hover:text-blue-600 dark:text-slate-100">
+                  <img
+                    class="size-5 rounded-full"
+                    th:src="${currentUser.avatar ?: #theme.assets('/images/default-avatar.svg')}"
+                    th:alt="${currentUser.displayName}"
+                  />
+                </div>
+                <ul
+                  @mouseenter="open()"
+                  @mouseleave="close()"
+                  x-show="show"
+                  x-cloak
+                  x-transition:enter="transition ease-out duration-100"
+                  x-transition:enter-start="transform opacity-0 scale-95"
+                  x-transition:enter-end="transform opacity-100 scale-100"
+                  x-transition:leave="transition ease-in duration-75"
+                  x-transition:leave-start="transform opacity-100 scale-100"
+                  x-transition:leave-end="transform opacity-0 scale-95"
+                  class="absolute right-0 z-10 mt-2 w-40 divide-y divide-gray-50 overflow-hidden rounded bg-white shadow dark:divide-slate-600 dark:bg-slate-700"
+                >
+                  <li
+                    sec:authorize="isAuthenticated()"
+                    class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+                  >
+                    <a
+                      class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                      href="/console"
+                      target="_blank"
+                      th:text="#{fragment.header.console}"
+                    >
+                    </a>
+                  </li>
+                  <li
+                    sec:authorize="isAuthenticated()"
+                    class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+                  >
+                    <a
+                      class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                      href="/logout"
+                      th:text="#{fragment.header.logout}"
+                    >
+                    </a>
+                  </li>
+                  <li
+                    sec:authorize="isAnonymous()"
+                    class="flex w-full items-center text-left text-sm hover:bg-gray-50 dark:hover:bg-slate-600"
+                  >
+                    <a
+                      class="size-full truncate px-4 py-2 text-gray-600 hover:text-blue-600 dark:text-slate-50 dark:hover:text-gray-300"
+                      href="/login"
+                      onclick="this.href = '/login?redirect_uri=' + encodeURIComponent(window.location.href)"
+                      th:text="#{fragment.header.login}"
+                    >
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}">
+        <div
+          class="fixed inset-0 z-50 bg-gray-800/40 opacity-100 backdrop-blur-sm dark:bg-black/80"
+          aria-hidden="true"
+          x-show="open"
+          x-cloak
+          x-transition:enter="ease-in-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in-out duration-300"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        ></div>
+        <div
+          class="fixed inset-x-4 top-8 z-50 origin-top scale-100 rounded-lg bg-white p-4 dark:bg-slate-900"
+          tabindex="-1"
+          x-show="open"
+          x-cloak
+          x-transition:enter="ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave="ease-in duration-100"
+          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          @click.outside="open = false"
+        >
+          <div class="flex flex-row-reverse items-center justify-between">
+            <button
+              class="i-tabler-x p-1 text-xl text-gray-600 dark:text-slate-300"
+              type="button"
+              tabindex="0"
+              @click="open = false"
+            ></button>
+            <h2 class="text-sm font-medium text-gray-600 dark:text-slate-300" th:text="#{fragment.header.menu}"></h2>
+          </div>
+          <nav class="mt-6">
+            <ul class="-my-2 divide-y divide-gray-100 text-sm text-gray-800 dark:divide-slate-800 dark:text-slate-100">
+              <li th:each="menuItem : ${menu.menuItems}">
+                <a
+                  class="flex items-center justify-between gap-1 py-2"
+                  th:href="@{${menuItem.status.href}}"
+                  th:target="${menuItem.spec.target?.value}"
+                >
+                  <span th:text="${menuItem.status.displayName}"></span>
+                </a>
+                <ul
+                  class="divide-y divide-gray-100 dark:divide-slate-800"
+                  th:if="${not #lists.isEmpty(menuItem.children)}"
+                >
+                  <li th:each="childMenuItem : ${menuItem.children}" class="flex w-full items-center text-left text-sm">
+                    <a
+                      class="size-full truncate px-4 py-2 text-gray-600 dark:text-slate-200"
+                      th:href="@{${childMenuItem.status.href}}"
+                      th:text="${childMenuItem.status.displayName}"
+                      th:target="${childMenuItem.spec.target?.value}"
+                    ></a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
     <section th:unless="${#strings.isEmpty(post.spec.cover)}">
       <div class="relative flex items-center" th:styleappend="|height:${theme.config.post.cover_height ?: '24rem'}|">
         <div
@@ -25,179 +302,363 @@
         </header>
       </div>
     </section>
-  </th:block>
-  <th:block th:fragment="footer">
-    <script>
-      main.generateToc();
-    </script>
-  </th:block>
-  <th:block th:fragment="sidebar_prepend">
-    <div
-      class="toc-container sticky top-20 z-[5] w-full cursor-pointer rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md dark:bg-slate-800"
-    >
-      <h2 class="inline-flex items-center gap-2 text-base dark:text-slate-50">
-        <span class="i-tabler-list text-lg"></span>
-        <th:block th:text="#{page.post.toc}"></th:block>
-      </h2>
-      <div class="toc mt-2 max-h-64 overflow-auto"></div>
-    </div>
-  </th:block>
-  <th:block th:fragment="sidebar">
-    <th:block th:replace="~{modules/sidebar :: sidebar(prepend = ~{::sidebar_prepend})}"></th:block>
-  </th:block>
-  <th:block th:fragment="content">
-    <div x-data="upvote('post','content.halo.run','posts')" class="rounded-xl bg-white p-4 dark:bg-slate-800">
-      <div
-        th:attr="x-data=|{name:'${post.metadata.name}'}|"
-        class="flex flex-col items-center justify-between gap-2 sm:flex-row"
-      >
-        <div class="flex w-full items-center justify-start gap-2">
-          <a
-            th:unless="${#strings.isEmpty(post.owner.avatar)}"
-            th:href="@{${post.owner.permalink}}"
-            th:title="${post.owner.displayName}"
-          >
-            <img th:src="${post.owner.avatar}" class="size-10 rounded-full" th:alt="${post.owner.displayName}" />
-          </a>
-          <div class="flex flex-col gap-0.5">
-            <a
-              th:href="@{${post.owner.permalink}}"
-              th:title="${post.owner.displayName}"
-              class="text-sm font-semibold text-gray-900 hover:text-gray-600 dark:text-slate-100 dark:hover:text-slate-200"
-              th:text="${post.owner.displayName}"
-            ></a>
-            <div class="flex items-center gap-2 text-xs font-light text-gray-600 dark:text-slate-100">
-              <span th:text="#{common.publishedOn(${#dates.format(post.spec.publishTime,'yyyy-MM-dd')})}"></span>
-              <span class="text-gray-300 dark:text-slate-200">/</span>
-              <span th:text="#{common.visitCount(${post.stats?.visit ?:0})}"></span>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-row items-center gap-1.5 self-end">
-          <div
-            sec:authorize="isAuthenticated()"
-            th:attr="x-data=|uiPermission('${#authentication.name}','system:posts:manage')|"
-            class="flex items-center justify-between"
-            id="edit-button"
-          >
-            <template x-if="shouldDisplay">
-              <a
-                th:href="|/console/posts/editor?name=${post.metadata.name}&returnToView=true|"
-                class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
-              >
-                <span class="i-tabler-edit text-lg transition-all group-hover:-translate-x-1"></span>
-                <span th:text="#{common.edit}"></span>
-              </a>
-            </template>
-          </div>
-          <div
-            th:if="${theme.config.post.show_upvote_button}"
-            @click="handleUpvote(name)"
-            class="group inline-flex cursor-pointer items-center rounded-lg"
-          >
-            <div
-              class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
-            >
-              <div
-                class="i-tabler-heart text-lg text-gray-600 group-hover:text-red-600 dark:text-slate-500"
-                x-show="!upvoted(name)"
-              ></div>
-              <div class="i-tabler-heart-filled text-lg text-red-600" x-show="upvoted(name)"></div>
-            </div>
-            <span
-              th:attr="data-upvote-post-name=${post.metadata.name}"
-              class="text-sm text-gray-600 group-hover:text-red-600 dark:text-slate-500"
-              th:text="${post.stats?.upvote ?:0}"
-            ></span>
-          </div>
-          <a
-            th:if="${haloCommentEnabled}"
-            href="#comment"
-            class="group inline-flex cursor-pointer items-center gap-0.5 rounded-lg"
-          >
-            <div
-              class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
-            >
-              <div
-                class="i-tabler-message-circle text-lg text-gray-600 group-hover:text-indigo-500 dark:text-slate-500"
-              ></div>
-            </div>
-            <span
-              class="text-sm text-gray-600 group-hover:text-indigo-500 dark:text-slate-500"
-              th:text="${post.stats?.comment ?:0}"
-            ></span>
-          </a>
 
+    <section
+      class="mx-auto mt-6 grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-[1fr_18rem] lg:px-6"
+      th:classappend="${theme.config.layout.content_header} and ${not #strings.isEmpty(post.spec.cover)} ? '!-mt-20' : ''"
+    >
+      <div class="z-0 min-w-0">
+        <div x-data="upvote('post','content.halo.run','posts')" class="rounded-xl bg-white p-4 dark:bg-slate-800">
           <div
-            th:if="${theme.config.post.show_share_button}"
-            th:attr="x-data=|share(${theme.config.post.share_item_ids})|"
-            class="group inline-flex cursor-pointer items-center gap-0.5 rounded-lg"
-            @click="shareModal = true"
+            th:attr="x-data=|{name:'${post.metadata.name}'}|"
+            class="flex flex-col items-center justify-between gap-2 sm:flex-row"
           >
-            <div
-              class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
-            >
-              <div class="i-tabler-share text-lg text-gray-600 group-hover:text-green-500 dark:text-slate-500"></div>
+            <div class="flex w-full items-center justify-start gap-2">
+              <a
+                th:unless="${#strings.isEmpty(post.owner.avatar)}"
+                th:href="@{${post.owner.permalink}}"
+                th:title="${post.owner.displayName}"
+              >
+                <img th:src="${post.owner.avatar}" class="size-10 rounded-full" th:alt="${post.owner.displayName}" />
+              </a>
+              <div class="flex flex-col gap-0.5">
+                <a
+                  th:href="@{${post.owner.permalink}}"
+                  th:title="${post.owner.displayName}"
+                  class="text-sm font-semibold text-gray-900 hover:text-gray-600 dark:text-slate-100 dark:hover:text-slate-200"
+                  th:text="${post.owner.displayName}"
+                ></a>
+                <div class="flex items-center gap-2 text-xs font-light text-gray-600 dark:text-slate-100">
+                  <span th:text="#{common.publishedOn(${#dates.format(post.spec.publishTime,'yyyy-MM-dd')})}"></span>
+                  <span class="text-gray-300 dark:text-slate-200">/</span>
+                  <span th:text="#{common.visitCount(${post.stats?.visit ?:0})}"></span>
+                </div>
+              </div>
             </div>
-            <th:block th:replace="~{modules/share-modal}" />
+            <div class="flex flex-row items-center gap-1.5 self-end">
+              <div
+                sec:authorize="isAuthenticated()"
+                th:attr="x-data=|uiPermission('${#authentication.name}','system:posts:manage')|"
+                class="flex items-center justify-between"
+                id="edit-button"
+              >
+                <template x-if="shouldDisplay">
+                  <a
+                    th:href="|/console/posts/editor?name=${post.metadata.name}&returnToView=true|"
+                    class="inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md border border-gray-200 bg-white px-4 py-1 text-sm font-medium leading-6 text-gray-600 shadow-sm hover:bg-gray-50 focus:shadow-none focus:outline-none dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white"
+                  >
+                    <span class="i-tabler-edit text-lg transition-all group-hover:-translate-x-1"></span>
+                    <span th:text="#{common.edit}"></span>
+                  </a>
+                </template>
+              </div>
+              <div
+                th:if="${theme.config.post.show_upvote_button}"
+                @click="handleUpvote(name)"
+                class="group inline-flex cursor-pointer items-center rounded-lg"
+              >
+                <div
+                  class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
+                >
+                  <div
+                    class="i-tabler-heart text-lg text-gray-600 group-hover:text-red-600 dark:text-slate-500"
+                    x-show="!upvoted(name)"
+                    x-cloak
+                  ></div>
+                  <div class="i-tabler-heart-filled text-lg text-red-600" x-show="upvoted(name)" x-cloak></div>
+                </div>
+                <span
+                  th:attr="data-upvote-post-name=${post.metadata.name}"
+                  class="text-sm text-gray-600 group-hover:text-red-600 dark:text-slate-500"
+                  th:text="${post.stats?.upvote ?:0}"
+                ></span>
+              </div>
+              <a
+                th:if="${haloCommentEnabled}"
+                href="#comment"
+                class="group inline-flex cursor-pointer items-center gap-0.5 rounded-lg"
+              >
+                <div
+                  class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
+                >
+                  <div
+                    class="i-tabler-message-circle text-lg text-gray-600 group-hover:text-indigo-500 dark:text-slate-500"
+                  ></div>
+                </div>
+                <span
+                  class="text-sm text-gray-600 group-hover:text-indigo-500 dark:text-slate-500"
+                  th:text="${post.stats?.comment ?:0}"
+                ></span>
+              </a>
+
+              <div
+                th:if="${theme.config.post.show_share_button}"
+                th:attr="x-data=|share(${theme.config.post.share_item_ids})|"
+                class="group inline-flex cursor-pointer items-center gap-0.5 rounded-lg"
+                @click="shareModal = true"
+              >
+                <div
+                  class="inline-flex items-center justify-center rounded-full p-2 transition-all group-hover:bg-gray-100 dark:group-hover:bg-slate-700"
+                >
+                  <div
+                    class="i-tabler-share text-lg text-gray-600 group-hover:text-green-500 dark:text-slate-500"
+                  ></div>
+                </div>
+                <th:block th:replace="~{modules/share-modal}" />
+              </div>
+            </div>
+          </div>
+          <h1
+            th:if="${#strings.isEmpty(post.spec.cover)} or ${theme.config.post.title_position == 'content'}"
+            class="mt-3 text-3xl font-medium dark:text-slate-50"
+            th:text="${post.spec.title}"
+          ></h1>
+          <div class="my-3 flex flex-wrap gap-2">
+            <a
+              th:each="tag : ${post.tags}"
+              th:href="@{${tag.status.permalink}}"
+              th:title="${tag.spec.displayName}"
+              th:text="|#${tag.spec.displayName}|"
+              class="cursor-pointer text-sm italic text-gray-600 hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-500"
+            >
+            </a>
+          </div>
+          <article
+            id="content"
+            class="!max-w-none break-words"
+            th:classappend="${theme.config.post.content_style == 'github' ? 'markdown-body' : 'tailwind-typography'}"
+            th:utext="${post.content.content}"
+          ></article>
+          <div
+            class="mt-10 flex flex-col sm:flex-row sm:justify-between"
+            th:with="postCursor = ${postFinder.cursor(post.metadata.name)}"
+          >
+            <div class="flex justify-start">
+              <a
+                th:if="${postCursor.hasPrevious()}"
+                role="navigation"
+                class="group inline-flex items-center gap-2 truncate text-sm text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-200"
+                th:href="@{${postCursor.previous.status.permalink}}"
+                th:title="${postCursor.previous.spec.title}"
+              >
+                <span
+                  class="i-tabler-chevron-left translate-x-1 text-lg transition-all group-hover:-translate-x-0"
+                ></span>
+                <span th:text="${#strings.abbreviate(postCursor.previous.spec.title,20)}"></span>
+              </a>
+            </div>
+            <div class="flex justify-end">
+              <a
+                th:if="${postCursor.hasNext()}"
+                role="navigation"
+                class="group inline-flex items-center gap-2 truncate text-sm text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-200"
+                th:href="@{${postCursor.next.status.permalink}}"
+                th:title="${postCursor.next.spec.title}"
+              >
+                <span th:text="${#strings.abbreviate(postCursor.next.spec.title,20)}"></span>
+                <span
+                  class="i-tabler-chevron-right -translate-x-1 text-lg transition-all group-hover:translate-x-0"
+                ></span>
+              </a>
+            </div>
+          </div>
+          <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
+          <div id="comment" th:if="${haloCommentEnabled}">
+            <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50" th:text="#{common.comment}"></h2>
+            <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
           </div>
         </div>
       </div>
-      <h1
-        th:if="${#strings.isEmpty(post.spec.cover)} or ${theme.config.post.title_position == 'content'}"
-        class="mt-3 text-3xl font-medium dark:text-slate-50"
-        th:text="${post.spec.title}"
-      ></h1>
-      <div class="my-3 flex flex-wrap gap-2">
-        <a
-          th:each="tag : ${post.tags}"
-          th:href="@{${tag.status.permalink}}"
-          th:title="${tag.spec.displayName}"
-          th:text="|#${tag.spec.displayName}|"
-          class="cursor-pointer text-sm italic text-gray-600 hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-500"
-        >
+      <th:block th:replace="~{modules/sidebar :: sidebar(prepend = ~{::sidebar_prepend})}">
+        <th:block th:fragment="sidebar_prepend">
+          <div
+            class="toc-container sticky top-20 z-[5] w-full cursor-pointer rounded-xl bg-white p-3 shadow transition-all duration-500 hover:shadow-md dark:bg-slate-800"
+          >
+            <h2 class="inline-flex items-center gap-2 text-base dark:text-slate-50">
+              <span class="i-tabler-list text-lg"></span>
+              <th:block th:text="#{page.post.toc}"></th:block>
+            </h2>
+            <div class="toc mt-2 max-h-64 overflow-auto"></div>
+          </div>
+        </th:block>
+      </th:block>
+    </section>
+
+    <footer th:if="${theme.config.footer.style == 'style_1'}" class="mt-10 bg-white py-8 dark:bg-slate-800">
+      <div class="mx-auto max-w-7xl px-4 sm:flex sm:items-center sm:justify-between lg:px-6">
+        <a href="/" class="mb-4 flex items-center justify-center sm:mb-0 sm:justify-start">
+          <img
+            th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
+            th:src="${theme.config.footer.logo ?: site.logo}"
+            class="mr-3 size-8"
+            th:alt="${site.title}"
+          />
+          <span
+            class="self-center whitespace-nowrap text-2xl font-semibold dark:text-slate-50"
+            th:text="${theme.config.footer.title ?: site.title}"
+          >
+          </span>
         </a>
-      </div>
-      <article
-        id="content"
-        class="!max-w-none break-words"
-        th:classappend="${theme.config.post.content_style == 'github' ? 'markdown-body' : 'tailwind-typography'}"
-        th:utext="${post.content.content}"
-      ></article>
-      <div
-        class="mt-10 flex flex-col sm:flex-row sm:justify-between"
-        th:with="postCursor = ${postFinder.cursor(post.metadata.name)}"
-      >
-        <div class="flex justify-start">
-          <a
-            th:if="${postCursor.hasPrevious()}"
-            role="navigation"
-            class="group inline-flex items-center gap-2 truncate text-sm text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-200"
-            th:href="@{${postCursor.previous.status.permalink}}"
-            th:title="${postCursor.previous.spec.title}"
+        <th:block th:unless="${#strings.isEmpty(theme.config.footer.right_menu)}">
+          <ul
+            th:with="menu = ${menuFinder.getByName(theme.config.footer.right_menu)}"
+            class="mb-6 flex flex-wrap items-center justify-center space-x-4 text-sm text-gray-500 dark:text-slate-200 sm:mb-0 sm:justify-start md:space-x-6"
           >
-            <span class="i-tabler-chevron-left translate-x-1 text-lg transition-all group-hover:-translate-x-0"></span>
-            <span th:text="${#strings.abbreviate(postCursor.previous.spec.title,20)}"></span>
-          </a>
-        </div>
-        <div class="flex justify-end">
+            <li th:each="menuItem : ${menu.menuItems}">
+              <a
+                th:href="@{${menuItem.status.href}}"
+                class="transition-all hover:text-gray-900 hover:underline dark:hover:text-white"
+                th:text="${menuItem.status.displayName}"
+                th:target="${menuItem.spec.target?.value}"
+              ></a>
+            </li>
+          </ul>
+        </th:block>
+
+        <th:block th:replace="~{modules/footer-social}" />
+      </div>
+      <hr class="my-6 border-gray-100 dark:border-slate-700 sm:mx-auto lg:my-8" />
+      <div class="space-y-1">
+        <span
+          class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6"
+          th:if="${not #strings.isEmpty(theme.config.beian.icp_text)}"
+        >
           <a
-            th:if="${postCursor.hasNext()}"
-            role="navigation"
-            class="group inline-flex items-center gap-2 truncate text-sm text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-200"
-            th:href="@{${postCursor.next.status.permalink}}"
-            th:title="${postCursor.next.spec.title}"
-          >
-            <span th:text="${#strings.abbreviate(postCursor.next.spec.title,20)}"></span>
-            <span class="i-tabler-chevron-right -translate-x-1 text-lg transition-all group-hover:translate-x-0"></span>
+            href="https://beian.miit.gov.cn/"
+            class="hover:underline"
+            target="_blank"
+            th:href="${theme.config.beian.icp_link}"
+            th:text="${theme.config.beian.icp_text}"
+          ></a>
+        </span>
+        <div
+          th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+          class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6"
+        >
+          <p class="flex items-center justify-center gap-1">
+            <img th:src="@{/assets/images/gongan_beian.png}" class="size-4" alt="gongan_beian" />
+            <a
+              href="https://beian.mps.gov.cn/#/query/webSearch"
+              class="hover:underline"
+              target="_blank"
+              th:href="${theme.config.beian.gongan_link}"
+              th:text="${theme.config.beian.gongan_text}"
+            ></a>
+          </p>
+        </div>
+        <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
+          ©
+          <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+          <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
+          <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
+        </span>
+        <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
+          <halo:footer />
+        </span>
+      </div>
+    </footer>
+
+    <footer th:if="${theme.config.footer.style == 'style_2'}" class="mt-10 bg-white py-8 dark:bg-slate-800">
+      <div class="mx-auto max-w-7xl px-4 md:flex md:justify-between md:gap-10 lg:px-6">
+        <div class="mb-6 max-w-full md:mb-0 md:max-w-md">
+          <a href="/" class="mb-6 flex items-center">
+            <img
+              th:if="${not #strings.isEmpty(theme.config.footer.logo)} or ${not #strings.isEmpty(site.logo)}"
+              th:src="${theme.config.footer.logo ?: site.logo}"
+              class="mr-3 h-8"
+              th:alt="${site.title}"
+            />
+            <span
+              class="self-center whitespace-nowrap text-2xl font-semibold dark:text-slate-50"
+              th:text="${theme.config.footer.title ?: site.title}"
+            ></span>
           </a>
+          <span
+            th:if="${not #strings.isEmpty(theme.config.footer.slogan)}"
+            class="text-sm font-light text-gray-600 dark:text-slate-200"
+            th:text="${theme.config.footer.slogan}"
+          >
+          </span>
+        </div>
+        <div
+          th:unless="${#lists.isEmpty(theme.config.footer.menu_names)}"
+          class="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12"
+        >
+          <th:block th:each="name : ${theme.config.footer.menu_names}">
+            <div th:with="menu = ${menuFinder.getByName(name)}">
+              <h2
+                class="mb-6 text-sm font-semibold text-gray-900 dark:text-slate-50"
+                th:text="${menu.spec.displayName}"
+              ></h2>
+              <ul th:with="menuItems = ${menu.menuItems}" class="text-sm text-gray-500 dark:text-slate-200">
+                <li th:each="menuItem : ${menuItems}" class="mb-4">
+                  <a
+                    th:href="@{${menuItem.status.href}}"
+                    class="transition-all hover:text-gray-900 hover:underline dark:hover:text-white"
+                    th:text="${menuItem.status.displayName}"
+                    th:target="${menuItem.spec.target?.value}"
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </th:block>
         </div>
       </div>
-      <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
-      <div id="comment" th:if="${haloCommentEnabled}">
-        <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50" th:text="#{common.comment}"></h2>
-        <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
+      <hr class="my-6 border-gray-200 dark:border-slate-700 sm:mx-auto lg:my-8" />
+      <div class="mx-auto flex max-w-7xl flex-col px-4 sm:flex-row sm:items-center sm:justify-between lg:px-6">
+        <div class="flex flex-col space-y-1 text-center sm:text-left">
+          <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
+            ©
+            <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+            <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
+            <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
+          </span>
+
+          <div class="flex flex-col gap-1 sm:flex-row">
+            <span
+              class="block text-center text-sm text-gray-500 sm:text-left"
+              th:if="${not #strings.isEmpty(theme.config.beian.icp_text)}"
+            >
+              <a
+                href="https://beian.miit.gov.cn/"
+                class="hover:underline"
+                target="_blank"
+                th:href="${theme.config.beian.icp_link}"
+                th:text="${theme.config.beian.icp_text}"
+              ></a>
+            </span>
+            <div
+              th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
+              class="inline-flex items-center justify-center gap-1 text-sm text-gray-500 sm:justify-start"
+            >
+              <img th:src="@{/assets/images/gongan_beian.png}" class="size-4" alt="gongan_beian" />
+              <a
+                href="https://beian.mps.gov.cn/#/query/webSearch"
+                class="hover:underline"
+                target="_blank"
+                th:href="${theme.config.beian.gongan_link}"
+                th:text="${theme.config.beian.gongan_text}"
+              ></a>
+            </div>
+          </div>
+
+          <p class="text-sm text-gray-500 dark:text-slate-300">
+            <halo:footer />
+          </p>
+        </div>
+
+        <th:block th:replace="~{modules/footer-social}" />
       </div>
-    </div>
-  </th:block>
+    </footer>
+
+    <button
+      th:if="${theme.config.global.show_scroll_button}"
+      type="button"
+      id="btn-scroll-to-top"
+      th:aria-label="#{fragment.layout.toTop}"
+      class="fixed bottom-5 right-5 flex items-center justify-center rounded-full bg-white p-3 opacity-0 shadow transition-all duration-300 hover:opacity-70 hover:shadow-lg dark:bg-slate-600 lg:bottom-10 lg:right-10"
+    >
+      <span class="i-tabler-chevron-up text-2xl text-gray-600 dark:text-slate-200"></span>
+    </button>
+  </body>
 </html>

@@ -1,4 +1,4 @@
-import { currentColorScheme } from "../main";
+import { ColorSchemeType, currentColorScheme, setColorScheme } from "../utils/color-scheme";
 
 export default () => ({
   colorSchemes: [
@@ -21,5 +21,9 @@ export default () => ({
   currentValue: currentColorScheme,
   get colorScheme() {
     return this.colorSchemes.find((x) => x.value === this.currentValue);
+  },
+  setColorScheme(colorScheme: ColorSchemeType, store: boolean) {
+    setColorScheme(colorScheme, store);
+    this.currentValue = colorScheme;
   },
 });

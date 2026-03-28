@@ -1,21 +1,16 @@
+import path from "node:path";
+
+import { haloThemePlugin } from "@halo-dev/vite-plugin-halo-theme";
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": path.resolve(process.cwd(), "src"),
+    },
+  },
+  plugins: [haloThemePlugin()],
   lint: {
-    plugins: ["typescript", "promise", "node"],
-    categories: {
-      correctness: "error",
-      suspicious: "error",
-      perf: "warn",
-    },
-    rules: {},
-    env: {
-      builtin: true,
-      browser: true,
-      node: true,
-    },
-    globals: {},
-    ignorePatterns: ["dist/**", "templates/assets/dist/**", "node_modules/**"],
     options: {
       typeAware: true,
       typeCheck: true,
@@ -33,17 +28,5 @@ export default defineConfig({
     sortPackageJson: true,
     insertFinalNewline: true,
     sortImports: {},
-    ignorePatterns: ["dist/**", "templates/assets/**"],
-  },
-  build: {
-    outDir: "./templates/assets/dist",
-    emptyOutDir: true,
-    lib: {
-      entry: "./src/main.ts",
-      name: "main",
-      fileName: "main",
-      formats: ["iife"],
-      cssFileName: "style",
-    },
   },
 });
