@@ -1,6 +1,7 @@
 <include src="layout.html">
   <template name="head">
     <title th:text="|#{page.moments.title} - ${site.title}|"></title>
+    <script type="module" src="./assets/moment.ts"></script>
   </template>
   <template name="hero">
     <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />

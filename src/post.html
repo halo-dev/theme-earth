@@ -1,11 +1,7 @@
 <include src="layout.html">
   <template name="head">
     <title th:text="|${post.spec.title} - ${site.title}|"></title>
-    <link
-      th:if="${theme.config.post.content_style == 'github'}"
-      rel="stylesheet"
-      th:href="@{/assets/styles/github-markdown.css?v={version}(version=${theme.spec.version})}"
-    />
+    <script type="module" src="./assets/post.ts"></script>
     <script type="module">
       import { generateToc } from "./assets/utils/toc.ts";
       generateToc("content", ".toc-container");
