@@ -15,4 +15,4 @@ jobs:
     with:
       app-id: app-KgWqR
       pnpm-version: 10
-      node-version: 20
+      node-version: 24
