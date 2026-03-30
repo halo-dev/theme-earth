@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const { Icons } = require("tailwindcss-plugin-icons");
 module.exports = {
-  content: ["./templates/**/*.html", "./src/**/*.ts", "./settings.yaml"],
+  content: ["./src/**/*.html", "./src/**/*.ts", "./settings.yaml"],
   darkMode: "class",
   theme: {
     extend: {

@@ -1,0 +1,32 @@
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+<link th:unless="${#strings.isEmpty(site.logo)}" rel="preload" th:href="${site.logo}" as="image" />
+<script th:inline="javascript">
+  window.i18nResources = {
+    "jsModule.colorSchemeSwitcher.dark": `[(#{jsModule.colorSchemeSwitcher.dark})]`,
+    "jsModule.colorSchemeSwitcher.light": `[(#{jsModule.colorSchemeSwitcher.light})]`,
+    "jsModule.colorSchemeSwitcher.auto": `[(#{jsModule.colorSchemeSwitcher.auto})]`,
+    "jsModule.share.qzone": `[(#{jsModule.share.qzone})]`,
+    "jsModule.share.weibo": `[(#{jsModule.share.weibo})]`,
+    "jsModule.share.douban": `[(#{jsModule.share.douban})]`,
+    "jsModule.share.wechat": `[(#{jsModule.share.wechat})]`,
+    "jsModule.share.native": `[(#{jsModule.share.native})]`,
+    "jsModule.share.windowTitle": `[(#{jsModule.share.windowTitle})]`,
+    "jsModule.upvote.networkError": `[(#{jsModule.upvote.networkError})]`,
+  };
+  var colorScheme = /*[[${theme.config.style.color_scheme}]]*/ "system";
+  var enableChangeColorScheme = /*[[${theme.config.style.enable_change_color_scheme}]]*/ false;
+</script>
+<script type="module" src="@/assets/main.ts"></script>
+<script type="module">
+  import { initColorScheme } from "@/assets/utils/color-scheme.ts";
+  initColorScheme(colorScheme, enableChangeColorScheme);
+</script>
+<noscript>
+  <style>
+    body {
+      display: block !important;
+    }
+  </style>
+</noscript>

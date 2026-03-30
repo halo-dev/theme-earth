@@ -1,0 +1,42 @@
+@import url("./github-markdown.css");
+
+.markdown-body {
+  background-color: transparent !important;
+
+  line-height: 1.75;
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border: none !important;
+  }
+
+  pre {
+    padding: 0 !important;
+
+    code {
+      border: 1px solid #fbf6f6;
+    }
+  }
+
+  p > img {
+    border-radius: 0.4rem;
+    overflow: hidden;
+    @apply shadow;
+  }
+
+  :not(pre) > code {
+    background-color: #afb8c133;
+  }
+}
