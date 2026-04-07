@@ -7,10 +7,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  overflow: auto;
-}
-
 .menu-sticky {
   @apply drop-shadow-md backdrop-blur-lg;
 }
