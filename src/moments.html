@@ -1,6 +1,6 @@
 <include src="layout.html">
   <template name="head">
-    <title th:text="|#{page.moments.title} - ${site.title}|"></title>
+    <title th:text="|${title ?: #messages.msg('page.moments.title')} - ${site.title}|"></title>
     <script type="module" src="./assets/moment.ts"></script>
   </template>
   <template name="hero">
@@ -9,7 +9,10 @@
   <section class="mx-auto mt-6 grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-[1fr_18rem] lg:px-6">
     <div class="z-0 min-w-0">
       <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
-        <h1 class="mb-9 text-2xl font-medium dark:text-slate-50" th:text="#{page.moments.title}"></h1>
+        <h1
+          class="mb-9 text-2xl font-medium dark:text-slate-50"
+          th:text="${title ?: #messages.msg('page.moments.title')}"
+        ></h1>
         <div class="mb-8">
           <nav class="flex flex-wrap gap-4" aria-label="Tabs">
             <a
