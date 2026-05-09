@@ -1,0 +1,251 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|${title} - ${site.title}|"></title>
+  </template>
+
+  <template name="hero">
+    <th:block th:replace="~{modules/hero :: hero(isHome = true, cover = null, title = null)}" />
+  </template>
+
+  <section class="mx-auto mt-6 grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-[1fr_18rem] lg:px-6">
+    <div class="z-0 min-w-0">
+      <div class="rounded-xl bg-white p-4 dark:bg-slate-800">
+        <!-- 返回列表 -->
+        <div class="mb-4">
+          <a
+            th:href="@{${backUrl}}"
+            class="inline-flex items-center gap-1 text-sm text-gray-500 transition-all hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-200"
+          >
+            <span class="i-tabler-arrow-left text-base"></span>
+            <span th:text="#{page.photo.backToList}"></span>
+          </a>
+        </div>
+
+        <!-- 标题与描述 -->
+        <h1
+          class="mb-2 text-2xl font-medium dark:text-slate-50"
+          th:if="${not #strings.isEmpty(photo.spec.displayName)}"
+          th:text="${photo.spec.displayName}"
+        ></h1>
+        <p
+          class="mb-4 text-sm text-gray-500 dark:text-slate-400"
+          th:if="${not #strings.isEmpty(photo.spec.description)}"
+          th:text="${photo.spec.description}"
+        ></p>
+
+        <!-- 大图 -->
+        <div class="relative mb-4 overflow-hidden rounded-lg">
+          <img class="w-full rounded-lg object-contain" th:src="${photo.spec.url}" th:alt="${photo.spec.displayName}" />
+        </div>
+
+        <!-- EXIF 信息 -->
+        <div th:if="${photo.exif != null}" class="mb-6">
+          <div
+            class="mb-3 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-gray-400 dark:text-slate-500"
+          >
+            <span class="i-tabler-database-search inline-block text-base"></span>
+            <span th:text="#{page.photo.exif.title}"></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
+            <div
+              th:if="${not #strings.isEmpty(photo.exif.make) or not #strings.isEmpty(photo.exif.model)}"
+              class="col-span-2 flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700"
+            >
+              <span class="i-tabler-camera shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.make}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="${(photo.exif.make ?: '') + ' ' + (photo.exif.model ?: '')}"
+                ></div>
+              </div>
+            </div>
+            <div
+              th:if="${not #strings.isEmpty(photo.exif.lensModel)}"
+              class="col-span-2 flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700"
+            >
+              <span class="i-tabler-focus shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.lens}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="${photo.exif.lensModel}"
+                ></div>
+              </div>
+            </div>
+            <div
+              th:if="${photo.exif.fNumber != null}"
+              class="flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700"
+            >
+              <span class="i-tabler-aperture shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.aperture}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="|f/${photo.exif.fNumber}|"
+                ></div>
+              </div>
+            </div>
+            <div
+              th:if="${not #strings.isEmpty(photo.exif.exposureTime)}"
+              class="flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700"
+            >
+              <span class="i-tabler-clock shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.shutter}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="${photo.exif.exposureTime}"
+                ></div>
+              </div>
+            </div>
+            <div
+              th:if="${photo.exif.iso != null}"
+              class="flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700"
+            >
+              <span class="i-tabler-sun-electricity shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.iso}"
+                ></div>
+                <div class="truncate font-medium text-gray-900 dark:text-slate-100" th:text="${photo.exif.iso}"></div>
+              </div>
+            </div>
+            <div
+              th:if="${photo.exif.focalLength != null}"
+              class="flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700"
+            >
+              <span class="i-tabler-telescope shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.focalLength}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="|${photo.exif.focalLength}mm|"
+                ></div>
+              </div>
+            </div>
+            <div
+              th:if="${photo.exif.focalLengthIn35mm != null}"
+              class="flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700"
+            >
+              <span class="i-tabler-focus shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.equiv35mm}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="|${photo.exif.focalLengthIn35mm}mm|"
+                ></div>
+              </div>
+            </div>
+            <div
+              th:if="${photo.exif.imageWidth != null and photo.exif.imageHeight != null}"
+              class="col-span-2 flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700 sm:col-span-1"
+            >
+              <span class="i-tabler-dimensions shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.resolution}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="|${photo.exif.imageWidth} × ${photo.exif.imageHeight}|"
+                ></div>
+              </div>
+            </div>
+            <div
+              th:if="${photo.exif.dateTimeOriginal != null}"
+              class="col-span-2 flex min-w-0 items-center gap-2.5 rounded-lg bg-gray-50 px-3 py-2.5 dark:bg-slate-700 sm:col-span-1"
+            >
+              <span class="i-tabler-calendar shrink-0 text-base text-gray-400 dark:text-slate-500"></span>
+              <div class="min-w-0">
+                <div
+                  class="text-[10px] uppercase tracking-wider text-gray-400 dark:text-slate-500"
+                  th:text="#{page.photo.exif.date}"
+                ></div>
+                <div
+                  class="truncate font-medium text-gray-900 dark:text-slate-100"
+                  th:text="${#dates.format(photo.exif.dateTimeOriginal,'yyyy-MM-dd HH:mm')}"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 上一张 / 下一张 -->
+        <div class="mb-6 flex items-center justify-between">
+          <a
+            th:if="${prev != null}"
+            th:href="@{${photoUrl.detail(prev)}}"
+            th:title="${prev.spec.displayName}"
+            class="group inline-flex max-w-[45%] items-center gap-2 text-sm text-gray-600 transition-all hover:text-gray-900 dark:text-slate-300 dark:hover:text-slate-100"
+          >
+            <span class="i-tabler-chevron-left shrink-0 text-lg transition-transform group-hover:-translate-x-1"></span>
+            <span class="truncate" th:text="${#strings.abbreviate(prev.spec.displayName, 24)}"></span>
+          </a>
+          <span th:if="${prev == null}" class="text-sm text-gray-300 dark:text-slate-600"></span>
+
+          <span class="shrink-0 text-xs text-gray-400 dark:text-slate-500" th:text="|${position} / ${total}|"></span>
+
+          <a
+            th:if="${next != null}"
+            th:href="@{${photoUrl.detail(next)}}"
+            th:title="${next.spec.displayName}"
+            class="group inline-flex max-w-[45%] items-center gap-2 text-sm text-gray-600 transition-all hover:text-gray-900 dark:text-slate-300 dark:hover:text-slate-100"
+          >
+            <span class="truncate" th:text="${#strings.abbreviate(next.spec.displayName, 24)}"></span>
+            <span class="i-tabler-chevron-right shrink-0 text-lg transition-transform group-hover:translate-x-1"></span>
+          </a>
+          <span th:if="${next == null}" class="text-sm text-gray-300 dark:text-slate-600"></span>
+        </div>
+
+        <!-- 底部缩略图导航栏 -->
+        <nav aria-label="Photo navigation" th:if="${!#lists.isEmpty(neighbors)}">
+          <div
+            class="flex items-center justify-center gap-2 overflow-x-auto rounded-lg bg-gray-50 p-3 dark:bg-slate-700"
+          >
+            <a
+              th:each="neighbor : ${neighbors}"
+              th:href="@{${photoUrl.detail(neighbor)}}"
+              class="relative shrink-0 overflow-hidden rounded-md transition-all hover:ring-2 hover:ring-blue-500"
+              th:classappend="${neighbor.metadata.name == photo.metadata.name} ? 'ring-2 ring-blue-500' : ''"
+            >
+              <img
+                class="size-16 object-cover"
+                th:src="${thumbnail.gen(neighbor.spec.url, 's')}"
+                th:alt="${neighbor.spec.displayName}"
+              />
+            </a>
+          </div>
+        </nav>
+
+        <!-- 评论 -->
+        <hr th:if="${haloCommentEnabled}" class="my-10 dark:border-slate-700" />
+        <div id="comment" th:if="${haloCommentEnabled}">
+          <h2 class="mb-2 text-base font-medium text-gray-900 dark:text-slate-50" th:text="#{common.comment}"></h2>
+          <halo:comment group="core.halo.run" kind="Photo" th:attr="name=${photo.metadata.name}" />
+        </div>
+      </div>
+    </div>
+    <th:block th:replace="~{modules/sidebar :: sidebar(prepend = null)}" />
+  </section>
+</include>
