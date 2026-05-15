@@ -10,10 +10,11 @@
       <th:block th:replace="~{plugin:plugin-docsme:modules/script}" />
       <script type="module" src="./assets/doc.ts"></script>
     </template>
+
+    <div class="dm-container">
+      <th:block
+        th:replace="~{plugin:plugin-docsme:modules/docs :: docs (footer = null, showHeader = false, showThemeSwitcher = false)}"
+      />
+    </div>
   </include>
-  <div class="dm-container">
-    <th:block
-      th:replace="~{plugin:plugin-docsme:modules/docs :: docs (footer = null, showHeader = false, showThemeSwitcher = false)}"
-    />
-  </div>
 </th:block>
