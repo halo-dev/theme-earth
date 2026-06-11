@@ -4,8 +4,9 @@ metadata:
   name: theme-earth
   annotations:
     # Add supports for Halo App Store
-    # https://halo.run/store/apps/app-KgWqR
+    # https://www.halo.run/store/apps/app-KgWqR
     "store.halo.run/app-id": "app-KgWqR"
+    "store.halo.run/recommended-apps": '["app-hfbQg", "app-BmQJW", "app-SnwWD", "app-kzloktzn", "app-OoggD"]'
 spec:
   displayName: Earth
   author:
