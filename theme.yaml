@@ -6,6 +6,11 @@ metadata:
     # Add supports for Halo App Store
     # https://www.halo.run/store/apps/app-KgWqR
     "store.halo.run/app-id": "app-KgWqR"
+    # 链接管理：https://www.halo.run/store/apps/app-hfbQg
+    # 图库管理：https://www.halo.run/store/apps/app-BmQJW
+    # 瞬间：https://www.halo.run/store/apps/app-SnwWD
+    # Shiki 代码高亮：https://www.halo.run/store/apps/app-kzloktzn
+    # lightgallery.js 灯箱：https://www.halo.run/store/apps/app-OoggD
     "store.halo.run/recommended-apps": '["app-hfbQg", "app-BmQJW", "app-SnwWD", "app-kzloktzn", "app-OoggD"]'
 spec:
   displayName: Earth
