@@ -39,23 +39,24 @@
     >
       <a
         href="https://beian.miit.gov.cn/"
-        class="hover:underline"
+        class="hover:underline inline-flex items-center justify-center gap-1"
         target="_blank"
-        th:href="${theme.config.beian.icp_link}"
-        th:text="${theme.config.beian.icp_text}"
-      ></a>
+      >
+        <img th:src="@{/assets/images/icp.webp}" class="size-4" alt="ICP备案" />
+        <span th:text="${theme.config.beian.icp_text}"></span>
+      </a>
     </span>
     <div
       th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
       class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6"
     >
       <p class="flex items-center justify-center gap-1">
-        <img th:src="@{/assets/images/gongan_beian.png}" class="size-4" alt="gongan_beian" />
+        <img th:src="@{/assets/images/gongan.png}" class="size-4" alt="公安备案" />
         <a
+          id="gongan-link-1"
           href="https://beian.mps.gov.cn/#/query/webSearch"
           class="hover:underline"
           target="_blank"
-          th:href="${theme.config.beian.gongan_link}"
           th:text="${theme.config.beian.gongan_text}"
         ></a>
       </p>
@@ -135,22 +136,23 @@
         >
           <a
             href="https://beian.miit.gov.cn/"
-            class="hover:underline"
+            class="hover:underline inline-flex items-center gap-1"
             target="_blank"
-            th:href="${theme.config.beian.icp_link}"
-            th:text="${theme.config.beian.icp_text}"
-          ></a>
+          >
+            <img th:src="@{/assets/images/icp.webp}" class="size-4" alt="ICP备案" />
+            <span th:text="${theme.config.beian.icp_text}"></span>
+          </a>
         </span>
         <div
           th:if="${not #strings.isEmpty(theme.config.beian.gongan_text)}"
           class="inline-flex items-center justify-center gap-1 text-sm text-gray-500 sm:justify-start"
         >
-          <img th:src="@{/assets/images/gongan_beian.png}" class="size-4" alt="gongan_beian" />
+          <img th:src="@{/assets/images/gongan.png}" class="size-4" alt="公安备案" />
           <a
+            id="gongan-link-2"
             href="https://beian.mps.gov.cn/#/query/webSearch"
             class="hover:underline"
             target="_blank"
-            th:href="${theme.config.beian.gongan_link}"
             th:text="${theme.config.beian.gongan_text}"
           ></a>
         </div>
@@ -164,3 +166,16 @@
     <th:block th:replace="~{modules/footer-social}" />
   </div>
 </footer>
+
+<script>
+  // Extract gongan beian number from text and construct MPS query URL
+  (function () {
+    const link = document.querySelector('[id^="gongan-link-"]');
+    if (!link) return;
+    const text = link.textContent || '';
+    const match = text.match(/\d+/);
+    if (match) {
+      link.href = 'https://beian.mps.gov.cn/#/query/webSearch?code=' + match[0];
+    }
+  })();
+</script>
