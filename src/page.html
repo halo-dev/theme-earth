@@ -4,7 +4,7 @@
     <script type="module" src="./assets/page.ts"></script>
   </template>
   <template name="hero">
-    <section th:unless="${#strings.isEmpty(singlePage.spec.cover)}">
+    <section th:if="${theme.config.layout.content_header}" th:unless="${#strings.isEmpty(singlePage.spec.cover)}">
       <div class="relative flex items-center" th:styleappend="|height:${theme.config.post.cover_height ?: '24rem'}|">
         <div
           class="before:z-1 relative size-full bg-cover bg-center bg-no-repeat before:absolute before:inset-0 before:bg-black/40"
@@ -96,7 +96,7 @@
           </div>
         </div>
         <h1
-          th:if="${#strings.isEmpty(singlePage.spec.cover)} or ${theme.config.post.title_position == 'content'}"
+          th:if="${#strings.isEmpty(singlePage.spec.cover)} or ${theme.config.post.title_position == 'content'} or ${not theme.config.layout.content_header}"
           class="my-3 text-3xl font-medium dark:text-slate-50"
           th:text="${singlePage.spec.title}"
         ></h1>
