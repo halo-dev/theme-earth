@@ -474,6 +474,11 @@ spec:
                   value: i-simple-icons-gitlab
                 - label: RSS（simple-icons:rss）
                   value: i-simple-icons-rss
+        - $formkit: code
+          label: 自定义版权信息
+          name: custom_copyright
+          language: html
+          help: "如果不设置，将使用默认的版权信息，支持 HTML 代码"
     - group: beian
       label: 备案设置
       formSchema:

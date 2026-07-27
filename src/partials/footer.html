@@ -39,7 +39,7 @@
     >
       <a
         href="https://beian.miit.gov.cn/"
-        class="hover:underline inline-flex items-center justify-center gap-1"
+        class="inline-flex items-center justify-center gap-1 hover:underline"
         target="_blank"
       >
         <img th:src="@{/assets/images/icp.webp}" class="size-4" alt="ICP备案" />
@@ -61,12 +61,19 @@
         ></a>
       </p>
     </div>
-    <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
-      ©
-      <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
-      <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
-      <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
-    </span>
+    <div class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
+      <th:block th:if="${#strings.isEmpty(theme.config.footer.custom_copyright)}">
+        ©
+        <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+        <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
+        <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
+      </th:block>
+      <th:block
+        th:unless="${#strings.isEmpty(theme.config.footer.custom_copyright)}"
+        th:utext="${theme.config.footer.custom_copyright}"
+      >
+      </th:block>
+    </div>
     <span class="mx-auto block max-w-7xl px-4 text-center text-sm text-gray-500 dark:text-slate-300 lg:px-6">
       <halo:footer />
     </span>
@@ -122,23 +129,26 @@
   <hr class="my-6 border-gray-200 dark:border-slate-700 sm:mx-auto lg:my-8" />
   <div class="mx-auto flex max-w-7xl flex-col px-4 sm:flex-row sm:items-center sm:justify-between lg:px-6">
     <div class="flex flex-col space-y-1 text-center sm:text-left">
-      <span class="text-sm text-gray-500 dark:text-slate-300 sm:text-center">
-        ©
-        <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
-        <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
-        <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
-      </span>
+      <div class="text-sm text-gray-500 dark:text-slate-300">
+        <th:block th:if="${#strings.isEmpty(theme.config.footer.custom_copyright)}">
+          ©
+          <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+          <a href="/" class="hover:underline" th:text="${site.title}"></a>. All Rights Reserved. Powered by
+          <a href="https://halo.run" class="hover:underline" target="_blank">Halo</a>.
+        </th:block>
+        <th:block
+          th:unless="${#strings.isEmpty(theme.config.footer.custom_copyright)}"
+          th:utext="${theme.config.footer.custom_copyright}"
+        >
+        </th:block>
+      </div>
 
       <div class="flex flex-col gap-1 sm:flex-row">
         <span
           class="block text-center text-sm text-gray-500 sm:text-left"
           th:if="${not #strings.isEmpty(theme.config.beian.icp_text)}"
         >
-          <a
-            href="https://beian.miit.gov.cn/"
-            class="hover:underline inline-flex items-center gap-1"
-            target="_blank"
-          >
+          <a href="https://beian.miit.gov.cn/" class="inline-flex items-center gap-1 hover:underline" target="_blank">
             <img th:src="@{/assets/images/icp.webp}" class="size-4" alt="ICP备案" />
             <span th:text="${theme.config.beian.icp_text}"></span>
           </a>
@@ -172,10 +182,10 @@
   (function () {
     const link = document.querySelector('[id^="gongan-link-"]');
     if (!link) return;
-    const text = link.textContent || '';
+    const text = link.textContent || "";
     const match = text.match(/\d+/);
     if (match) {
-      link.href = 'https://beian.mps.gov.cn/#/query/webSearch?code=' + match[0];
+      link.href = "https://beian.mps.gov.cn/#/query/webSearch?code=" + match[0];
     }
   })();
 </script>
