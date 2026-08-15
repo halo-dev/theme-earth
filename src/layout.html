@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org" th:lang="${#locale.toLanguageTag}" th:fragment="html (head, content)">
+  <head>
+    <include src="base-head.html" />
+
+    <th:block th:if="${head != null}">
+      <th:block th:replace="${head}" />
+    </th:block>
+  </head>
+  <body class="hidden bg-slate-50 dark:bg-slate-900">
+    <include src="header.html" />
+
+    <main class="mx-auto w-full max-w-7xl px-4 lg:px-6">
+      <th:block th:replace="${content}" />
+    </main>
+
+    <include src="footer.html" />
+  </body>
+</html>
