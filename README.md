@@ -27,19 +27,19 @@ Earth 主题支持以下 Halo 插件：
 
 ## 开发
 
-```bash
+```shell
 git clone git@github.com:halo-dev/theme-earth.git ~/halo2-dev/themes/theme-earth
 ```
 
-```bash
+```shell
 cd ~/halo2-dev/themes/theme-earth
 ```
 
-```bash
+```shell
 pnpm install
 ```
 
-```bash
+```shell
 pnpm dev
 ```
 
@@ -47,7 +47,7 @@ pnpm dev
 
 ## 构建
 
-```bash
+```shell
 pnpm build
 ```
 
