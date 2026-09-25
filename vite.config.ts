@@ -50,5 +50,6 @@ export default defineConfig({
     sortPackageJson: true,
     insertFinalNewline: true,
     sortImports: {},
+    ignorePatterns: ["public/assets/js"],
   },
 });
