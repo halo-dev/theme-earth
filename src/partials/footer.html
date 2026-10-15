@@ -106,8 +106,8 @@
       th:unless="${#lists.isEmpty(theme.config.footer.menu_names)}"
       class="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12"
     >
-      <th:block th:each="name : ${theme.config.footer.menu_names}">
-        <div th:with="menu = ${menuFinder.getByName(name)}">
+      <th:block th:each="menu : ${menuFinder.getByNames(theme.config.footer.menu_names)}">
+        <div>
           <h2
             class="mb-6 text-sm font-semibold text-gray-900 dark:text-slate-50"
             th:text="${menu.spec.displayName}"
