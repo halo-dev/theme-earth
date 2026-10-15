@@ -25,7 +25,7 @@ spec:
   settingName: "theme-earth-setting"
   configMapName: "theme-earth-configMap"
   version: 1.18.0
-  requires: ">=2.22.0"
+  requires: ">=2.27.0"
   license:
     - name: "GPL-3.0"
       url: "https://github.com/halo-dev/theme-earth/blob/main/LICENSE"
